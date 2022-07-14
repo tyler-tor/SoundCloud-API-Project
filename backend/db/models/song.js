@@ -20,9 +20,9 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: 'userId'
         }
       ),
-      Song.hasMany(
+      Song.belongsToMany(
         models.Playlist, {
-          foreignKey: 'songId'
+          through: PlaylistSong
         }
       )
     }

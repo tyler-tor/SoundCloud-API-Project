@@ -9,11 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       body: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(256),
         allowNull: false
       },
       songId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Songs',
           key: 'id'

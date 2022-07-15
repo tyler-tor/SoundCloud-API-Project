@@ -32,6 +32,8 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-     await queryInterface.bulkDelete('Songs', null, {});
+     await queryInterface.bulkDelete('Songs', {
+      title: { [Op.in]: ['song1', 'song2']}
+     }, {});
   }
 };

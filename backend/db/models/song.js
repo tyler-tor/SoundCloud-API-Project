@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       ),
       Song.belongsToMany(
         models.Playlist, {
-          through: PlaylistSong,
+          through: models.PlaylistSong,
           onDelete: 'cascade'
         }
       )

@@ -1,5 +1,6 @@
 const express = require('express');
 require('express-async-errors');
+const { check } = require('express-validator');
 const morgan = require('morgan');
 const cors = require('cors');
 const csurf = require('csurf');
@@ -8,12 +9,22 @@ const cookieParser = require('cookie-parser');
 const { environment } = require('./config');
 const isProduction = environment === 'production';
 const routes = require('./routes');
+const { ValidationError } = require('sequelize');
+const { handleValidationErrors } = require('./utils/validation');
 
 const app = express();
 
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
+
+//2nd kanban. not sure if will be needed.
+// const validateLoggedIn = [
+//     check('login')
+//     .exists({ checkFalsey: true })
+//     .withMessage('Authentication required'),
+//     handleValidationErrors
+// ];
 
 //Security Middleware
 if (!isProduction) {
@@ -51,7 +62,8 @@ app.use((_req, _res, next) => {
     next(err);
 });
 
-const { ValidationError } = require('sequelize');
+// const { ValidationError } = require('sequelize');
+// const { handleValidationErrors } = require('./utils/validation');
 //process sequelize errors
 app.use((err, _req, _res, next) => {
     //check if error is Sequelize error;

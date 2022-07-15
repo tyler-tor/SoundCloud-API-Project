@@ -27,6 +27,7 @@ const validateSignup = [
     handleValidationErrors
 ];
 
+<<<<<<< HEAD
 // router.use(validateSignup, (err, _req, _res, next) => {
 //     if(!validateSignup){
 //         err.message('Authentication required');
@@ -35,6 +36,9 @@ const validateSignup = [
 //     }
 //     next()
 // });
+=======
+router.get('/my', )
+>>>>>>> modify-user-scopes
 
 router.post('/', validateSignup, async(req, res) => {
     const { email, password, username } = req.body;

@@ -9,24 +9,26 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(30),
         unique: true,
         allowNull: false
       },
       description: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING(256),
+        allowNull: false,
       },
       url: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(30),
         allowNull: false,
         unique: true,
       },
       previewImage: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       albumId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Albums',
           key: 'id'
@@ -35,6 +37,7 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: 'Users',
           key: 'id'

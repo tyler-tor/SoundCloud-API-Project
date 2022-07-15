@@ -12,12 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Playlist.belongsToMany(
         models.Song, {
-          through: PlaylistSong
+          through: PlaylistSong,
+          onDelete: 'cascade'
         }
       ),
       Playlist.belongsTo(
         models.User, {
-          foreignKey: 'userId'
+          foreignKey: 'userId',
+          key: 'id'
         }
       )
     }
@@ -29,10 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     previewImage: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    songId: {
-      type: DataTypes.INTEGER,
       allowNull: false,
     },
     userId: {

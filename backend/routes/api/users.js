@@ -27,14 +27,7 @@ const validateSignup = [
     handleValidationErrors
 ];
 
-// router.get('/my', requireAuth, async(req, res, next) => {
-//     // const user = await User.findOne({
-//     //     where: req.user
-//     // });
-//     console.log(req.user)
 
-//     return res.json(req.user)
-// })
 
 router.get('/login', async(req, res, next) => {
     const { email, password } = req.body;

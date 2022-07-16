@@ -29,6 +29,7 @@ const validateSignup = [
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 // router.use(validateSignup, (err, _req, _res, next) => {
 //     if(!validateSignup){
 //         err.message('Authentication required');
@@ -46,9 +47,9 @@ router.get('/my', )
 //     //     where: req.user
 //     // });
 //     console.log(req.user)
+=======
+>>>>>>> dev
 
-//     return res.json(req.user)
-// })
 
 router.get('/login', async(req, res, next) => {
     const { email, password } = req.body;

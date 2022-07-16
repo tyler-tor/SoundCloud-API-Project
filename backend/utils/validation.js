@@ -25,6 +25,11 @@ const forbiddenErr = (next) => {
     return next(err);
 }
 
+// const validateSignUpBody = [
+//     check('email')
+
+// ]
+
 module.exports = {
     handleValidationErrors,
     forbiddenErr

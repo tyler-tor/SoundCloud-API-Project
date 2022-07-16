@@ -27,28 +27,6 @@ const validateSignup = [
     handleValidationErrors
 ];
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-// router.use(validateSignup, (err, _req, _res, next) => {
-//     if(!validateSignup){
-//         err.message('Authentication required');
-//         err.status(401);
-//         next(err)
-//     }
-//     next()
-// });
-=======
-router.get('/my', )
->>>>>>> modify-user-scopes
-=======
-// router.get('/my', requireAuth, async(req, res, next) => {
-//     // const user = await User.findOne({
-//     //     where: req.user
-//     // });
-//     console.log(req.user)
-=======
->>>>>>> dev
 
 
 router.get('/login', async(req, res, next) => {
@@ -66,8 +44,7 @@ router.get('/my', requireAuth, async(req, res, next) => {
         return res.json(user);
 })
 
-// router.post('/signup', )
->>>>>>> dev
+
 
 router.post('/', validateSignup, async(req, res) => {
     const { email, password, username } = req.body;

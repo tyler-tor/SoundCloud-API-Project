@@ -18,10 +18,11 @@ const handleValidationErrors = (req, _res, next) => {
     next();
 };
 
-const forbiddenErr = () => {
+const forbiddenErr = (next) => {
     const err = new Error('Forbidden');
     err.title = 'Forbidden';
     err.status = 403;
+    return next(err);
 }
 
 module.exports = {

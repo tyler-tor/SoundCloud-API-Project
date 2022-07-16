@@ -10,21 +10,15 @@ const { environment } = require('./config');
 const isProduction = environment === 'production';
 const routes = require('./routes');
 const { ValidationError } = require('sequelize');
-const { handleValidationErrors } = require('./utils/validation');
+const { handleValidationErrors, forbiddenErr } = require('./utils/validation');
+// const {requireAuth, setTokenCookie} = require('./utils/auth');
+// const { User } = require('./db/models')
 
 const app = express();
 
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
-
-//2nd kanban. not sure if will be needed.
-// const validateLoggedIn = [
-//     check('login')
-//     .exists({ checkFalsey: true })
-//     .withMessage('Authentication required'),
-//     handleValidationErrors
-// ];
 
 //Security Middleware
 if (!isProduction) {
@@ -51,7 +45,6 @@ app.use(
 )
 
 app.use(routes);
-
 
 //catch unhandles requests and forward to error handler
 app.use((_req, _res, next) => {

@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    
+
     await queryInterface.bulkInsert('Playlists', [
       {
         name: 'Playlist 1',
@@ -19,8 +19,6 @@ module.exports = {
 
   async down(queryInterface, Sequelize) {
 
-    await queryInterface.bulkDelete('Playlists', {
-      name: { [Op.in]: ['Playlist 1', 'Playlist 2']}
-    }, {});
+    await queryInterface.bulkDelete('Playlists', null, {});
   }
 };

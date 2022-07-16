@@ -28,6 +28,7 @@ const validateSignup = [
 ];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // router.use(validateSignup, (err, _req, _res, next) => {
 //     if(!validateSignup){
 //         err.message('Authentication required');
@@ -39,6 +40,33 @@ const validateSignup = [
 =======
 router.get('/my', )
 >>>>>>> modify-user-scopes
+=======
+// router.get('/my', requireAuth, async(req, res, next) => {
+//     // const user = await User.findOne({
+//     //     where: req.user
+//     // });
+//     console.log(req.user)
+
+//     return res.json(req.user)
+// })
+
+router.get('/login', async(req, res, next) => {
+    const { email, password } = req.body;
+
+    const checkedUser = await User.login({credential: email, password});
+
+    setTokenCookie(res, checkedUser)
+    return res.json(checkedUser)
+})
+
+router.get('/my', requireAuth, async(req, res, next) => {
+        const user = await User.findByPk(req.user.id);
+
+        return res.json(user);
+})
+
+// router.post('/signup', )
+>>>>>>> dev
 
 router.post('/', validateSignup, async(req, res) => {
     const { email, password, username } = req.body;

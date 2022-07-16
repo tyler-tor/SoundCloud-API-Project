@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     validatePassword(password){
+      console.log(password, this.hashedPassword)
       return bcrypt.compareSync(password, this.hashedPassword.toString());
     };
 
@@ -30,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       });
       if(user && user.validatePassword(password)){
+        console.log(password)
         return await User.scope('currentUser').findByPk(user.id);
       };
     }
@@ -68,7 +70,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: [4,30],
-        // isEmail: false
         isNotEmail(val){
           if (Validator.isEmail(val)){
             throw new Error('Cannot be email');
@@ -79,10 +80,17 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         len: [3,256],
         isEmail: true
       }
+    },
+    firstName: {
+      type: DataTypes.STRING,
+    },
+    lastName: {
+      type: DataTypes.STRING,
     },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
@@ -94,6 +102,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
+    // indexes: [
+    //   {
+    //     unique: true,
+    //     fields: ['firstName', 'lastName']
+    //   }
+    // ],
     defaultScope: {
       attributes: {
         exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt']
@@ -101,7 +115,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     scopes: {
       currentUser: {
-        attributes: { exclude: ['hashedPassword'] }
+        attributes: { exclude: ['hashedPassword', 'createdAt', 'updatedAt'] }
       },
       loginUser: {
         attributes: {}

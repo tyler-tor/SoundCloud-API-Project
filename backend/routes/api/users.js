@@ -27,38 +27,7 @@ const validateSignup = [
     handleValidationErrors
 ];
 
-<<<<<<< HEAD
-router.get('/login', async (req, res, next) => {
-    const { email, password } = req.body;
-
-    const checkedUser = await User.login({ credential: email, password });
-
-    setTokenCookie(res, checkedUser)
-    return res.json(checkedUser)
-})
-
-router.get('/my', requireAuth, async (req, res, next) => {
-    const user = await User.findByPk(req.user.id);
-
-    return res.json(user);
-})
-
-router.post('/signup', restoreUser, validateSignup, async (req, res, next) => {
-    try {
-        const newUser = await User.signup(req.body)
-
-        res.json(newUser);
-    } catch (e) {
-        e.status = 403;
-        e.message = "User already exists"
-        return next(e)
-    }
-})
-
-router.post('/', validateSignup, async (req, res) => {
-=======
 router.post('/signup', validateSignup, async(req, res) => {
->>>>>>> dev
     const { email, password, username } = req.body;
     const user = await User.signup({ email, username, password });
 

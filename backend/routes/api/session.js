@@ -17,7 +17,7 @@ const validateLogin = [
     handleValidationErrors
 ];
 
-router.get('/', restoreUser, (req, res) => {
+router.get('/my', restoreUser, (req, res) => {
     const { user } = req;
     if(user) {
         return res.json({
@@ -28,7 +28,7 @@ router.get('/', restoreUser, (req, res) => {
     }
 })
 
-router.post('/', validateLogin, async (req, res, next) => {
+router.post('/login', validateLogin, async (req, res, next) => {
     const { credential, password } = req.body;
 
     const user = await User.login({ credential, password });
@@ -48,7 +48,7 @@ router.post('/', validateLogin, async (req, res, next) => {
     })
 });
 
-router.delete('/', (_req, res) => {
+router.delete('/logout', (_req, res) => {
     res.clearCookie('token');
     return res.json({
         message: 'success'

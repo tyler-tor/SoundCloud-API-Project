@@ -4,10 +4,12 @@ const { User } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const sessionRouter = require('./session');
 const usersRouter = require('./users');
+const songsRouter = require('./songs');
 
 router.use(restoreUser);
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
+router.use('/songs', songsRouter);
 
 router.post('/test', (req, res) => {
     res.json({ requestBody: req.body });

@@ -27,6 +27,7 @@ const validateSignup = [
     handleValidationErrors
 ];
 
+<<<<<<< HEAD
 router.get('/login', async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -55,6 +56,9 @@ router.post('/signup', restoreUser, validateSignup, async (req, res, next) => {
 })
 
 router.post('/', validateSignup, async (req, res) => {
+=======
+router.post('/signup', validateSignup, async(req, res) => {
+>>>>>>> dev
     const { email, password, username } = req.body;
     const user = await User.signup({ email, username, password });
 

@@ -9,52 +9,52 @@ const router = express.Router();
 
 const validateSignup = [
     check('email')
-    .exists({ checkFalsey: true})
-    .isEmail()
-    .withMessage('Please provide a valid email.'),
+        .exists({ checkFalsey: true })
+        .isEmail()
+        .withMessage('Please provide a valid email.'),
     check('username')
-    .exists({ checkFalsy: true })
-    .isLength({ min: 4 })
-    .withMessage('Please provide a username with at least 4 characters.'),
+        .exists({ checkFalsy: true })
+        .isLength({ min: 4 })
+        .withMessage('Please provide a username with at least 4 characters.'),
     check('username')
-    .not()
-    .isEmail()
-    .withMessage('Username cannot be an email.'),
+        .not()
+        .isEmail()
+        .withMessage('Username cannot be an email.'),
     check('password')
-    .exists({ checkFalsy: true })
-    .isLength({ min: 6 })
-    .withMessage('Password must be 6 characters or more.'),
+        .exists({ checkFalsy: true })
+        .isLength({ min: 6 })
+        .withMessage('Password must be 6 characters or more.'),
     handleValidationErrors
 ];
 
-
-
-router.get('/login', async(req, res, next) => {
+router.get('/login', async (req, res, next) => {
     const { email, password } = req.body;
 
-    const checkedUser = await User.login({credential: email, password});
+    const checkedUser = await User.login({ credential: email, password });
 
     setTokenCookie(res, checkedUser)
     return res.json(checkedUser)
 })
 
-router.get('/my', requireAuth, async(req, res, next) => {
-        const user = await User.findByPk(req.user.id);
+router.get('/my', requireAuth, async (req, res, next) => {
+    const user = await User.findByPk(req.user.id);
 
-        return res.json(user);
+    return res.json(user);
 })
 
-router.post('/signup', restoreUser, validateSignup, async(req, res, next) => {
-    try{
+router.post('/signup', restoreUser, validateSignup, async (req, res, next) => {
+    try {
         const newUser = await User.signup(req.body)
 
         res.json(newUser);
-    }catch(e){
+    } catch (e) {
+        e.status = 403;
+        e.message = "User already exists"
         return next(e)
     }
 })
 
-router.post('/', validateSignup, async(req, res) => {
+router.post('/', validateSignup, async (req, res) => {
     const { email, password, username } = req.body;
     const user = await User.signup({ email, username, password });
 

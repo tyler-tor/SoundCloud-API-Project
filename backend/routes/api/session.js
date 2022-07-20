@@ -1,6 +1,6 @@
 const express = require('express');
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Song } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -18,7 +18,20 @@ const validateLogin = [
 ];
 
 router.get('/my/songs', requireAuth, async(req, res, next) => {
-    
+    const { user } = req;
+
+    if(user){
+        const currUser = await User.getCurrentUserById(user.id);
+
+        const Songs = await Song.findAll({
+            where: {
+                userId: currUser.id
+            }
+        })
+        return res.json({
+            Songs
+        })
+    }
 })
 
 router.get('/my', restoreUser, (req, res) => {

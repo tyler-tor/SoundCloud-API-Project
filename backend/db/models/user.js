@@ -61,7 +61,8 @@ module.exports = (sequelize, DataTypes) => {
       ),
       User.hasMany(
         models.Song, {
-          foreignKey: 'userId'
+          foreignKey: 'userId',
+          as: 'Artist'
         }
       )
     }
@@ -116,6 +117,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       loginUser: {
         attributes: {}
+      },
+      includedArtist: {
+        attributes: {
+          exclude: ['updatedAt', 'createdAt', 'hashedPassword',
+        'email', 'firstName', 'lastName']
+        }
       }
     }
   });

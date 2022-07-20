@@ -20,6 +20,14 @@ module.exports = {
        previewImage: 'imageOfSong2.com',
        albumId: 2,
        userId: 2
+     },
+     {
+      title: 'Yesterday',
+      description: 'A song about the past.',
+      url: 'audio url',
+      previewImage: 'image url',
+      albumId: 1,
+      userId: 4
      }
     ], {});
 

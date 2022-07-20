@@ -5,11 +5,13 @@ const { requireAuth } = require('../../utils/auth');
 const sessionRouter = require('./session');
 const usersRouter = require('./users');
 const songsRouter = require('./songs');
+const myRouter = require('./my');
 
 router.use(restoreUser);
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/songs', songsRouter);
+router.use('/my', myRouter);
 
 router.post('/test', (req, res) => {
     res.json({ requestBody: req.body });

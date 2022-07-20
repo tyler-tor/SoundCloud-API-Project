@@ -24,11 +24,13 @@ router.get('/songs', requireAuth, async(req, res, next) => {
     }
 })
 
-router.get('/', restoreUser, (req, res) => {
+router.get('/', restoreUser, async (req, res) => {
     const { user } = req;
     if(user) {
+        const currUser = await User.getCurrentUserById(user.id);
         return res.json({
-            user: user.toSafeObject()
+            currUser,
+            token: setTokenCookie(res, currUser)
         })
     }else {
         return res.json({})

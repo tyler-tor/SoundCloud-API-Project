@@ -17,34 +17,6 @@ const validateLogin = [
     handleValidationErrors
 ];
 
-router.get('/my/songs', requireAuth, async(req, res, next) => {
-    const { user } = req;
-
-    if(user){
-        const currUser = await User.getCurrentUserById(user.id);
-
-        const Songs = await Song.findAll({
-            where: {
-                userId: currUser.id
-            }
-        })
-        return res.json({
-            Songs
-        })
-    }
-})
-
-router.get('/my', restoreUser, (req, res) => {
-    const { user } = req;
-    if(user) {
-        return res.json({
-            user: user.toSafeObject()
-        })
-    }else {
-        return res.json({})
-    }
-})
-
 router.post('/login', validateLogin, async (req, res, next) => {
     const { credential, password } = req.body;
 

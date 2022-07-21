@@ -102,6 +102,9 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [60,60]
       }
+    },
+    previewImage: {
+      type: DataTypes.STRING
     }
   }, {
     sequelize,
@@ -113,7 +116,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     scopes: {
       currentUser: {
-        attributes: { exclude: ['hashedPassword', 'createdAt', 'updatedAt'] }
+        attributes: { exclude: ['hashedPassword', 'createdAt', 'updatedAt', 'username', 'previewImage'] }
       },
       loginUser: {
         attributes: {}

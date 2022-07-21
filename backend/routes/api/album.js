@@ -57,7 +57,7 @@ router.get('/:albumId', async(req, res, next) => {
     }
 });
 
-router.post('/:albumId', [requireAuth, validateSong], async(req, res, next) => {
+router.post('/:albumId/songs', [requireAuth, validateSong], async(req, res, next) => {
     const { albumId } = req.params;
     const { user } = req;
     const { title, description, url, imageUrl } = req.body;

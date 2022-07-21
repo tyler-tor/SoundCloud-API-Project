@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Album.belongsTo(
         models.User, {
-          foreignKey: 'userId'
+          foreignKey: 'userId',
+        
         }
       ),
       Album.hasMany(

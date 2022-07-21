@@ -51,18 +51,19 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       User.hasMany(
         models.Album, {
-          foreignKey: 'userId'
+          foreignKey: 'userId',
+
         }
       ),
       User.hasMany(
         models.Playlist, {
-          foreignKey: 'userId'
+          foreignKey: 'userId',
+
         }
       ),
       User.hasMany(
         models.Song, {
-          foreignKey: 'userId',
-          as: 'Artist'
+          foreignKey: 'userId'
         }
       )
     }

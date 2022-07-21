@@ -31,6 +31,32 @@ const validateAlbum = [
     handleValidationErrors
 ];
 
+const albumCouldNotBeFound = (next) => {
+    const e = new Error();
+    e.message = "Album couldn't be found.";
+    e.status = 404;
+    next(e)
+}
+
+router.get('/:albumId', async(req, res, next) => {
+    const { albumId } = req.params;
+
+
+    const album = await Album.findByPk(albumId, {
+        include: [
+            { model: Song }
+        ]
+    });
+
+    if(album){
+        const artist = await User.scope('includedArtist').findByPk(album.userId);
+        album.dataValues.Artist = artist
+        return res.json(album)
+    }else{
+        albumCouldNotBeFound(next)
+    }
+});
+
 router.post('/:albumId', [requireAuth, validateSong], async(req, res, next) => {
     const { albumId } = req.params;
     const { user } = req;
@@ -79,6 +105,13 @@ router.post('/', [requireAuth, validateAlbum], async(req, res, next) => {
     });
 
     return res.json(album)
+});
+
+router.get('/', async(req, res, next) => {
+
+    const albums = await Album.findAll();
+
+    return res.json(albums);
 })
 
 module.exports = router

@@ -31,11 +31,9 @@ router.post('/login', validateLogin, async (req, res, next) => {
         return next(err);
     }
 
-    await setTokenCookie(res, user)
+    user.dataValues.token = await setTokenCookie(res, user);
 
-    return res.json({
-        user
-    })
+    return res.json(user)
 });
 
 router.delete('/logout', (_req, res) => {

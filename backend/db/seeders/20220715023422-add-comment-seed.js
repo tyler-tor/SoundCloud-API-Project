@@ -6,11 +6,13 @@ module.exports = {
     await queryInterface.bulkInsert('Comments', [
       {
         body: 'This is a comment for song 1',
-        songId: 1
+        songId: 1,
+        userId: 1
       },
       {
         body: 'This is a comment for song 2',
-        songId: 2
+        songId: 2,
+        userId: 2
       },
     ], {});
   },

@@ -65,6 +65,11 @@ module.exports = (sequelize, DataTypes) => {
         models.Song, {
           foreignKey: 'userId'
         }
+      ),
+      User.hasMany(
+        models.Comment, {
+          foreignKey: 'userId'
+        }
       )
     }
   }
@@ -126,6 +131,11 @@ module.exports = (sequelize, DataTypes) => {
         attributes: {
           exclude: ['updatedAt', 'createdAt', 'hashedPassword',
         'email', 'firstName', 'lastName']
+        }
+      },
+      includedInComment: {
+        attributes: {
+          exclude: ['updatedAt', 'createdAt', 'hashedPassword', 'email', 'firstName', 'lastName', 'previewImage']
         }
       }
     }

@@ -59,7 +59,7 @@ const requireAuth = [restoreUser,
 }];
 
 const requireProperAuthorize = [
-    
+
 ]
 
 module.exports = { setTokenCookie, restoreUser, requireAuth };

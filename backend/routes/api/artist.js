@@ -1,6 +1,6 @@
 const express = require('express');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { Song, User, Album } = require('../../db/models');
+const { Song, User, Album, sequelize } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -26,6 +26,29 @@ router.get('/:artistId/albums', async (req, res, next) => {
         })
 
         return res.json({Albums});
+    }else{
+        artistCouldNotBeFound(next);
+    }
+});
+
+router.get('/:artistId', async(req, res, next) => {
+    const { artistId } = req.params;
+
+    const Artist = await User.scope('includedArtist').findByPk(artistId);
+
+    if(Artist){
+        Artist.dataValues.totalSongs = await Song.count({
+            where: {
+                userId: Artist.id
+            }
+        });
+        Artist.dataValues.totalAlbums = await Album.count({
+            where: {
+                userId: Artist.id
+            }
+        });
+
+        return res.json(Artist)
     }else{
         artistCouldNotBeFound(next);
     }

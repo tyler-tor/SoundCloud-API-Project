@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         models.Song, {
           foreignKey: 'songId'
         }
+      ),
+      Comment.belongsTo(
+        models.User, {
+          foreignKey: 'userId'
+        }
       )
     }
   }
@@ -23,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     songId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     }

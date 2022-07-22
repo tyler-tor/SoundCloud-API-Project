@@ -9,11 +9,9 @@ const router = express.Router();
 router.get('/albums', requireAuth, async(req, res, next) => {
     const { user } = req;
 
-    const currUser = await User.getCurrentUserById(user.id);
-
     const Albums = await Album.findAll({
         where: {
-            userId: currUser.id
+            userId: user.id
         }
     });
 
@@ -26,11 +24,9 @@ router.get('/songs', requireAuth, async(req, res, next) => {
     const { user } = req;
 
     if(user){
-        const currUser = await User.getCurrentUserById(user.id);
-
         const Songs = await Song.findAll({
             where: {
-                userId: currUser.id
+                userId: user.id
             }
         })
         return res.json({

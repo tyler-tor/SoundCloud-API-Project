@@ -38,38 +38,18 @@ const albumCouldNotBeFound = (next) => {
     next(e)
 }
 
-router.get('/:albumId', async(req, res, next) => {
-    const { albumId } = req.params;
-
-
-    const album = await Album.findByPk(albumId, {
-        include: [
-            { model: Song }
-        ]
-    });
-
-    if(album){
-        const artist = await User.scope('includedArtist').findByPk(album.userId);
-        album.dataValues.Artist = artist
-        return res.json(album)
-    }else{
-        albumCouldNotBeFound(next)
-    }
-});
-
 router.post('/:albumId/songs', [requireAuth, validateSong], async(req, res, next) => {
     const { albumId } = req.params;
     const { user } = req;
     const { title, description, url, imageUrl } = req.body;
 
-    const currUser = await User.getCurrentUserById(user.id)
-
-    const album = await Album.findByPk(albumId, {
+    const album = await Album.findOne({
         include: {
             model: User
         },
         where: {
-            userId: currUser.id
+            userId: user.id,
+            id: albumId
         }
     });
 
@@ -91,17 +71,48 @@ router.post('/:albumId/songs', [requireAuth, validateSong], async(req, res, next
     }
 });
 
+router.get('/:albumId', async(req, res, next) => {
+    const { albumId } = req.params;
+
+
+    const album = await Album.findByPk(albumId, {
+        include: [
+            { model: Song }
+        ]
+    });
+
+    if(album){
+        const artist = await User.scope('includedArtist').findByPk(album.userId);
+        album.dataValues.Artist = artist
+        return res.json(album)
+    }else{
+        albumCouldNotBeFound(next)
+    }
+});
+
+router.put('/:albumId', [requireAuth, validateAlbum], async(req, res, next) => {
+    const { albumId } = req.params;
+
+    const album = await Album.findByPk(albumId);
+
+    if(album){
+        await album.update({...req.body});
+
+        return res.json(album)
+    }else{
+        albumCouldNotBeFound(next)
+    }
+})
+
 router.post('/', [requireAuth, validateAlbum], async(req, res, next) => {
     const { title, description, imageUrl } = req.body;
     const { user } = req;
-
-    const currUser = await User.getCurrentUserById(user.id)
 
     const album = await Album.create({
         title,
         description,
         previewImage: imageUrl,
-        userId: currUser.id
+        userId: user.id
     });
 
     return res.json(album)

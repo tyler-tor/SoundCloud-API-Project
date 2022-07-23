@@ -11,7 +11,35 @@ const artistCouldNotBeFound = (next) => {
     e.message = "Artist couldn't be found.";
     e.status = 404;
     next(e)
-}
+};
+
+router.get('/:artistId/playlists', async(req, res, next) => {
+    const { artistId } = req.params;
+
+    const artist = await User.getCurrentUserById(artistId);
+
+    if(artist){
+        const Playlists = await artist.getPlaylists();
+
+        return res.json({Playlists});
+    }else{
+        artistCouldNotBeFound(next);
+    }
+})
+
+router.get('/:artistId/songs', async(req, res, next) => {
+    const { artistId } = req.params;
+
+    const artist = await User.getCurrentUserById(artistId);
+
+    if(artist){
+        const Songs = await artist.getSongs();
+
+        return res.json({Songs});
+    }else{
+        artistCouldNotBeFound(next);
+    }
+})
 
 router.get('/:artistId/albums', async (req, res, next) => {
     const { artistId } = req.params;

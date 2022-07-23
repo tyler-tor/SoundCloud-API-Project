@@ -8,7 +8,8 @@ const songsRouter = require('./songs');
 const myRouter = require('./my');
 const albumRouter = require('./album');
 const artistRouter = require('./artist');
-const commentRouter = require('./comment')
+const commentRouter = require('./comment');
+const playlistRouter = require('./playlist');
 
 router.use(restoreUser);
 router.use('/session', sessionRouter);
@@ -17,7 +18,8 @@ router.use('/songs', songsRouter);
 router.use('/my', myRouter);
 router.use('/albums', albumRouter);
 router.use('/artists', artistRouter);
-router.use('/comments', commentRouter)
+router.use('/comments', commentRouter);
+router.use('/playlists', playlistRouter);
 
 router.post('/test', (req, res) => {
     res.json({ requestBody: req.body });

@@ -11,8 +11,6 @@ const isProduction = environment === 'production';
 const routes = require('./routes');
 const { ValidationError } = require('sequelize');
 const { handleValidationErrors, forbiddenErr } = require('./utils/validation');
-// const {requireAuth, setTokenCookie} = require('./utils/auth');
-// const { User } = require('./db/models')
 
 const app = express();
 
@@ -55,9 +53,6 @@ app.use((_req, _res, next) => {
     next(err);
 });
 
-// const { ValidationError } = require('sequelize');
-// const { handleValidationErrors } = require('./utils/validation');
-//process sequelize errors
 app.use((err, _req, _res, next) => {
     //check if error is Sequelize error;
     if (err instanceof ValidationError) {

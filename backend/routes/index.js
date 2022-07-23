@@ -16,10 +16,5 @@ router.get('/require-auth', requireAuth, (req, res) => {
     return res.json(req.user);
 });
 
-// router.get('/hello/world', (req, res) => {
-//     res.cookie('XSRF-TOKEN', req.csrfToken());
-//     res.send('Hello World!');
-// });
-
 
 module.exports = router;

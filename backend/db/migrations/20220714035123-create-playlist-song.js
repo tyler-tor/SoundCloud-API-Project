@@ -1,7 +1,6 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    try{
     await queryInterface.createTable('PlaylistSongs', {
       id: {
         allowNull: false,
@@ -38,9 +37,6 @@ module.exports = {
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       }
     });
-  }catch(e){
-    console.log(e.message)
-  }
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('PlaylistSongs');

@@ -19,7 +19,7 @@ const validateQueryParams = [
     check('size')
         .custom(async (value, { req }) => {
             if(req.query){
-                const size = req.query
+                const {size} = req.query
                 if(size < 0 ){
                     return await Promise.reject("Size must be greater than or equal to 0")
                 }
@@ -28,7 +28,7 @@ const validateQueryParams = [
     check('page')
         .custom(async (value, { req }) => {
             if(req.query){
-                const page = req.query
+                const{ page} = req.query
                 if(page < 0) {
                     return await Promise.reject("Page must be greater than or equal to 0")
                 }
@@ -162,7 +162,6 @@ router.get('/', validateQueryParams, async (req, res, next) => {
         ...where,
         ...pagination
     });
-        console.log(pagination, where)
 
     return res.json({
         Songs,

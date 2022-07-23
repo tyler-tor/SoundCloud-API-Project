@@ -1,7 +1,7 @@
 const express = require('express');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
 const { Song, User, Album, Comment } = require('../../db/models');
-const { check } = require('express-validator');
+const { check, query, condition } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const app = require('../../app');
 const song = require('../../db/models/song');
@@ -16,19 +16,28 @@ const validateComment = [
 ];
 
 const validateQueryParams = [
-    check('page')
-        .exists({ checkFalsey: true })
-        .toInt()
-        // .if('page' < 0)
-        .withMessage("Page must be greater than or equal to 0"),
     check('size')
-        .exists({ checkFalsey: true })
-        .toInt()
-        // .if('size' < 0)
-        .withMessage("Size must be greater than or equal to 0"),
-    // check('createdAt')
-    //     .isDate()
-    //     .withMessage("CreatedAt is invalid"),
+        .custom(async (value, { req }) => {
+            if(req.query){
+                const size = req.query
+                if(size < 0 ){
+                    return await Promise.reject("Size must be greater than or equal to 0")
+                }
+            }
+        }),
+    check('page')
+        .custom(async (value, { req }) => {
+            if(req.query){
+                const page = req.query
+                if(page < 0) {
+                    return await Promise.reject("Page must be greater than or equal to 0")
+                }
+            }
+        }),
+    check('createdAt')
+        .isDate( {dateOnly: false})
+        .optional({nullable: true})
+        .withMessage("CreatedAt is invalid"),
     handleValidationErrors
 ];
 
@@ -136,27 +145,30 @@ router.delete('/:songId', requireAuth, async(req, res, next) => {
     }
 })
 
-router.get('/', async (req, res, next) => {
-    // let { page, size, title, createdAt } = req.query;
-    // let pagination = {};
+router.get('/', validateQueryParams, async (req, res, next) => {
+    let { page, size, title, createdAt } = req.query;
+    let pagination = {};
+    let where = {};
 
-    // parseInt(page);
-    // parseInt(size);
-    // if(page < 0 || page > 10) page = 0;
-    // if(size < 0 || size > 20) size = 20;
+    if(page < 0 || page > 10) page = 0;
+    if(size < 0 || size > 20) size = 20;
 
-    // pagination.limit = size;
-    // pagination.offset = size * (page - 1);
+    pagination.limit = parseInt(size);
+    pagination.offset = parseInt(size) * (parseInt(page) - 1);
+    where.title = title;
+    where.createdAt = createdAt
 
-    let Songs = await Song.findAll(
-        // ...pagination
-    );
+    let Songs = await Song.findAll({
+        ...where,
+        ...pagination
+    });
+        console.log(pagination, where)
 
-    return res.json(
+    return res.json({
         Songs,
-        // page,
-        // size
-    );
+        page,
+        size
+});
 })
 
 module.exports = router

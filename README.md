@@ -1260,7 +1260,7 @@ Add a song to a playlist specified by the playlist's id.
 * Require proper authorization: Playlist must belong to the current user
 * Request
   * Method: POST
-  * URL: '/playlists/:playlistId'
+  * URL: '/playlists/:playlistId/songs'
   * Headers:
     * Content-Type: application/json
   * Body:

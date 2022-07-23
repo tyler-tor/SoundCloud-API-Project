@@ -60,7 +60,7 @@ router.post('/:albumId/songs', [requireAuth, validateSong], async(req, res, next
             url,
             previewImage: imageUrl,
             albumId: album.id,
-            userId: currUser.id
+            userId: user.id
         })
         return res.json(song)
     }else{

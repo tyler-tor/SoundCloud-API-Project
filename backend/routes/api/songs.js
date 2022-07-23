@@ -54,7 +54,12 @@ router.post('/:songId/comments', [requireAuth, validateComment], async(req, res,
 
     const currUser = await User.getCurrentUserById(user.id)
 
-    const song = await Song.findByPk(songId)
+    const song = await Song.findOne({
+        where: {
+            id: songId,
+            userId: user.id
+        }
+    })
 
     if(song){
         const comment = await Comment.create({

@@ -26,6 +26,11 @@ module.exports = (sequelize, DataTypes) => {
           through: models.PlaylistSong,
           onDelete: 'cascade'
         }
+      ),
+      Song.hasMany(
+        models.Comment, {
+          foreignKey: 'songId'
+        }
       )
     }
   }

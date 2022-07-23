@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
         models.User, {
           foreignKey: 'userId',
           key: 'id',
-          
+
         }
       )
     }
@@ -41,6 +41,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Playlist',
+    scopes: {
+      noPlaylistSongs: {
+        attributes: {
+          exclude: ['PlaylistSong']
+        }
+      }
+    }
   });
   return Playlist;
 };

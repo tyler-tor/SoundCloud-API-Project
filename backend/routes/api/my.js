@@ -1,10 +1,24 @@
 const express = require('express');
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { User, Song, Album } = require('../../db/models');
+const { User, Song, Album, Playlist, PlaylistSong } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
+
+router.get('/playlists', requireAuth, async(req, res, next) => {
+    const { user } = req;
+
+    const Playlists = await Playlist.findAll({
+        where: {
+            userId: user.id
+        }
+    });
+
+    return res.json({
+        Playlists
+    })
+})
 
 router.get('/albums', requireAuth, async(req, res, next) => {
     const { user } = req;

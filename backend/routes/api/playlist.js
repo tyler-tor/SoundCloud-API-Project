@@ -26,7 +26,7 @@ const validatePlaylist = [
     handleValidationErrors
 ];
 
-router.post('/:playlistId/songs', requireAuth, async(req, res, next) => {
+router.post('/:playlistId/songs', requireAuth, async (req, res, next) => {
     const { user } = req;
     const { playlistId } = req.params;
     const { songId } = req.body;
@@ -40,7 +40,7 @@ router.post('/:playlistId/songs', requireAuth, async(req, res, next) => {
 
     const song = await Song.findByPk(songId);
 
-    if(playlist && song){
+    if (playlist && song) {
         const newPlaylistSong = await PlaylistSong.create({
             playlistId: playlist.id,
             songId: song.id
@@ -53,13 +53,83 @@ router.post('/:playlistId/songs', requireAuth, async(req, res, next) => {
         })
 
         return res.json(playlistSong)
+    } else {
+        if (!playlist) playlistCouldNotBeFound(next)
+        if (!song) songCouldNotBeFound(next)
+    }
+});
+
+router.put('/:playlistId', requireAuth, validatePlaylist, async(req, res, next) => {
+    const { playlistId } = req.params;
+    const { user } = req;
+
+    const playlist = await Playlist.findOne({
+        where: {
+            id: playlistId,
+            userId: user.id
+        }
+    });
+
+    if(playlist){
+        await playlist.update({...req.body});
+        return res.json(playlist)
     }else{
-        if(!playlist) playlistCouldNotBeFound(next)
-        if(!song) songCouldNotBeFound(next)
+        playlistCouldNotBeFound(next)
     }
 })
 
-router.post('/', requireAuth, validatePlaylist, async(req, res, next) => {
+router.get('/:playlistId', async (req, res, next) => {
+    const { playlistId } = req.params;
+
+    const playlist = await PlaylistSong.findOne({
+        where: {
+            playlistId
+        }
+    })
+
+    if (playlist) {
+
+        const playlistSongs = await Playlist.findOne({
+            where: {
+                id: playlist.playlistId
+            },
+            include: {
+                model: Song,
+                through: {attributes: []}
+            }
+        });
+
+        return res.json(playlistSongs)
+    } else {
+        playlistCouldNotBeFound(next)
+    }
+});
+
+router.delete('/:playlistId', requireAuth, async(req, res, next) => {
+    const { user } = req;
+    const { playlistId } = req.params;
+
+    const playlist = await Playlist.findOne({
+        where: {
+            id: playlistId,
+            userId: user.id
+        }
+    });
+
+    if(playlist){
+        await playlist.destroy();
+
+        res.status(200)
+        return res.json({
+            message: "Successfully deleted.",
+            statusCode: 200
+        })
+    }else {
+        playlistCouldNotBeFound(next)
+    }
+})
+
+router.post('/', requireAuth, validatePlaylist, async (req, res, next) => {
     const { user } = req;
     const { name, imageUrl } = req.body;
 
@@ -69,10 +139,10 @@ router.post('/', requireAuth, validatePlaylist, async(req, res, next) => {
         userId: user.id
     });
 
-    if(playlist){
+    if (playlist) {
         res.status(201);
         return res.json(playlist)
-    }else{
+    } else {
         playlistCouldNotBeFound(next)
     }
 })

@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       Song.belongsTo(
         models.User, {
           foreignKey: 'userId',
-         
+
         }
       ),
       Song.belongsToMany(
@@ -57,6 +57,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Song',
+    scopes: {
+      noPlaylistSong: {
+        attributes: {
+          exclude: ['PlaylistSong']
+        }
+      }
+    }
   });
   return Song;
 };

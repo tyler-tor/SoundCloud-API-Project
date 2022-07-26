@@ -48,11 +48,10 @@ const songCouldNotBeFound = (next) => {
     next(e)
 }
 
-router.post('/:songId/comments', [requireAuth, validateComment], async(req, res, next) => {
+router.post('/:songId/comments', requireAuth, validateComment, async(req, res, next) => {
     const { songId } = req.params;
     const { user } = req;
-
-    const currUser = await User.getCurrentUserById(user.id)
+    const { body } = req.body
 
     const song = await Song.findOne({
         where: {
@@ -63,9 +62,9 @@ router.post('/:songId/comments', [requireAuth, validateComment], async(req, res,
 
     if(song){
         const comment = await Comment.create({
-            ...req.body,
+            body,
             songId: song.id,
-            userId: currUser.id
+            userId: user.id
         });
 
         return res.json(comment)
@@ -157,13 +156,54 @@ router.get('/', validateQueryParams, async (req, res, next) => {
 
     if(page < 0 || page > 10) page = 0;
     if(size < 0 || size > 20) size = 20;
+    if(!size && page) size = 20;
+    if(!page && size) page = 0;
+    if(title && !page) page = 0;
+    if(title && !size) size = 20;
+    if(createdAt && !page) page = 0;
+    if(createdAt && !size) size = 20;
+
 
     pagination.limit = parseInt(size);
     pagination.offset = parseInt(size) * (parseInt(page) - 1);
     where.title = title;
     where.createdAt = createdAt
 
-    let Songs = await Song.findAll({
+    let Songs;
+
+    if(!page && !size && !title && !createdAt){
+            Songs = await Song.findAll();
+            return res.json({Songs});
+    }
+
+    if(title && !createdAt){
+        Songs = await Song.findAll({
+            where: {
+                title
+            },
+            pagination
+        });
+        return res.json({
+            Songs,
+            page,
+            size
+        })
+    }
+    if(!title && createdAt){
+        Songs = await Song.findAll({
+            where: {
+                createdAt
+            },
+            pagination
+        });
+        return res.json({
+            Songs,
+            page,
+            size
+        })
+    }
+
+    Songs = await Song.findAll({
         ...where,
         ...pagination
     });

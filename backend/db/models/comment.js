@@ -19,11 +19,6 @@ module.exports = (sequelize, DataTypes) => {
         models.User, {
           foreignKey: 'userId'
         }
-      ),
-      Comment.belongsTo(
-        models.Song, {
-          foreignKey: 'songId'
-        }
       )
     }
   }

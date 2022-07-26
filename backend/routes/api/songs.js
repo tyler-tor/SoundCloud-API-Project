@@ -154,6 +154,8 @@ router.get('/', validateQueryParams, async (req, res, next) => {
     let pagination = {};
     let where = {};
 
+    if(page) parseInt(page);
+    if(size) parseInt(size);
     if(page < 0 || page > 10) page = 0;
     if(size < 0 || size > 20) size = 20;
     if(!size && page) size = 20;
@@ -166,8 +168,8 @@ router.get('/', validateQueryParams, async (req, res, next) => {
 
     pagination.limit = parseInt(size);
     pagination.offset = parseInt(size) * (parseInt(page) - 1);
-    where.title = title;
-    where.createdAt = createdAt
+    if(title) where.title = title;
+    if(createdAt) where.createdAt = createdAt
 
     let Songs;
 
@@ -179,7 +181,7 @@ router.get('/', validateQueryParams, async (req, res, next) => {
     if(title && !createdAt){
         Songs = await Song.findAll({
             where: {
-                title
+                ...where
             },
             pagination
         });
@@ -192,7 +194,7 @@ router.get('/', validateQueryParams, async (req, res, next) => {
     if(!title && createdAt){
         Songs = await Song.findAll({
             where: {
-                createdAt
+                ...where
             },
             pagination
         });

@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     validatePassword(password){
-      console.log(password, this.hashedPassword)
       return bcrypt.compareSync(password, this.hashedPassword.toString());
     };
 
@@ -31,7 +30,6 @@ module.exports = (sequelize, DataTypes) => {
         }
       });
       if(user && user.validatePassword(password)){
-        console.log(password)
         return await User.scope('currentUser').findByPk(user.id);
       };
     }

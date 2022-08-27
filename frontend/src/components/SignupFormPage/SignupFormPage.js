@@ -17,9 +17,9 @@ const SignupFormPage = () => {
 
 
     const dispatch = useDispatch();
-    const errs = [];
 
     useEffect(() => {
+        const errs = [];
 
         if(username.length < 1) errs.push('Username field requires a input');
         if(email.length < 1) errs.push('Email field requires a input');
@@ -32,8 +32,7 @@ const SignupFormPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(password !== confirmPassword) {
-            errs.push('Passwords do not match, Please try again')
-            setValidationErrors(errs);
+            return setErrors(['Passwords do not match, Please try again']);
         }else{
             setValidationErrors([])
 
@@ -52,6 +51,7 @@ const SignupFormPage = () => {
             setUsername('');
             setEmail('');
             setPassword('');
+            setConfirmPassword('');
             setFirstName('');
             setLastName('');
         }
@@ -72,16 +72,6 @@ const SignupFormPage = () => {
                         </li>
                     )
                 })}
-            </ul>
-            <ul>
-                {validationErrors.includes('Passwords do not match, Please try again') && (validationErrors.map(err => {
-                    return (
-                        <li
-                        key={err}>
-                            {err}
-                        </li>
-                    )
-                }))}
             </ul>
             <form
             onSubmit={handleSubmit}>

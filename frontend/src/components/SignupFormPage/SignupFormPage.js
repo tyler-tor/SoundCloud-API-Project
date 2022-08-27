@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { signUpUser } from '../../store/session';
 import './SignupForm.css'
 
@@ -7,15 +8,18 @@ const SignupFormPage = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [validationErrors, setValidationErrors] = useState([]);
     const [errors, setErrors] = useState([]);
+    const currentUser = useSelector(state => state.session.user);
+
 
     const dispatch = useDispatch();
+    const errs = [];
 
     useEffect(() => {
-        const errs = [];
 
         if(username.length < 1) errs.push('Username field requires a input');
         if(email.length < 1) errs.push('Email field requires a input');
@@ -27,26 +31,35 @@ const SignupFormPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setValidationErrors([])
+        if(password !== confirmPassword) {
+            errs.push('Passwords do not match, Please try again')
+            setValidationErrors(errs);
+        }else{
+            setValidationErrors([])
 
-        const newUserInfo = {
-            username,
-            email,
-            password
-        };
+            const newUserInfo = {
+                username,
+                email,
+                password
+            };
 
-        await dispatch(signUpUser(newUserInfo))
-            .catch(async res => {
-                const data = await res.json();
-                data.errors && setErrors(data.errors);
-            })
+            await dispatch(signUpUser(newUserInfo))
+                .catch(async res => {
+                    const data = await res.json();
+                    data.errors && setErrors(data.errors);
+                })
 
-        setUsername('');
-        setEmail('');
-        setPassword('');
-        setFirstName('');
-        setLastName('');
+            setUsername('');
+            setEmail('');
+            setPassword('');
+            setFirstName('');
+            setLastName('');
+        }
     }
+
+    if (currentUser.id) return (
+        <Redirect to='/' />
+    )
 
     return (
         <section className='signup-form-box'>
@@ -59,6 +72,16 @@ const SignupFormPage = () => {
                         </li>
                     )
                 })}
+            </ul>
+            <ul>
+                {validationErrors.includes('Passwords do not match, Please try again') && (validationErrors.map(err => {
+                    return (
+                        <li
+                        key={err}>
+                            {err}
+                        </li>
+                    )
+                }))}
             </ul>
             <form
             onSubmit={handleSubmit}>
@@ -79,6 +102,12 @@ const SignupFormPage = () => {
                 placeholder='Password'
                 value={password}
                 onChange={e => setPassword(e.target.value)}
+                />
+                <input
+                type='text'
+                placeholder='Confirm Password'
+                value={confirmPassword}
+                onChange={e => setConfirmPassword(e.target.value)}
                 />
                 <input
                 type='text'

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { loginUser } from '../../store/session';
 import './LoginForm.css';
 
@@ -10,13 +10,22 @@ const LoginFormPage = () => {
     const [validationErrors, setValidationErrors] = useState([]);
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const currentUser = useSelector(state => state.session.user);
 
-    if (currentUser) {
-        history.push('/')
-    }
+    useEffect(() => {
+        const errors = [];
+
+        if (credential.length < 1) errors.push('Username or Email field cannot be empty');
+        if (password.length < 1) errors.push('Password field cannot be empty');
+
+        setValidationErrors(errors);
+    }, [credential, password]);
+
+    if (currentUser) return (
+        <Redirect path='/' />
+    )
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,15 +46,6 @@ const LoginFormPage = () => {
         setPassword('');
 
     };
-
-    useEffect(() => {
-        const errors = [];
-
-        if (credential.length < 1) errors.push('Username or Email field cannot be empty');
-        if (password.length < 1) errors.push('Password field cannot be empty');
-
-        setValidationErrors(errors);
-    }, [credential, password]);
 
     return (
         <section className='login-form-box'>

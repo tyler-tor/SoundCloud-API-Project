@@ -22,9 +22,19 @@ export const loginUser = (user) => async (dispatch) => {
     if(res.ok){
         const user = await res.json();
         dispatch(setSessionUser(user));
-        // return user;
+        return user;
     }
     return res;
+};
+
+export const getCurrUser = () => async (dispatch) => {
+    const res = await csrfFetch('/api/my');
+
+    if(res.ok){
+        const {currUser} = await res.json();
+        dispatch(setSessionUser(currUser));
+        return currUser
+    };
 }
 
 const initUserData = { user: null };

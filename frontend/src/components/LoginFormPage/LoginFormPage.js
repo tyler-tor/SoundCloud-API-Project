@@ -22,8 +22,8 @@ const LoginFormPage = () => {
         setValidationErrors(errors);
     }, [credential, password]);
 
-    if (currentUser) return (
-        <Redirect path='/' />
+    if (currentUser.id) return (
+        <Redirect to='/' />
     )
 
 

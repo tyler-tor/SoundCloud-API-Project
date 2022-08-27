@@ -22,8 +22,9 @@ export const loginUser = (user) => async (dispatch) => {
     if(res.ok){
         const user = await res.json();
         dispatch(setSessionUser(user));
-        return user;
+        // return user;
     }
+    return res;
 }
 
 const initUserData = { user: null };

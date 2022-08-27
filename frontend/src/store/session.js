@@ -56,6 +56,18 @@ export const signUpUser = (user) => async (dispatch) => {
     };
 };
 
+export const logoutUser = () => async (dispatch) => {
+    const res = await csrfFetch('/api/session/logout', {
+        method: 'DELETE'
+    });
+
+    if(res.ok){
+        const loggedOut = await res.json();
+        dispatch(removeSessionUser())
+        return loggedOut;
+    };
+};
+
 const initUserData = { user: null };
 
 const sessionReducer = (state = initUserData, action) => {
@@ -68,7 +80,7 @@ const sessionReducer = (state = initUserData, action) => {
             newState.user = { ...action.payload };
             return newState;
         case (REMOVE_SESSION_USER):
-            newState.user = { ...action.payload };
+            newState.user = action.payload ;
             return newState;
         default:
             return newState;

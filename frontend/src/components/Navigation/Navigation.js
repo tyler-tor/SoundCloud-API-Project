@@ -1,13 +1,15 @@
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import ProfileButton from "./ProfileButton";
+import './Navigation.css'
 
 const Navigation = () => {
     const currUser = useSelector(state => state.session.user);
-    let navBarInfo;
+    let navBarLoginSignup;
+    let navBarUserProfile;
 
-    if(currUser){
-        navBarInfo = (
-            <>
+    if(!currUser.id){
+        navBarLoginSignup = <>
                 <li>
                     <NavLink to='/login'>Login</NavLink>
                 </li>
@@ -15,20 +17,21 @@ const Navigation = () => {
                     <NavLink to='/signup'>Signup</NavLink>
                 </li>
             </>
-        )
+
     }else{
-        navBarInfo = (
-            <>
-            </>
-        )
+        navBarUserProfile = <ProfileButton />
+
     }
     return (
+        <div className="navbar-div">
         <ul>
             <li>
                 <NavLink to='/'>Home</NavLink>
             </li>
-                {navBarInfo}
+                {navBarLoginSignup}
         </ul>
+                {navBarUserProfile}
+        </div>
     )
 }
 

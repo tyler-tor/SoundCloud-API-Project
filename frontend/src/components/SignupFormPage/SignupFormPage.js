@@ -57,7 +57,7 @@ const SignupFormPage = () => {
         }
     }
 
-    if (currentUser.id) return (
+    if (currentUser) return (
         <Redirect to='/' />
     )
 

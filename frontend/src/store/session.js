@@ -10,8 +10,7 @@ const setSessionUser = (user) => ({
 });
 
 const removeSessionUser = () => ({
-    type: REMOVE_SESSION_USER,
-    payload: null
+    type: REMOVE_SESSION_USER
 });
 
 const signUpNewUser = (user) => ({
@@ -25,7 +24,7 @@ export const loginUser = (user) => async (dispatch) => {
         body: JSON.stringify(user)
     });
 
-    if(res.ok){
+    if (res.ok) {
         const user = await res.json();
         dispatch(setSessionUser(user));
         return user;
@@ -36,8 +35,8 @@ export const loginUser = (user) => async (dispatch) => {
 export const getCurrUser = () => async (dispatch) => {
     const res = await csrfFetch('/api/my');
 
-    if(res.ok){
-        const {currUser} = await res.json();
+    if (res.ok) {
+        const { currUser } = await res.json();
         dispatch(setSessionUser(currUser));
         return res
     };
@@ -49,7 +48,7 @@ export const signUpUser = (user) => async (dispatch) => {
         body: JSON.stringify(user)
     });
 
-    if(res.ok){
+    if (res.ok) {
         const newUser = await res.json();
         dispatch(signUpNewUser(newUser));
         return newUser;
@@ -61,7 +60,7 @@ export const logoutUser = () => async (dispatch) => {
         method: 'DELETE'
     });
 
-    if(res.ok){
+    if (res.ok) {
         const loggedOut = await res.json();
         dispatch(removeSessionUser())
         return loggedOut;
@@ -71,19 +70,22 @@ export const logoutUser = () => async (dispatch) => {
 const initUserData = { user: null };
 
 const sessionReducer = (state = initUserData, action) => {
-    let newState = { ...state };
+    let newState;
     switch (action.type) {
         case (SIGNUP_NEW_USER):
-            newState.user = {...action.payload};
+            newState = Object.assign({}, state);
+            newState.user = action.payload;
             return newState;
         case (SET_SESSION_USER):
-            newState.user = { ...action.payload };
+            newState = Object.assign({}, state);
+            newState.user = action.payload;
             return newState;
         case (REMOVE_SESSION_USER):
-            newState.user = action.payload ;
+            newState = Object.assign({}, state);
+            newState.user = null;
             return newState;
         default:
-            return newState;
+            return state;
     }
 };
 

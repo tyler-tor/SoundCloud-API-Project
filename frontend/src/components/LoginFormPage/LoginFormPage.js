@@ -22,7 +22,7 @@ const LoginFormPage = () => {
         setValidationErrors(errors);
     }, [credential, password]);
 
-    if (currentUser.id) return (
+    if (currentUser) return (
         <Redirect to='/' />
     )
 

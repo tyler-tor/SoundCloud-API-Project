@@ -5,6 +5,7 @@ import LoginFormPage from './components/LoginFormPage/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage/SignupFormPage';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
+import Songs from './components/Songs/Songs';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,9 +15,10 @@ function App() {
     dispatch(sessionActions.getCurrUser())
     .then(() => setIsLoaded(true));
   }, [dispatch])
-  return isLoaded && (
+  return (
     <>
-      <Navigation />
+      <Navigation isLoaded={isLoaded}/>
+      {isLoaded && (
       <Switch>
         <Route path='/login'>
           <LoginFormPage />
@@ -24,7 +26,11 @@ function App() {
         <Route path='/signup'>
           <SignupFormPage />
         </Route>
-      </Switch>
+        <Route exact path='/'>
+
+        </Route>
+      </Switch>)}
+      <Songs />
     </>
   );
 }

@@ -11,7 +11,7 @@ import Albums from './components/Albums/Albums';
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  console.log(isLoaded)
+  // console.log(isLoaded)
 
   useEffect(() => {
     dispatch(sessionActions.getCurrUser())
@@ -28,8 +28,7 @@ function App() {
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
-          <Route path='/albums'
-          setIsLoaded={setIsLoaded}>
+          <Route path='/albums'>
             <Albums />
           </Route>
           <Route exact path='/'>

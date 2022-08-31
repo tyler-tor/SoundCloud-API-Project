@@ -22,9 +22,9 @@ export const getSongs = () => async (dispatch) => {
 //     const res = await csrfFetch()
 // }
 
-const initUserData = { user: null };
+const initSongData = { };
 
-const songsReducer = (state = initUserData, action) => {
+const songsReducer = (state = initSongData, action) => {
     let newState;
     switch (action.type) {
         case (GET_SONGS):

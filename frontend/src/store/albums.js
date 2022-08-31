@@ -12,14 +12,15 @@ export const getAlbums = () => async (dispatch) => {
 
     if(res.ok){
         const albums = await res.json();
+        console.log(albums)
         dispatch(getAlbumsAction(albums));
         return albums;
     }
 };
 
-const initUserData = { user: null };
+const initAlbumData = { };
 
-const albumsReducer = (state = initUserData, action) => {
+const albumsReducer = (state = initAlbumData, action) => {
     let newState;
     switch (action.type) {
         case (GET_ALBUMS):

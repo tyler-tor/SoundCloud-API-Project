@@ -3,15 +3,12 @@ import { useEffect } from 'react';
 import { getAlbums } from "../../store/albums";
 import * as sessionActions from '../../store/session';
 
-const Albums = ({setIsLoaded}) => {
-    const albums = useSelector(state => state.albums);
+const Albums = () => {
+    const albums = Object.values(useSelector(state => state.albums));
     const dispatch = useDispatch();
 
-    console.log(albums);
+    // console.log(albums);
     useEffect(() => {
-        dispatch(sessionActions.getCurrUser())
-        .then(() => setIsLoaded(true));
-
         dispatch(getAlbums());
     }, [dispatch]);
 
@@ -21,11 +18,12 @@ const Albums = ({setIsLoaded}) => {
 
     return (
         <div>
-            {albums.map(album => (
-                <div>
+            {albums && (albums.map(album => (
+                <div
+                key={album.id}>
                     {album.title}
                 </div>
-            ))}
+            )))}
         </div>
     )
 }

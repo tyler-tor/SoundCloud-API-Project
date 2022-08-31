@@ -6,7 +6,7 @@ import './Navigation.css'
 
 const Navigation = ({ isLoaded }) => {
     const currUser = useSelector(state => state.session.user);
-    let sessionLinks
+    let sessionLinks;
 
     if (!currUser) {
         sessionLinks = (
@@ -25,6 +25,8 @@ const Navigation = ({ isLoaded }) => {
             <ul>
                 <li>
                     <NavLink to='/'>Home</NavLink>
+                    <NavLink to='/'>Songs</NavLink>
+                    <NavLink to='/albums'>Albums</NavLink>
                     {isLoaded && sessionLinks}
                 </li>
             </ul>

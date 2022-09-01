@@ -3,6 +3,9 @@ import { csrfFetch } from "./csrf";
 const SET_SESSION_USER = 'session/SET_SESSION_USER';
 const REMOVE_SESSION_USER = 'session/REMOVE_SESSION_USER';
 const SIGNUP_NEW_USER = 'session/SIGNUP_NEW_USER';
+const GET_MY_SONGS = 'session/GET_MY_SONGS';
+const GET_MY_ALBUMS = 'session/GET_MY_ALBUMS';
+const GET_MY_PLAYLISTS = 'session/GET_MY_PLAYLISTS';
 
 const setSessionUser = (user) => ({
     type: SET_SESSION_USER,
@@ -16,6 +19,21 @@ const removeSessionUser = () => ({
 const signUpNewUser = (user) => ({
     type: SIGNUP_NEW_USER,
     payload: user
+});
+
+const getMySongs = (songs) => ({
+    type: GET_MY_SONGS,
+    payload: songs
+});
+
+const getMyAlbums = (albums) => ({
+    type: GET_MY_ALBUMS,
+    payload: albums
+});
+
+const getMyPlaylists = (playlists) => ({
+    type: GET_MY_PLAYLISTS,
+    payload: playlists
 })
 
 export const loginUser = (user) => async (dispatch) => {
@@ -55,6 +73,36 @@ export const signUpUser = (user) => async (dispatch) => {
     };
 };
 
+export const mySongs = () => async (dispatch) => {
+    const res = await csrfFetch('/api/my/songs');
+
+    if(res.ok){
+        const songs = await res.json();
+        dispatch(getMySongs(songs));
+        return songs;
+    };
+};
+
+export const myAlbums = () => async (dispatch) => {
+    const res = await csrfFetch('/api/my/albums');
+
+    if(res.ok){
+        const albums = await res.json();
+        dispatch(getMyAlbums(albums));
+        return albums;
+    };
+};
+
+export const myPlaylists = () => async (dispatch) => {
+    const res = await csrfFetch('/api/my/playlists');
+
+    if(res.ok){
+        const playlists = await res.json();
+        dispatch(getMyPlaylists(playlists));
+        return playlists;
+    };
+};
+
 export const logoutUser = () => async (dispatch) => {
     const res = await csrfFetch('/api/session/logout', {
         method: 'DELETE'
@@ -83,6 +131,18 @@ const sessionReducer = (state = initUserData, action) => {
         case (REMOVE_SESSION_USER):
             newState = Object.assign({}, state);
             newState.user = null;
+            return newState;
+        case (GET_MY_SONGS):
+            newState = Object.assign({}, state);
+            newState.songs = action.payload;
+            return newState;
+        case (GET_MY_ALBUMS) :
+            newState = Object.assign({}, state);
+            newState.albums = action.payload;
+            return newState;
+        case (GET_MY_PLAYLISTS) :
+            newState = Object.assign({}, state);
+            newState.playlists = action.payload;
             return newState;
         default:
             return state;

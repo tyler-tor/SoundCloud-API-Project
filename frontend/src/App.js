@@ -7,11 +7,11 @@ import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import Songs from './components/Songs/Songs';
 import Albums from './components/Albums/Albums';
+import HomePage from './components/HomePage';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  // console.log(isLoaded)
 
   useEffect(() => {
     dispatch(sessionActions.getCurrUser())
@@ -31,8 +31,11 @@ function App() {
           <Route path='/albums'>
             <Albums />
           </Route>
-          <Route exact path='/'>
+          <Route path='/songs'>
             <Songs />
+          </Route>
+          <Route exact path='/'>
+            <HomePage />
           </Route>
         </Switch>)}
     </>

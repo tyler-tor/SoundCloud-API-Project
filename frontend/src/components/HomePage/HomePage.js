@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import MyAlbums from "./MyAlbums";
 import MyPlaylists from "./MyPlaylists";
 import MySongs from "./MySongs";
@@ -8,7 +8,6 @@ import { mySongs, myAlbums, myPlaylists } from '../../store/session';
 
 const HomePage = () => {
     const currentUser = useSelector(state => state.session.user);
-    // const songs = useSelector(state => state.session.songs.Songs)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -17,18 +16,18 @@ const HomePage = () => {
             dispatch(myAlbums());
             dispatch(myPlaylists());
         }
-}, [currentUser]);
+}, [dispatch]);
 
     return (currentUser ? (
         <div
             className="homepage-contain">
             <div
                 className="songs-contain">
-                <MySongs />
+                <MySongs  />
             </div>
             <div
                 className="albums-contain">
-                <MyAlbums />
+                <MyAlbums  />
             </div>
             <div
                 className="playlists-contain">

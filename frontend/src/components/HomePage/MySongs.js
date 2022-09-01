@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { mySongs } from '../../store/session';
+import { useSelector } from 'react-redux';
 
 const MySongs = () => {
-    const songs = Object.values(useSelector(state => state.session.songs.Songs));
+    const songs = useSelector(state => state.session.songs);
 
     return (
         <div

@@ -75,11 +75,12 @@ export const signUpUser = (user) => async (dispatch) => {
 
 export const mySongs = () => async (dispatch) => {
     const res = await csrfFetch('/api/my/songs');
+    console.log(res)
 
     if(res.ok){
-        const songs = await res.json();
-        dispatch(getMySongs(songs));
-        return songs;
+        const data = await res.json();
+        dispatch(getMySongs(data.Songs));
+        return data;
     };
 };
 
@@ -87,9 +88,9 @@ export const myAlbums = () => async (dispatch) => {
     const res = await csrfFetch('/api/my/albums');
 
     if(res.ok){
-        const albums = await res.json();
-        dispatch(getMyAlbums(albums));
-        return albums;
+        const data = await res.json();
+        dispatch(getMyAlbums(data.Albums));
+        return data;
     };
 };
 
@@ -97,9 +98,9 @@ export const myPlaylists = () => async (dispatch) => {
     const res = await csrfFetch('/api/my/playlists');
 
     if(res.ok){
-        const playlists = await res.json();
-        dispatch(getMyPlaylists(playlists));
-        return playlists;
+        const data = await res.json();
+        dispatch(getMyPlaylists(data.Playlists));
+        return data;
     };
 };
 
@@ -115,7 +116,12 @@ export const logoutUser = () => async (dispatch) => {
     };
 };
 
-const initUserData = { user: null };
+const initUserData = {
+    user: null,
+    songs: [],
+    albums: [],
+    playlists: []
+ };
 
 const sessionReducer = (state = initUserData, action) => {
     let newState;
@@ -133,6 +139,7 @@ const sessionReducer = (state = initUserData, action) => {
             newState.user = null;
             return newState;
         case (GET_MY_SONGS):
+            console.log(action.payload);
             newState = Object.assign({}, state);
             newState.songs = action.payload;
             return newState;

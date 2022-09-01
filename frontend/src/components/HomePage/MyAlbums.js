@@ -1,12 +1,8 @@
-
 import { useSelector } from 'react-redux';
 
 const MyAlbums = () => {
-    const albums = Object.values(useSelector(state => state.session.albums.Albums));
+    const albums = useSelector(state => state.session.albums);
 
-    if(!albums){
-        return null;
-    }
     return (
         <div
             className='my-playlists-box'>

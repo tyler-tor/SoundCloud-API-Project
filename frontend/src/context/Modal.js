@@ -1,10 +1,10 @@
-import { createContext, useContext, useRef, useState, useEffect } from 'react';
+import React, { useContext, useRef, useState, useEffect } from 'react';
 import ReactDom from 'react-dom';
 import './Modal.css';
 
-export const ModalContext = createContext();
+const ModalContext = React.createContext();
 
-const ModalProvider = (props) => {
+export const ModalProvider = ({children}) => {
     const modalRef = useRef();
     const [value, setValue] = useState();
 
@@ -13,13 +13,10 @@ const ModalProvider = (props) => {
     }, [])
     return (
         <>
-            <ModalContext.Provider
-                value={value}>
-                {props.children}
+            <ModalContext.Provider value={value}>
+                {children}
             </ModalContext.Provider>
-            <div
-                ref={modalRef}>
-            </div>
+            <div ref={modalRef} />
         </>
     )
 };

@@ -139,7 +139,7 @@ const sessionReducer = (state = initUserData, action) => {
             newState.user = null;
             return newState;
         case (GET_MY_SONGS):
-            console.log(action.payload);
+            // console.log(action.payload);
             newState = Object.assign({}, state);
             newState.songs = action.payload;
             return newState;

@@ -10,13 +10,14 @@ const HomePage = () => {
     const currentUser = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
+
     useEffect(() => {
         if(currentUser){
             dispatch(mySongs());
             dispatch(myAlbums());
             dispatch(myPlaylists());
         }
-}, [dispatch]);
+}, [dispatch, currentUser]);
 
     return (currentUser ? (
         <div

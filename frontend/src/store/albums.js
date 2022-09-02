@@ -12,13 +12,14 @@ export const getAlbums = () => async (dispatch) => {
 
     if(res.ok){
         const albums = await res.json();
-        console.log(albums)
         dispatch(getAlbumsAction(albums));
         return albums;
     }
 };
 
-const initAlbumData = { };
+const initAlbumData = {
+    Albums: []
+ };
 
 const albumsReducer = (state = initAlbumData, action) => {
     let newState;

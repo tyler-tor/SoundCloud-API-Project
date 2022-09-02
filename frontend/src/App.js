@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import LoginFormPage from './components/LoginFormPage/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage/SignupFormPage';
 import * as sessionActions from './store/session';

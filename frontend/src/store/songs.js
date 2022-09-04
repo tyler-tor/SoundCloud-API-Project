@@ -100,32 +100,38 @@ const initSongData = {
 };
 
 const songsReducer = (state = initSongData, action) => {
-    let newState = {...state};
+    let newState;
     switch (action.type) {
         case (GET_MY_SONGS):
             // newState = Object.assign({}, state);
+            // newState = {...state}
             // action.payload.forEach(song => {
-            //     newState.mySongs[song.id] = song
+            //     newState.mySongs[song.id] = song[id]
             // });
             // console.log(newState.mySongs)
+            newState = {...state};
             newState.mySongs = {...action.payload};
 
             return newState
         case (GET_SONGS):
             // newState = Object.assign({}, state);
+            newState = {...state};
             newState.allSongs = {...action.payload};
             return newState
         case (CREATE_SONG):
             // newState = Object.assign({}, state);
+            newState = {...state};
             newState.mySongs[action.song.id] = {...action.song};
             return newState;
         case (UPDATE_SONG):
             // newState = Object.assign({}, state);
+            newState = {...state};
             newState.mySongs[action.song.id] = {...action.song};
             return newState;
         case (REMOVE_SONG):
             // newState = Object.assign({}, state);
-            delete newState[action.songId];
+            newState = {...state};
+            delete newState.mySongs[action.songId];
             return newState
         default:
             return state;

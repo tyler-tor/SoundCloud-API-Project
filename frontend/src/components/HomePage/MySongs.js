@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { mySongs } from '../../store/songs';
-// import CreateSong from '../CreateSong/CreateSong';
+import DeleteSong from '../Songs/DeleteSong';
 
 const MySongs = () => {
     const songs = Object.values(useSelector(state => state.songs.mySongs));
@@ -24,6 +24,7 @@ const MySongs = () => {
                             key={song.id}>
                             {song.title}
                         </div>
+                        <DeleteSong songId={song.id} />
                     </div>
                 )
             }))}

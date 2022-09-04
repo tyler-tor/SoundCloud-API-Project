@@ -3,8 +3,8 @@ import { csrfFetch } from "./csrf";
 const SET_SESSION_USER = 'session/SET_SESSION_USER';
 const REMOVE_SESSION_USER = 'session/REMOVE_SESSION_USER';
 const SIGNUP_NEW_USER = 'session/SIGNUP_NEW_USER';
-const GET_MY_SONGS = 'session/GET_MY_SONGS';
-const GET_MY_ALBUMS = 'session/GET_MY_ALBUMS';
+// const GET_MY_SONGS = 'session/GET_MY_SONGS';
+// const GET_MY_ALBUMS = 'session/GET_MY_ALBUMS';
 const GET_MY_PLAYLISTS = 'session/GET_MY_PLAYLISTS';
 
 const setSessionUser = (user) => ({
@@ -21,15 +21,15 @@ const signUpNewUser = (user) => ({
     payload: user
 });
 
-const getMySongs = (songs) => ({
-    type: GET_MY_SONGS,
-    payload: songs
-});
+// const getMySongs = (songs) => ({
+//     type: GET_MY_SONGS,
+//     payload: songs
+// });
 
-const getMyAlbums = (albums) => ({
-    type: GET_MY_ALBUMS,
-    payload: albums
-});
+// const getMyAlbums = (albums) => ({
+//     type: GET_MY_ALBUMS,
+//     payload: albums
+// });
 
 const getMyPlaylists = (playlists) => ({
     type: GET_MY_PLAYLISTS,
@@ -73,26 +73,26 @@ export const signUpUser = (user) => async (dispatch) => {
     };
 };
 
-export const mySongs = () => async (dispatch) => {
-    const res = await csrfFetch('/api/my/songs');
-    console.log(res)
+// export const mySongs = () => async (dispatch) => {
+//     const res = await csrfFetch('/api/my/songs');
+//     console.log(res)
 
-    if(res.ok){
-        const data = await res.json();
-        dispatch(getMySongs(data.Songs));
-        return data;
-    };
-};
+//     if(res.ok){
+//         const data = await res.json();
+//         dispatch(getMySongs(data.Songs));
+//         return data;
+//     };
+// };
 
-export const myAlbums = () => async (dispatch) => {
-    const res = await csrfFetch('/api/my/albums');
+// export const myAlbums = () => async (dispatch) => {
+//     const res = await csrfFetch('/api/my/albums');
 
-    if(res.ok){
-        const data = await res.json();
-        dispatch(getMyAlbums(data.Albums));
-        return data;
-    };
-};
+//     if(res.ok){
+//         const data = await res.json();
+//         dispatch(getMyAlbums(data.Albums));
+//         return data;
+//     };
+// };
 
 export const myPlaylists = () => async (dispatch) => {
     const res = await csrfFetch('/api/my/playlists');
@@ -118,8 +118,8 @@ export const logoutUser = () => async (dispatch) => {
 
 const initUserData = {
     user: null,
-    songs: [],
-    albums: [],
+    // songs: [],
+    // albums: [],
     playlists: []
  };
 
@@ -138,15 +138,15 @@ const sessionReducer = (state = initUserData, action) => {
             newState = Object.assign({}, state);
             newState.user = null;
             return newState;
-        case (GET_MY_SONGS):
-            // console.log(action.payload);
-            newState = Object.assign({}, state);
-            newState.songs = action.payload;
-            return newState;
-        case (GET_MY_ALBUMS) :
-            newState = Object.assign({}, state);
-            newState.albums = action.payload;
-            return newState;
+        // case (GET_MY_SONGS):
+        //     // console.log(action.payload);
+        //     newState = Object.assign({}, state);
+        //     newState.songs = action.payload;
+        //     return newState;
+        // case (GET_MY_ALBUMS) :
+        //     newState = Object.assign({}, state);
+        //     newState.albums = action.payload;
+        //     return newState;
         case (GET_MY_PLAYLISTS) :
             newState = Object.assign({}, state);
             newState.playlists = action.payload;

@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { createAddSong } from "../../store/songs";
-import { mySongs } from "../../store/songs";
+import { createAlbum } from "../../store/albums";
+import { myAlbums } from "../../store/albums";
 
-const CreateSong = ({ albumId, setShowModal }) => {
+
+const CreateAlbum = ({setShowModal}) => {
     const dispatch = useDispatch();
-    const history = useHistory();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [url, setUrl] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [errors, setErrors] = useState([]);
-
-    useEffect(() => {
-        dispatch(mySongs());
-    }, [dispatch]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,27 +18,24 @@ const CreateSong = ({ albumId, setShowModal }) => {
         const data = {
             title,
             description,
-            url,
             imageUrl,
-            albumId
         }
-        await dispatch(createAddSong(data))
-            .then(() => setShowModal(false), history.push('/'))
+        return dispatch(createAlbum(data))
+            .then(() => setShowModal(false))
             .catch(
                 async (response) => {
                     if (response && response.errors) setErrors(response.errors);
                 });
+
     };
-
-    // useEffect(() => {
-    //     dispatch(mySongs());
-    // }, [dispatch, setShowModal]);
-
+    useEffect(() => {
+        dispatch(myAlbums());
+    }, [dispatch]);
 
     return (
         <form
             onSubmit={handleSubmit}
-            className="create-song-form">
+            className="create-album-form">
             <ul>
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
@@ -60,20 +51,11 @@ const CreateSong = ({ albumId, setShowModal }) => {
                 />
             </label>
             <label>
-                Description
+            Description
                 <input
                     type="text"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Url
-                <input
-                    type="text"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
                     required
                 />
             </label>
@@ -88,11 +70,11 @@ const CreateSong = ({ albumId, setShowModal }) => {
             </label>
             <button
                 type="submit"
-                className="create-song-btn">
-                Add Song
+                className="create-album-btn">
+                Add Album
             </button>
         </form>
     )
 };
 
-export default CreateSong;
+export default CreateAlbum;

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { getSongs } from "../../store/songs";
 
 const Songs = () => {
-    const songs = useSelector(state => state.songs.Songs)
+    const songs = Object.values(useSelector(state => state.songs.allSongs))
     const dispatch = useDispatch();
 
     useEffect(() => {

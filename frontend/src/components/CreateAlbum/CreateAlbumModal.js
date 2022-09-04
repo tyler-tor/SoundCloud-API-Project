@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import CreateSong from './CreateSong';
+import CreateAlbum from './CreateAlbum';
 
-const CreateSongModal = ({albumId}) => {
+const CreateAlbumModal = () => {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>New Song +</button>
+            <button onClick={() => setShowModal(true)}>New Album</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <CreateSong albumId={albumId}
-                    setShowModal={setShowModal} />
+                    <CreateAlbum setShowModal={setShowModal} />
                 </Modal>
             )}
         </>
     )
 };
 
-export default CreateSongModal;
+export default CreateAlbumModal;

@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 import { getAlbums } from "../../store/albums";
-import * as sessionActions from '../../store/session';
+// import * as sessionActions from '../../store/session';
 
 const Albums = () => {
-    const albums = Object.values(useSelector(state => state.albums));
+    const albums = Object.values(useSelector(state => state.albums.allAlbums));
     const dispatch = useDispatch();
 
     // console.log(albums);

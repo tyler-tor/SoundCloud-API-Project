@@ -3,7 +3,10 @@ import { useEffect } from 'react';
 import MyAlbums from "./MyAlbums";
 import MyPlaylists from "./MyPlaylists";
 import MySongs from "./MySongs";
-import { mySongs, myAlbums, myPlaylists } from '../../store/session';
+import {myPlaylists } from '../../store/session';
+import CreateAlbumModal from "../CreateAlbum/CreateAlbumModal";
+import { mySongs } from "../../store/songs";
+import { myAlbums } from "../../store/albums";
 
 
 const HomePage = () => {
@@ -29,6 +32,7 @@ const HomePage = () => {
             <div
                 className="albums-contain">
                 <MyAlbums  />
+                <CreateAlbumModal />
             </div>
             <div
                 className="playlists-contain">

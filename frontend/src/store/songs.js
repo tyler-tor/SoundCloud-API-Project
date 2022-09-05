@@ -33,7 +33,7 @@ const removeSongAction = (songId) => ({
 export const getSongs = () => async (dispatch) => {
     const res = await csrfFetch('/api/songs');
 
-    if(res.ok){
+    if (res.ok) {
         const data = await res.json();
         dispatch(getSongsAction(data.Songs));
         return data.Songs;
@@ -44,7 +44,7 @@ export const mySongs = () => async (dispatch) => {
     const res = await csrfFetch('/api/my/songs');
     // console.log(res)
 
-    if(res.ok){
+    if (res.ok) {
         const data = await res.json();
         dispatch(getMySongs(data.Songs));
         return data;
@@ -52,15 +52,15 @@ export const mySongs = () => async (dispatch) => {
 };
 
 
-export const createAddSong = (data) => async(dispatch) => {
-    const {albumId} = data;
+export const createAddSong = (data) => async (dispatch) => {
+    const { albumId } = data;
 
     const res = await csrfFetch(`/api/albums/${albumId}/songs`, {
         method: 'POST',
         body: JSON.stringify(data)
     });
 
-    if(res.ok){
+    if (res.ok) {
         const newSong = await res.json();
         dispatch(createSongAction(newSong));
         return newSong;
@@ -68,14 +68,14 @@ export const createAddSong = (data) => async(dispatch) => {
 };
 
 export const updateSong = (data) => async (dispatch) => {
-    const {songId} = data;
+    const { songId } = data;
 
     const res = await csrfFetch(`/api/songs/${songId}`, {
         method: 'PUT',
         body: JSON.stringify(data)
     });
 
-    if(res.ok){
+    if (res.ok) {
         const updatedSong = await res.json();
         dispatch(updateSongAction(updatedSong));
         return updatedSong;
@@ -86,8 +86,9 @@ export const removeSong = (songId) => async (dispatch) => {
     const res = await csrfFetch(`/api/songs/${songId}`, {
         method: 'DELETE'
     });
+    // console.log('removeSong', songId)
 
-    if(res.ok){
+    if (res.ok) {
         const deletedSong = await res.json();
         dispatch(removeSongAction(songId));
         return deletedSong
@@ -100,39 +101,50 @@ const initSongData = {
 };
 
 const songsReducer = (state = initSongData, action) => {
-    let newState;
+    let newState
+    // = {
+    //     allSongs: {...state.allSongs},
+    //     mySongs: {...state.mySongs}
+    // };
     switch (action.type) {
         case (GET_MY_SONGS):
-            // newState = Object.assign({}, state);
-            // newState = {...state}
-            // action.payload.forEach(song => {
-            //     newState.mySongs[song.id] = song[id]
-            // });
-            // console.log(newState.mySongs)
-            newState = {...state};
-            newState.mySongs = {...action.payload};
-
+            newState = {
+                ...state,
+                mySongs: {...action.payload}
+            }
+            // newState.mySongs = { ...action.payload };
             return newState
         case (GET_SONGS):
-            // newState = Object.assign({}, state);
-            newState = {...state};
-            newState.allSongs = {...action.payload};
+            newState = {
+                ...state,
+                allSongs: {...action.payload}
+            }
+            // newState.allSongs = { ...action.payload };
             return newState
         case (CREATE_SONG):
-            // newState = Object.assign({}, state);
-            newState = {...state};
-            newState.mySongs[action.song.id] = {...action.song};
+            newState = {
+                ...state
+            }
+            newState.allSongs[action.song.id] = { ...action.song };
+            newState.mySongs[action.song.id] = { ...newState.allSongs[action.song.id] };
             return newState;
         case (UPDATE_SONG):
-            // newState = Object.assign({}, state);
-            newState = {...state};
-            newState.mySongs[action.song.id] = {...action.song};
+            newState = {
+                ...state
+            }
+            newState.mySongs[action.song.id] = { ...action.song };
             return newState;
         case (REMOVE_SONG):
-            // newState = Object.assign({}, state);
-            newState = {...state};
-            delete newState.mySongs[action.songId];
-            return newState
+            newState = {
+                ...state
+            }
+
+            delete state.allSongs[action.songId];
+            delete state.mySongs[action.songId];
+            return newState = {
+                allSongs: {...state.allSongs},
+                mySongs: {...state.mySongs}
+            }
         default:
             return state;
     }

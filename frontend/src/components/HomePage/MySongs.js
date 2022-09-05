@@ -6,7 +6,7 @@ import DeleteSong from '../Songs/DeleteSong';
 const MySongs = () => {
     const songs = Object.values(useSelector(state => state.songs.mySongs));
     const dispatch = useDispatch();
-    console.log(songs);
+    // console.log(songs);
 
     useEffect(() => {
         dispatch(mySongs())
@@ -24,7 +24,10 @@ const MySongs = () => {
                             key={song.id}>
                             {song.title}
                         </div>
-                        <DeleteSong songId={song.id} />
+                        <DeleteSong
+                        value={song.id}
+                        songId={song.id}
+                        key={song.id} />
                     </div>
                 )
             }))}

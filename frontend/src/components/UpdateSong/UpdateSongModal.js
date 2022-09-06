@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import CreateSong from './CreateSong';
+import UpdateSong from './UpdateSong';
 
-const CreateSongModal = ({album, userId}) => {
+const UpdateSongModal = ({song, userId}) => {
     const [showModal, setShowModal] = useState(false);
 
     const handleClick = (e) => {
         e.preventDefault();
-        if(album.userId === userId){
+        if (song.userId === userId) {
             setShowModal(true)
-        }else {
-            window.alert('You do not have access to add a song to this album')
+        } else {
+            window.alert('You do not have access to update this song')
         }
-    }
+    };
 
     return (
         <>
-            <button onClick={handleClick}>New Song +</button>
+            <button onClick={handleClick}>Update Song</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <CreateSong albumId={album.id}
+                    <UpdateSong song={song}
                     setShowModal={setShowModal} />
                 </Modal>
             )}
@@ -27,4 +27,4 @@ const CreateSongModal = ({album, userId}) => {
     )
 };
 
-export default CreateSongModal;
+export default UpdateSongModal;

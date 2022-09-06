@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createAddSong } from "../../store/songs";
-import { mySongs } from "../../store/songs";
 
 const CreateSong = ({ albumId, setShowModal }) => {
     const dispatch = useDispatch();
@@ -13,9 +12,6 @@ const CreateSong = ({ albumId, setShowModal }) => {
     const [imageUrl, setImageUrl] = useState('');
     const [errors, setErrors] = useState([]);
 
-    useEffect(() => {
-        dispatch(mySongs());
-    }, [dispatch]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,17 +25,12 @@ const CreateSong = ({ albumId, setShowModal }) => {
             albumId
         }
         await dispatch(createAddSong(data))
-            .then(() => setShowModal(false), history.push('/'))
+            .then(() => setShowModal(false), history.push('/songs'))
             .catch(
                 async (response) => {
                     if (response && response.errors) setErrors(response.errors);
                 });
     };
-
-    // useEffect(() => {
-    //     dispatch(mySongs());
-    // }, [dispatch, setShowModal]);
-
 
     return (
         <form

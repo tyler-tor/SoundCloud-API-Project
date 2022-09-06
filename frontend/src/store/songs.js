@@ -2,17 +2,12 @@ import { csrfFetch } from "./csrf";
 
 const GET_SONGS = 'songs/GET_SONGS';
 const CREATE_SONG = 'songs/CREATE_SONG';
-const GET_MY_SONGS = 'songs/GET_MY_SONGS';
 const UPDATE_SONG = 'songs/UPDATE_SONG';
 const REMOVE_SONG = 'songs/REMOVE_SONG';
+// const SHOW_SONG = 'songs/SHOW_SONG';
 
 const getSongsAction = (songs) => ({
     type: GET_SONGS,
-    payload: songs
-});
-
-const getMySongs = (songs) => ({
-    type: GET_MY_SONGS,
     payload: songs
 });
 
@@ -25,10 +20,14 @@ const updateSongAction = (song) => ({
     type: UPDATE_SONG,
     song
 });
-const removeSongAction = (songId) => ({
+const removeSongAction = (id) => ({
     type: REMOVE_SONG,
-    songId
-})
+    id
+});
+// const showSongAction = (song) => ({
+//     type: SHOW_SONG,
+//     song
+// })
 
 export const getSongs = () => async (dispatch) => {
     const res = await csrfFetch('/api/songs');
@@ -39,18 +38,6 @@ export const getSongs = () => async (dispatch) => {
         return data.Songs;
     }
 };
-
-export const mySongs = () => async (dispatch) => {
-    const res = await csrfFetch('/api/my/songs');
-    // console.log(res)
-
-    if (res.ok) {
-        const data = await res.json();
-        dispatch(getMySongs(data.Songs));
-        return data;
-    };
-};
-
 
 export const createAddSong = (data) => async (dispatch) => {
     const { albumId } = data;
@@ -86,65 +73,53 @@ export const removeSong = (songId) => async (dispatch) => {
     const res = await csrfFetch(`/api/songs/${songId}`, {
         method: 'DELETE'
     });
-    // console.log('removeSong', songId)
 
     if (res.ok) {
         const deletedSong = await res.json();
         dispatch(removeSongAction(songId));
-        return deletedSong
+        return deletedSong;
     }
-}
-
-const initSongData = {
-    allSongs: [],
-    mySongs: []
 };
 
+// export const showSong = (songId) => async (dispatch) => {
+//     const res = await csrfFetch(`/api/songs/${songId}`);
+
+//     if(res.ok) {
+//         const song = await res.json();
+//         dispatch(showSongAction(song));
+//         return song;
+//     }
+// }
+
+const initSongData = {};
+
 const songsReducer = (state = initSongData, action) => {
-    let newState
-    // = {
-    //     allSongs: {...state.allSongs},
-    //     mySongs: {...state.mySongs}
-    // };
+    let newState;
     switch (action.type) {
-        case (GET_MY_SONGS):
-            newState = {
-                ...state,
-                mySongs: {...action.payload}
-            }
-            // newState.mySongs = { ...action.payload };
-            return newState
         case (GET_SONGS):
-            newState = {
-                ...state,
-                allSongs: {...action.payload}
-            }
-            // newState.allSongs = { ...action.payload };
+            newState = { ...state }
+            action.payload.forEach((song) => {
+                newState[song.id] = song;
+            })
             return newState
-        case (CREATE_SONG):
-            newState = {
-                ...state
+        case (CREATE_SONG):{
+            return {
+                ...state,
+                [action.song.id]: action.song
             }
-            newState.allSongs[action.song.id] = { ...action.song };
-            newState.mySongs[action.song.id] = { ...newState.allSongs[action.song.id] };
-            return newState;
+        }
         case (UPDATE_SONG):
-            newState = {
-                ...state
-            }
-            newState.mySongs[action.song.id] = { ...action.song };
+            newState = { ...state };
+            newState[action.song.id] = action.song
             return newState;
         case (REMOVE_SONG):
-            newState = {
-                ...state
-            }
-
-            delete state.allSongs[action.songId];
-            delete state.mySongs[action.songId];
-            return newState = {
-                allSongs: {...state.allSongs},
-                mySongs: {...state.mySongs}
-            }
+            newState = { ...state };
+            delete newState[action.id];
+            return newState;
+        // case (SHOW_SONG):
+        //     newState = {...state};
+        //     newState[action.song.id] = action.song;
+        //     return newState
         default:
             return state;
     }

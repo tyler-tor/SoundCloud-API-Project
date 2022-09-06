@@ -1,39 +1,41 @@
 import React, { useState} from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createAlbum } from "../../store/albums";
+import { updateSong } from "../../store/songs";
 
-
-const CreateAlbum = ({ setShowModal }) => {
+const UpdateSong = ({ song, setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
+    const [title, setTitle] = useState(song.title);
+    const [description, setDescription] = useState(song.description);
+    const [url, setUrl] = useState(song.url);
+    const [imageUrl, setImageUrl] = useState(song.previewImage);
     const [errors, setErrors] = useState([]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
 
         const data = {
+            ...song,
+            songId: song.id,
             title,
             description,
-            imageUrl,
+            url,
+            imageUrl
         }
-        return dispatch(createAlbum(data))
-            .then(() => setShowModal(false), history.push('/albums'))
+        await dispatch(updateSong(data))
+            .then(() => setShowModal(false), history.push('/songs'))
             .catch(
                 async (response) => {
                     if (response && response.errors) setErrors(response.errors);
                 });
-
     };
 
     return (
         <form
             onSubmit={handleSubmit}
-            className="create-album-form">
+            className="update-song-form">
             <ul>
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
@@ -58,6 +60,15 @@ const CreateAlbum = ({ setShowModal }) => {
                 />
             </label>
             <label>
+                Url
+                <input
+                    type="text"
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                    required
+                />
+            </label>
+            <label>
                 Image Url
                 <input
                     type="text"
@@ -68,11 +79,12 @@ const CreateAlbum = ({ setShowModal }) => {
             </label>
             <button
                 type="submit"
-                className="create-album-btn">
-                Add Album
+                className="update-song-btn">
+                Update Song
             </button>
         </form>
     )
-};
+}
 
-export default CreateAlbum;
+
+export default UpdateSong;

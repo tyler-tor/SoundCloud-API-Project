@@ -1,39 +1,39 @@
 import React, { useState} from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createAlbum } from "../../store/albums";
+import { updateAlbum } from "../../store/albums";
 
-
-const CreateAlbum = ({ setShowModal }) => {
+const UpdateAlbum = ({ album, setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
+    const [title, setTitle] = useState(album.title);
+    const [description, setDescription] = useState(album.description);
+    const [imageUrl, setImageUrl] = useState(album.previewImage);
     const [errors, setErrors] = useState([]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
 
         const data = {
+            ...album,
+            albumId: album.id,
             title,
             description,
-            imageUrl,
+            imageUrl
         }
-        return dispatch(createAlbum(data))
+        await dispatch(updateAlbum(data))
             .then(() => setShowModal(false), history.push('/albums'))
             .catch(
                 async (response) => {
                     if (response && response.errors) setErrors(response.errors);
                 });
-
     };
 
     return (
         <form
             onSubmit={handleSubmit}
-            className="create-album-form">
+            className="update-album-form">
             <ul>
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
@@ -68,11 +68,11 @@ const CreateAlbum = ({ setShowModal }) => {
             </label>
             <button
                 type="submit"
-                className="create-album-btn">
-                Add Album
+                className="update-album-btn">
+                Update Album
             </button>
         </form>
     )
-};
+}
 
-export default CreateAlbum;
+export default UpdateAlbum;

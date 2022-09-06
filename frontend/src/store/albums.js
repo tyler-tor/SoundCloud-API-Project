@@ -1,18 +1,12 @@
 import { csrfFetch } from "./csrf";
 
 const GET_ALBUMS = 'albums/GET_ALBUMS';
-const GET_MY_ALBUMS = 'albums/GET_MY_ALBUMS';
 const CREATE_ALBUM = 'albums/CREATE_ALBUM';
 const UPDATE_ALBUM = 'albums/UPDATE_ALBUMS';
 const REMOVE_ALBUM = 'albums/REMOVE_ALBUM';
 
 const getAlbumsAction = (albums) => ({
     type: GET_ALBUMS,
-    payload: albums
-});
-
-const getMyAlbums = (albums) => ({
-    type: GET_MY_ALBUMS,
     payload: albums
 });
 
@@ -39,16 +33,6 @@ export const getAlbums = () => async (dispatch) => {
         dispatch(getAlbumsAction(albums));
         return albums;
     }
-};
-
-export const myAlbums = () => async (dispatch) => {
-    const res = await csrfFetch('/api/my/albums');
-
-    if (res.ok) {
-        const data = await res.json();
-        dispatch(getMyAlbums(data.Albums));
-        return data;
-    };
 };
 
 export const createAlbum = (data) => async (dispatch) => {
@@ -89,32 +73,27 @@ export const removeAlbum = (albumId) => async (dispatch) => {
     };
 };
 
-const initAlbumData = {
-    allAlbums: [],
-    myAlbums: []
-};
+const initAlbumData = {};
 
 const albumsReducer = (state = initAlbumData, action) => {
-    let newState = {...state};
+    let newState;
     switch (action.type) {
-        case (GET_MY_ALBUMS):
-            // newState = Object.assign({}, state);
-            newState.myAlbums = {...action.payload};
-            return newState;
         case (GET_ALBUMS):
-            // newState = Object.assign({}, state);
-            newState.allAlbums = {...action.payload};
-            return newState
+            newState = {...state};
+            action.payload.forEach((album) => {
+                newState[album.id] = album;
+            });
+            return newState;
         case (CREATE_ALBUM):
-            // newState = Object.assign({}, state);
-            newState.myAlbums[action.album.id] = {...action.album};
+            newState = {...state};
+            newState[action.album.id] = action.album;
             return newState;
         case (UPDATE_ALBUM):
-            // newState = Object.assign({}, state);
-            newState.myAlbums[action.album.id] = {...action.album};
+            newState = {...state};
+            newState[action.album.id] = action.album;
             return newState;
         case (REMOVE_ALBUM):
-            // newState = Object.assign({}, state);
+            newState = {...state};
             delete newState[action.albumId];
             return newState;
         default:

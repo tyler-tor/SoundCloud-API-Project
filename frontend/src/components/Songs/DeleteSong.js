@@ -1,15 +1,22 @@
 import { useDispatch } from "react-redux";
-import { removeSong } from "../../store/songs";
+import { removeSong} from "../../store/songs";
 
-const DeleteSong = ({songId}) => {
+const DeleteSong = ({song, userId}) => {
     const dispatch = useDispatch();
-    console.log(songId)
 
-    const handleClick = async (e) => {
+    const handleClick = (e) => {
         e.preventDefault();
-        // console.log('e', songId)
-        await dispatch(removeSong(songId));
+        if(song.userId === userId){
+            // console.log('songId', song.id)
+            dispatch(removeSong(song.id));
+        }else {
+            window.alert('You do not have access to delete/modify this song');
+        }
     }
+
+    // useEffect(() => {
+    //     dispatch(getSongs());
+    // }, [dispatch])
     return (
         <button
         onClick={handleClick}>

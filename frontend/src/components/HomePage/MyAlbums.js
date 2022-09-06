@@ -4,7 +4,7 @@ import CreateSongModal from '../CreateSong/CreateSongModal';
 import { myAlbums } from '../../store/albums';
 
 const MyAlbums = () => {
-    const albums = Object.values(useSelector(state => state.albums.myAlbums));
+    const albums = Object.values(useSelector(state => state.albums));
     const dispatch = useDispatch();
 
     useEffect(() => {

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { getSongs } from "../../store/songs";
 import DeleteSong from "./DeleteSong";
 import UpdateSongModal from "../UpdateSong/UpdateSongModal";
+import './songs.css'
 
 const Songs = () => {
     const songs = Object.values(useSelector(state => state.songs));
@@ -19,13 +20,14 @@ const Songs = () => {
     }
 
     return (
-        <div>
+        <div className='entire-songs-container'>
             {songs && (songs.map(song => {
                 return (
                     <div
                         className="song-container"
                         key={song.id}>
-                        <NavLink to={`/songs/${song.id}`}>
+                        <NavLink to={`/songs/${song.id}`}
+                        className='song-titles'>
                             {song.title}
                         </NavLink>
                         {user &&

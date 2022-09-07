@@ -1,1 +1,19 @@
-/* TODO Add site wide styles */
+a, li, ul {
+    text-decoration: none;
+}
+
+button:hover {
+    font-style: bold;
+}
+
+* {
+   font-family: Interstate,Lucida Grande,Arial,sans-serif;
+   margin: 0;
+   padding: 0;
+}
+
+html {
+    background: url(../public/images/studiobackground.jpg);
+    background-size: cover;
+    position: relative;
+}

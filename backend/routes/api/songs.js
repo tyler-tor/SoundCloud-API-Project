@@ -132,8 +132,10 @@ router.delete('/:songId', requireAuth, async(req, res, next) => {
     const { songId } = req.params;
 
     const song = await Song.findOne({
-        id: songId,
-        userId: user.id
+        where: {
+            id: songId,
+            userId: user.id
+        }
     });
 
     if(song){

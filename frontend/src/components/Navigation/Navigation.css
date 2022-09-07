@@ -1,3 +1,31 @@
 .profile-btn {
-    border: 5px, black
+    border: 5px, black;
+};
+
+.fas fa-user-circle {
+
+}
+
+.navbar-div {
+    background-color: #333;
+    padding: 3em;
+}
+
+.link {
+    display: inline-flex;
+    align-items: space-between;
+    color: #FFE9E1;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-btn,
+.demo-user-btn {
+    color: #FFE9E1;
+    background-color: #333;
+    border: 0;
+    font-size: medium;
 }

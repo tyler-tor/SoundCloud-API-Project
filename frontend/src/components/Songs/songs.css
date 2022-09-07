@@ -1,0 +1,24 @@
+.song-btns {
+    /* display: inline-flex; */
+    padding: 5px;
+}
+
+.song-titles {
+    color:  #C70007;
+}
+
+.entire-songs-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5em;
+}
+
+.song-container {
+    padding: 3em;
+}
+
+.song-titles {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}

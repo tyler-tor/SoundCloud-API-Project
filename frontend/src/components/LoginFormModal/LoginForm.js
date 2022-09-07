@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import './loginform.css';
 
 
 function LoginForm() {
@@ -45,7 +46,7 @@ function LoginForm() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit" className="login-btn">Log In</button>
       </form>
     );
   }

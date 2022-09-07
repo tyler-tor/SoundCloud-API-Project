@@ -13,8 +13,12 @@ const HomePage = () => {
         </div >
     ) :
 (
-    <div>
-        HomePage
+    <div className="welcome-page">
+        <h2>
+            Get Started Today!
+        </h2>
+        <p>Log in or signup for a free account.</p>
+        <p>Create Albums and Songs.</p>
     </div>
 ))
 }

@@ -8,15 +8,13 @@ import Navigation from './components/Navigation';
 import Songs from './components/Songs/Songs';
 import Albums from './components/Albums/Albums';
 import HomePage from './components/HomePage';
-// import { getSongs } from './store/songs';
-// import DisplaySongInfo from './components/Songs/DisplaySongInfo';
+import DisplaySongInfo from './components/Songs/DisplaySongInfo';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // dispatch(getSongs())
     dispatch(sessionActions.getCurrUser())
       .then(() => setIsLoaded(true));
   }, [dispatch])
@@ -25,9 +23,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          {/* <Route path='/songs/:songId'>
+          <Route path='/songs/:songId'>
             <DisplaySongInfo />
-          </Route> */}
+          </Route>
           {/* <Route path='/login'>
             <LoginFormPage />
           </Route> */}

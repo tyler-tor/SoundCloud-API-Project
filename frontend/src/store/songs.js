@@ -4,7 +4,7 @@ const GET_SONGS = 'songs/GET_SONGS';
 const CREATE_SONG = 'songs/CREATE_SONG';
 const UPDATE_SONG = 'songs/UPDATE_SONG';
 const REMOVE_SONG = 'songs/REMOVE_SONG';
-// const SHOW_SONG = 'songs/SHOW_SONG';
+const SHOW_SONG = 'songs/SHOW_SONG';
 
 const getSongsAction = (songs) => ({
     type: GET_SONGS,
@@ -24,10 +24,10 @@ const removeSongAction = (id) => ({
     type: REMOVE_SONG,
     id
 });
-// const showSongAction = (song) => ({
-//     type: SHOW_SONG,
-//     song
-// })
+const showSongAction = (song) => ({
+    type: SHOW_SONG,
+    song
+})
 
 export const getSongs = () => async (dispatch) => {
     const res = await csrfFetch('/api/songs');
@@ -81,15 +81,15 @@ export const removeSong = (songId) => async (dispatch) => {
     }
 };
 
-// export const showSong = (songId) => async (dispatch) => {
-//     const res = await csrfFetch(`/api/songs/${songId}`);
+export const showSong = (songId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/songs/${songId}`);
 
-//     if(res.ok) {
-//         const song = await res.json();
-//         dispatch(showSongAction(song));
-//         return song;
-//     }
-// }
+    if(res.ok) {
+        const song = await res.json();
+        dispatch(showSongAction(song));
+        return song;
+    }
+}
 
 const initSongData = {};
 

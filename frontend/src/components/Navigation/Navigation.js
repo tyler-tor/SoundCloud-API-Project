@@ -15,7 +15,8 @@ const Navigation = ({ isLoaded }) => {
             <>
                 {/* <NavLink to='/login'>Login</NavLink> */}
                 <LoginFormModal />
-                <NavLink to='/signup'>Signup</NavLink>
+                <NavLink to='/signup'
+                className='link'>Signup</NavLink>
                 <DemoUser />
             </>
         )
@@ -26,14 +27,15 @@ const Navigation = ({ isLoaded }) => {
     }
     return (
         <div className="navbar-div">
-            <ul>
-                <li>
-                    <NavLink to='/'>Home</NavLink>
-                    <NavLink to='/songs'>Songs</NavLink>
-                    <NavLink to='/albums'>Albums</NavLink>
+            <div className="navbar-links">
+                    <NavLink to='/'
+                    className='link'>Home</NavLink>
+                    <NavLink to='/songs'
+                    className='link'>Songs</NavLink>
+                    <NavLink to='/albums'
+                    className='link'>Albums</NavLink>
                     {isLoaded && sessionLinks}
-                </li>
-            </ul>
+            </div>
         </div>
     )
 }

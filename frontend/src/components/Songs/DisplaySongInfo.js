@@ -8,7 +8,6 @@ const DisplaySongInfo = () => {
     const { songId } = useParams();
     const song = useSelector(state => state.songs[songId]);
     const dispatch = useDispatch();
-    // console.log(songId)
 
     useEffect(() => {
         dispatch(getSongs());

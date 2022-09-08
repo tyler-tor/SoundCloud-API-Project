@@ -7,7 +7,6 @@ const DeleteSong = ({song, userId}) => {
     const handleClick = (e) => {
         e.preventDefault();
         if(song.userId === userId){
-            // console.log('songId', song.id)
             dispatch(removeSong(song.id));
         }else {
             window.alert('You do not have access to delete/modify this song');

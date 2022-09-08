@@ -6,7 +6,6 @@ import DeleteSong from '../Songs/DeleteSong';
 const MySongs = () => {
     // const songs = Object(useSelector(state => state.songs));
     // const dispatch = useDispatch();
-    // console.log(songs);
 
     // useEffect(() => {
     //     dispatch(mySongs())

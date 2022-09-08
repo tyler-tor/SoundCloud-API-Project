@@ -6,7 +6,6 @@ const apiRouter = require('./api');
 router.use('/api', apiRouter);
 
 if (process.env.NODE_ENV !== 'production') {
-    // console.log('here')
     router.get('/api/csrf/restore', (req, res) => {
       res.cookie('XSRF-TOKEN', req.csrfToken());
       return res.json({});

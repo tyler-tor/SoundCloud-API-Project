@@ -75,7 +75,6 @@ export const signUpUser = (user) => async (dispatch) => {
 
 // export const mySongs = () => async (dispatch) => {
 //     const res = await csrfFetch('/api/my/songs');
-//     console.log(res)
 
 //     if(res.ok){
 //         const data = await res.json();
@@ -139,7 +138,6 @@ const sessionReducer = (state = initUserData, action) => {
             newState.user = null;
             return newState;
         // case (GET_MY_SONGS):
-        //     // console.log(action.payload);
         //     newState = Object.assign({}, state);
         //     newState.songs = action.payload;
         //     return newState;

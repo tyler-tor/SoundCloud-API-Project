@@ -32,8 +32,7 @@ const Songs = () => {
                         </NavLink>
                         {user &&
                             (
-                                <div
-                                    className="song-btns">
+                                <div>
                                     <DeleteSong
                                         song={song}
                                         userId={user.id}

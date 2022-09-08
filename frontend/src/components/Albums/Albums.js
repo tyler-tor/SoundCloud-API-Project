@@ -1,9 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
+import { NavLink } from "react-router-dom";
 import { getAlbums } from "../../store/albums";
 import CreateSongModal from "../CreateSong/CreateSongModal";
 import DeleteAlbum from "./DeleteAlbum";
 import UpdateAlbumModal from "../UpdateAlbum/UpdateAlbumModal";
+import './albums.css';
 
 const Albums = () => {
     const albums = Object.values(useSelector(state => state.albums));
@@ -19,19 +21,18 @@ const Albums = () => {
     };
 
     return (
-        <div>
+        <div className="entire-albums-container">
             {albums && (albums.map(album => {
                 return (
                     <div
                         className="album-container"
                         key={album.id}>
-                        <div
-                            key={album.id}>
+                        <NavLink to={`/albums/${album.id}`}
+                        className='album-titles'>
                             {album.title}
-                        </div>
+                        </NavLink>
                         {user && (
-                            <div
-                            className="album-btn-container">
+                            <div>
                                 <CreateSongModal album={album}
                                     userId={user.id} />
                                 <DeleteAlbum album={album}

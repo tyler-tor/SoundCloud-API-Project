@@ -1,0 +1,34 @@
+.homepage {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.homepage-container {
+    padding: 5em;
+}
+
+
+.create-album-btn {
+    margin: 2em;
+}
+
+.homepage-text {
+    color: #FFE9E1;
+    font-size: xx-large;
+}
+
+.welcome-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FFE9E1;
+    font-size: xx-large;
+}
+
+.welcome-title {
+    margin: 1em;
+}

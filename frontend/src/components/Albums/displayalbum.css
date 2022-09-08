@@ -1,0 +1,22 @@
+.album-detail-list {
+    display: flex;
+    justify-content: center;
+    padding: 10em
+}
+
+.album-detail-container {
+    padding: 3em;
+    background-color:  #A49DA1;
+    border-radius: 20px;
+    opacity: .9;
+}
+
+.ad-header {
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+li{
+    color: #FFE9E1;
+    padding: 5px;
+}

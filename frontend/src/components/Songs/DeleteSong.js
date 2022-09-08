@@ -19,7 +19,8 @@ const DeleteSong = ({song, userId}) => {
     // }, [dispatch])
     return (
         <button
-        onClick={handleClick}>
+        onClick={handleClick}
+        className="song-btns">
             Delete Song
         </button>
     )

@@ -1,0 +1,37 @@
+.album-titles {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    color:   #FFD8AA;
+    opacity: 1;
+    font-size: x-large;
+}
+
+.album-titles:hover {
+    cursor: pointer;
+}
+
+.entire-albums-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5em;
+}
+
+.album-container {
+    padding: 3em;
+    background-color:  #A49DA1;
+    border-radius: 20px;
+    opacity: .9;
+}
+
+.album-btns {
+    padding: 5px;
+    border: 0;
+    background-color: #A49DA1;
+    margin: 5px;
+    font-size: medium;
+}
+
+.album-btns:hover {
+    cursor: pointer;
+}

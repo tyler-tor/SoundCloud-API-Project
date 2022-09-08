@@ -2,7 +2,7 @@
     border: 5px, black;
 };
 
-.fas fa-user-circle {
+.fasfa-user-circle {
 
 }
 
@@ -28,4 +28,8 @@
     background-color: #333;
     border: 0;
     font-size: medium;
+}
+
+.demo-user-btn:hover {
+    cursor: pointer;
 }

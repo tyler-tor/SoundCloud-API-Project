@@ -1,4 +1,17 @@
 .signup-form-box {
     display: flex;
     flex-direction: column;
+    width: 20em;
+    padding: 5em;
+    margin: 10px;
+}
+
+.signup-section {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    display: flex;
+    padding: 5px;
 }

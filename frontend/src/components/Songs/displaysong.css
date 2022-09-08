@@ -1,0 +1,17 @@
+.song-detail-list {
+    display: flex;
+    justify-content: center;
+    padding: 10em
+}
+
+.song-detail-container {
+    padding: 3em;
+    background-color:  #A49DA1;
+    border-radius: 20px;
+    opacity: .9;
+}
+
+.sd-header {
+    padding: 10px;
+    margin-bottom: 5px;
+}

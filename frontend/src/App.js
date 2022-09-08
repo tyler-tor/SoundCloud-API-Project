@@ -9,6 +9,7 @@ import Songs from './components/Songs/Songs';
 import Albums from './components/Albums/Albums';
 import HomePage from './components/HomePage';
 import DisplaySongInfo from './components/Songs/DisplaySongInfo';
+import DisplayAlbumInfo from './components/Albums/DisplayAlbumInfo';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ function App() {
         <Switch>
           <Route path='/songs/:songId'>
             <DisplaySongInfo />
+          </Route>
+          <Route path='/albums/:albumId'>
+            <DisplayAlbumInfo />
           </Route>
           {/* <Route path='/login'>
             <LoginFormPage />

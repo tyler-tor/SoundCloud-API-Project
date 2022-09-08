@@ -4,6 +4,7 @@ const GET_ALBUMS = 'albums/GET_ALBUMS';
 const CREATE_ALBUM = 'albums/CREATE_ALBUM';
 const UPDATE_ALBUM = 'albums/UPDATE_ALBUMS';
 const REMOVE_ALBUM = 'albums/REMOVE_ALBUM';
+const SHOW_ALBUM = 'albums/SHOW_ALBUM';
 
 const getAlbumsAction = (albums) => ({
     type: GET_ALBUMS,
@@ -23,6 +24,11 @@ const updateAlbumAction = (album) => ({
 const removeAlbumAction = (albumId) => ({
     type: REMOVE_ALBUM,
     albumId
+});
+
+const showAlbumAction = (album) => ({
+    type: SHOW_ALBUM,
+    album
 })
 
 export const getAlbums = () => async (dispatch) => {
@@ -73,6 +79,16 @@ export const removeAlbum = (albumId) => async (dispatch) => {
     };
 };
 
+export const showAlbum = (albumId) => async(dispatch) => {
+    const res = await csrfFetch(`/api/albums/${albumId}`);
+
+    if(res.ok){
+        const album = await res.json();
+        dispatch(showAlbumAction(album));
+        return album
+    }
+}
+
 const initAlbumData = {};
 
 const albumsReducer = (state = initAlbumData, action) => {
@@ -96,6 +112,9 @@ const albumsReducer = (state = initAlbumData, action) => {
             newState = {...state};
             delete newState[action.albumId];
             return newState;
+        case (SHOW_ALBUM):
+            newState = {...state};
+            newState[action.song.id] = action.song;
         default:
             return state;
     }

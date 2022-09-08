@@ -62,7 +62,8 @@ const SignupFormPage = () => {
     )
 
     return (
-        <section className='signup-form-box'>
+        <section
+        className='signup-section'>
             <ul>
                 {errors.map(err => {
                     return (
@@ -74,7 +75,8 @@ const SignupFormPage = () => {
                 })}
             </ul>
             <form
-            onSubmit={handleSubmit}>
+            onSubmit={handleSubmit}
+            className='signup-form-box'>
                 <input
                 type='text'
                 placeholder='Username'

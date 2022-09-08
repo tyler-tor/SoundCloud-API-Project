@@ -1,10 +1,12 @@
 .song-btns {
-    /* display: inline-flex; */
     padding: 5px;
+    margin: 5px;
+    border: 0;
+    background-color: #A49DA1;
+    font-size: medium;
 }
-
-.song-titles {
-    color:  #C70007;
+.song-btns:hover {
+    cursor: pointer;
 }
 
 .entire-songs-container {
@@ -15,10 +17,20 @@
 
 .song-container {
     padding: 3em;
+    background-color:  #A49DA1;
+    border-radius: 20px;
+    opacity: .9;
 }
 
 .song-titles {
     display: flex;
     justify-content: space-around;
     padding: 20px;
+    color:   #FFD8AA;
+    opacity: 1;
+    font-size: x-large;
+}
+
+.song-titles:hover {
+    cursor: pointer;
 }

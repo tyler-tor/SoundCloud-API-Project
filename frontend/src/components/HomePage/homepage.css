@@ -13,7 +13,15 @@
 
 
 .create-album-btn {
-    margin: 2em;
+    padding: 10px;
+    background-color: transparent;
+    border: 0;
+    color: #FFE9E1;
+    font-size: large;
+}
+
+.create-album-btn:hover {
+    cursor: pointer;
 }
 
 .homepage-text {

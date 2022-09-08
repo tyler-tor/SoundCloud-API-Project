@@ -7,7 +7,8 @@ const CreateAlbumModal = () => {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>New Album</button>
+            <button onClick={() => setShowModal(true)}
+            className='create-album-btn'>Create New Album</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <CreateAlbum setShowModal={setShowModal} />

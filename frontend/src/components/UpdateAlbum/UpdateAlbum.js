@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { updateAlbum } from "../../store/albums";
+import './updatealbum.css';
 
 const UpdateAlbum = ({ album, setShowModal }) => {
     const dispatch = useDispatch();

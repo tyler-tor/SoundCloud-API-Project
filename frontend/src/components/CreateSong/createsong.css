@@ -1,0 +1,12 @@
+.create-song-form {
+    display: flex;
+    flex-direction: column;
+    padding: 5em;
+    background-color: #A49DA1;
+}
+
+.create-song-btn {
+    padding: 5px;
+    margin-top: 10px;
+    font-size: large;
+}

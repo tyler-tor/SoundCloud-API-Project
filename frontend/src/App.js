@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import SignupFormPage from './components/SignupFormPage/SignupFormPage';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 import Songs from './components/Songs/Songs';
 import Albums from './components/Albums/Albums';
 import HomePage from './components/HomePage';
@@ -22,6 +23,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <Footer />
       {isLoaded && (
         <Switch>
           <Route path='/songs/:songId'>

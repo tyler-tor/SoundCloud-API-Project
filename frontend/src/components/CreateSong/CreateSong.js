@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createAddSong } from "../../store/songs";
+import './createsong.css';
 
 const CreateSong = ({ albumId, setShowModal }) => {
     const dispatch = useDispatch();

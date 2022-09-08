@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createAlbum } from "../../store/albums";
+import './createalbum.css';
 
 
 const CreateAlbum = ({ setShowModal }) => {

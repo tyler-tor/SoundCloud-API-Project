@@ -13,7 +13,6 @@ const Navigation = ({ isLoaded }) => {
     if (!currUser) {
         sessionLinks = (
             <>
-                {/* <NavLink to='/login'>Login</NavLink> */}
                 <LoginFormModal />
                 <NavLink to='/signup'
                 className='link'>Signup</NavLink>
@@ -22,7 +21,10 @@ const Navigation = ({ isLoaded }) => {
         )
     } else {
         sessionLinks = (
-            <ProfileButton user={currUser} />
+            <div
+            className="profile-btn-div">
+                <ProfileButton user={currUser} />
+            </div>
         );
     }
     return (

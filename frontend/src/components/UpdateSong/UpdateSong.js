@@ -23,7 +23,7 @@ const UpdateSong = ({ song, setShowModal }) => {
             title,
             description,
             url,
-            imageUrl
+            previewImage: imageUrl
         }
         await dispatch(updateSong(data))
             .then(() => setShowModal(false), history.push('/songs'))

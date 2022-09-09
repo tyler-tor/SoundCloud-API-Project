@@ -2,17 +2,25 @@
     padding: 5px;
     margin: 5px;
     border: 0;
-    background-color: #A49DA1;
+    background-color: transparent;
+    color: #FFE9E1;
+    font-weight: bold;
     font-size: medium;
 }
 .song-btns:hover {
     cursor: pointer;
+    font-weight: bolder;
 }
 
 .entire-songs-container {
     display: flex;
     justify-content: space-around;
+    position: relative;
     margin-top: 5em;
+    flex-wrap: wrap;
+    background-size: auto auto;
+    padding: 0;
+    margin: 0;
 }
 
 .song-container {
@@ -20,17 +28,32 @@
     background-color:  #A49DA1;
     border-radius: 20px;
     opacity: .9;
+    margin: 1em;
 }
 
 .song-titles {
     display: flex;
     justify-content: space-around;
     padding: 20px;
-    color:   #FFD8AA;
+    color: #FFD8AA;
+    /* font-weight: bold; */
     opacity: 1;
     font-size: x-large;
 }
 
+.song-description {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #FFE9E1;
+}
+
 .song-titles:hover {
     cursor: pointer;
+    font-weight: bolder;
+}
+
+.cs-div {
+    display: flex;
+    flex-direction: column;
 }

@@ -1,7 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { myPlaylists } from '../../store/session';
 
 const MyPlaylists = () => {
     const playlists = useSelector(state => state.session.playlists);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(myPlaylists());
+    }, [dispatch]);
+    
     return (
         <div
         className='my-playlists-box'>

@@ -9,16 +9,19 @@
 
 .album-titles:hover {
     cursor: pointer;
+    font-weight: bolder;
 }
 
 .entire-albums-container {
     display: flex;
     justify-content: space-around;
     margin-top: 5em;
+    flex-wrap: wrap;
 }
 
 .album-container {
     padding: 3em;
+    margin: 1em;
     background-color:  #A49DA1;
     border-radius: 20px;
     opacity: .9;
@@ -27,11 +30,31 @@
 .album-btns {
     padding: 5px;
     border: 0;
-    background-color: #A49DA1;
+    background-color:transparent;
     margin: 5px;
     font-size: medium;
+    color: #FFE9E1;
+    /* font-weight: bold; */
 }
 
 .album-btns:hover {
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.ca-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-song-btn {
+    padding: 10px;
+    background-color: transparent;
+    border: 0;
+    color: #FFE9E1;
+    font-size: large;
+}
+
+.create-song-btn:hover {
     cursor: pointer;
 }

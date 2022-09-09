@@ -1,16 +1,16 @@
-import { NavLink } from 'react-router-dom';
+
 import './footer.css';
 
 const Footer = () => {
     return (
         <div
         className='footer'>
-            <NavLink to='https://github.com/tyler-tor'>
+            <a href='https://github.com/tyler-tor'>
                 My github profile
-            </NavLink>
-            <NavLink to='linkedin.com/in/derek-torrero-02823018a'>
+            </a>
+            <a href='https://www.linkedin.com/in/derek-torrero-02823018a'>
                 My linkedIn profile
-            </NavLink>
+            </a>
         </div>
     )
 }

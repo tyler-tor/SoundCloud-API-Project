@@ -6,7 +6,9 @@
 }
 
 .create-album-btn {
+    display: flex;
     padding: 5px;
     margin-top: 10px;
     font-size: large;
+    justify-content: center;
 }

@@ -13,6 +13,7 @@
 .navbar-links {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .login-btn,
@@ -23,6 +24,19 @@
     font-size: medium;
 }
 
+.login-btn:hover {
+    cursor: pointer;
+}
+
 .demo-user-btn:hover {
     cursor: pointer;
+}
+
+.profile-dropdown {
+    position: absolute;
+    right: 5px;
+}
+
+.profile-btn-div {
+    position: relative;
 }

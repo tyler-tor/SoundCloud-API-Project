@@ -1,7 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
-// import LoginFormPage from './components/LoginFormPage/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage/SignupFormPage';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
@@ -23,7 +22,6 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <Footer />
       {isLoaded && (
         <Switch>
           <Route path='/songs/:songId'>
@@ -32,9 +30,6 @@ function App() {
           <Route path='/albums/:albumId'>
             <DisplayAlbumInfo />
           </Route>
-          {/* <Route path='/login'>
-            <LoginFormPage />
-          </Route> */}
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
@@ -48,6 +43,7 @@ function App() {
             <HomePage />
           </Route>
         </Switch>)}
+        <Footer />
     </>
   );
 }

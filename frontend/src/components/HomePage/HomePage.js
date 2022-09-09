@@ -9,9 +9,10 @@ const HomePage = () => {
     return (currentUser ? (
         <div className="homepage">
             <div className="homepage-container">
-                <h2 className="homepage-text">
-                    The World is your Oyster!
+                <h2 className="homepage-title">
+                    Welcome {currentUser.username}!
                 </h2>
+                <p className="homepage-text">Start creating new songs and albums!</p>
             </div>
                 <CreateAlbumModal />
         </div >

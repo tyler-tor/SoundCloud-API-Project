@@ -24,9 +24,21 @@
     cursor: pointer;
 }
 
+.homepage-title {
+    display: flex;
+    color: #FFE9E1;
+    font-size: 3em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .homepage-text {
     color: #FFE9E1;
-    font-size: xx-large;
+    font-size: x-large;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    flex-wrap: wrap;
 }
 
 .welcome-page {

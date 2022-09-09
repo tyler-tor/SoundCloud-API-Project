@@ -12,6 +12,7 @@ const CreateSong = ({ albumId, setShowModal }) => {
     const [url, setUrl] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [errors, setErrors] = useState([]);
+    const [albumIdState, setAlbumIdState] = useState(albumId)
 
 
     const handleSubmit = async (e) => {
@@ -23,7 +24,7 @@ const CreateSong = ({ albumId, setShowModal }) => {
             description,
             url,
             imageUrl,
-            albumId
+            albumId: parseInt(albumIdState)
         }
         await dispatch(createAddSong(data))
             .then(() => setShowModal(false), history.push('/songs'))
@@ -32,6 +33,10 @@ const CreateSong = ({ albumId, setShowModal }) => {
                     if (response && response.errors) setErrors(response.errors);
                 });
     };
+
+    if(!albumId){
+        errors.push('there is no albumId connected, make sure to input one')
+    }
 
     return (
         <form
@@ -78,6 +83,16 @@ const CreateSong = ({ albumId, setShowModal }) => {
                     required
                 />
             </label>
+            {!albumId &&
+            <label>
+                Album Id
+                <input
+                    type='text'
+                    value={albumIdState}
+                    onChange={(e) => setAlbumIdState(e.target.value)}
+                    required
+                />
+            </label>}
             <button
                 type="submit"
                 className="create-song-btn">

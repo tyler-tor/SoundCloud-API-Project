@@ -46,11 +46,7 @@ const Songs = () => {
                         <div
                             className="song-container"
                             key={song.id}
-                            style={{
-                                backgroundImage: `url(${song.previewImage})`,
-                                backgroundSize: 'cover',
-                                opacity: '.9'
-                            }}>
+                            >
                             <NavLink to={`/songs/${song.id}`}
                                 className='song-titles'>
                                 {song.title}

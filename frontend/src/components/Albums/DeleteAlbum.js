@@ -7,24 +7,25 @@ import { getSongs } from "../../store/songs";
 const DeleteAlbum = ({album, userId}) => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const albumState = useSelector(state => state.albums[album.id])
     // console.log('songs', useSelector(state => state.songs))
 
     const handleClick = (e) => {
         // e.preventDefault();
         if(album.userId === userId){
-            dispatch(removeAlbum(album.id))
-            // .then(dispatch(getSongs()))
-            history.push('/albums');
+            dispatch(removeAlbum(albumState.id))
+            .then(dispatch(getSongs()))
+            .then(history.push('/albums'));
             window.alert('Successfully deleted! Now create another!');
         }else {
             window.alert('You do not have access to delete/modify this album')
         }
     };
 
-    useEffect(() => {
-        dispatch(getAlbums())
-        .then(dispatch(getSongs()))
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getAlbums())
+    //     .then(dispatch(getSongs()))
+    // }, [dispatch])
 
     return (
         <button

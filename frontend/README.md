@@ -1,12 +1,10 @@
 
-# Create React App Template
+# SoundCloud Clone
 
-A no-frills template from which to create React applications with
-[Create React App](https://github.com/facebook/create-react-app).
+A website to view songs and albums made by other users for every user.
+You can add albums and songs by signing up or logging in if a account is already made. 
+Also if you don't want to make a account feel free to use the Demo User to test the sight out before you make a account.
 
-```sh
-npx create-react-app my-app --template @appacademy/simple --use-npm
-```
 
 ## Available Scripts
 

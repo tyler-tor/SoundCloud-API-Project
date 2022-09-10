@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createAddSong } from "../../store/songs";
 import { getAlbums } from "../../store/albums";
@@ -13,23 +13,13 @@ const CreateSong = ({ albumId, setShowModal }) => {
     const [url, setUrl] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [errors, setErrors] = useState([]);
-    // const [albumName, setAlbumName] = useState('')
-    // const [albumIdState, setAlbumIdState] = useState(albumId)
-
-    const user = useSelector(state => state.session.user);
-    // const albumState = Object.values(useSelector(state => state.albums))
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        // let albumInput;
 
         if(!albumId){
             errors.push('there is no albumId connected, make sure to input the specified album');
-            // albumInput = albumState.filter(album => {
-            //     return album.title === albumName;
-            // })
-            // setAlbumIdState(albumInput.id)
         }
 
 
@@ -39,7 +29,6 @@ const CreateSong = ({ albumId, setShowModal }) => {
             url,
             imageUrl,
             albumId
-            // user.id === albumInput.userId ? albumIdState : window.alert('This album is not yours!')
         }
         await dispatch(createAddSong(data))
             .then(() => setShowModal(false), history.push('/songs'))
@@ -98,16 +87,6 @@ const CreateSong = ({ albumId, setShowModal }) => {
                     required
                 />
             </label>
-            {/* {!albumId &&
-            (<label>
-                Album Name
-                <input
-                    type='text'
-                    value={albumName}
-                    onChange={(e) => setAlbumName(e.target.value)}
-                    required
-                />
-            </label>)} */}
             <button
                 type="submit"
                 className="create-song-btn">

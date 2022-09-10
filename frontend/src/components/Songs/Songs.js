@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { getSongs } from "../../store/songs";
 import DeleteSong from "./DeleteSong";
 import UpdateSongModal from "../UpdateSong/UpdateSongModal";
-import CreateSongModal from "../CreateSong/CreateSongModal";
 import './songs.css'
 
 const Songs = () => {
@@ -39,7 +38,6 @@ const Songs = () => {
     return (
         <div
             className="cs-div">
-            {/* {user && <CreateSongModal />} */}
             <div className='entire-songs-container'>
                 {songs && (songs.map(song => {
                     return (

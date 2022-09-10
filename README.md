@@ -34,3 +34,16 @@ With access to the albums page you can access CRUD actions on your albums only, 
 
 With access to the songs page you can access CRUD actions on your songs only.
 
+
+## Technologies:
+(-) React
+(-) Redux
+(-) Express
+(-) Node Js
+(-) Sqlite3
+(-) Postgres
+(-) Heroku
+
+
+
+

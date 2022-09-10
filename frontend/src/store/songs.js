@@ -97,8 +97,9 @@ const songsReducer = (state = initSongData, action) => {
     let newState;
     switch (action.type) {
         case (GET_SONGS):
-            newState = { ...state }
+            newState = { }
             action.payload.forEach((song) => {
+                console.log(song)
                 newState[song.id] = song;
             })
             return newState

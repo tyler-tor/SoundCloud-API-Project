@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       Album.belongsTo(
         models.User, {
           foreignKey: 'userId',
-        
+          onDelete: 'CASCADE'
         }
       ),
       Album.hasMany(

@@ -10,6 +10,7 @@ import Albums from './components/Albums/Albums';
 import HomePage from './components/HomePage';
 import DisplaySongInfo from './components/Songs/DisplaySongInfo';
 import DisplayAlbumInfo from './components/Albums/DisplayAlbumInfo';
+import PageNotFound from './components/PageNotFound';
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route exact path='/'>
             <HomePage />
+          </Route>
+          <Route>
+            <PageNotFound />
           </Route>
         </Switch>)}
         <Footer />

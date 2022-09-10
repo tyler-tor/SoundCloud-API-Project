@@ -43,6 +43,10 @@ const Albums = () => {
         <div
             className="ca-div">
             {user && <CreateAlbumModal />}
+            { user && <div
+            className='album-splash-text'>
+                Now let's create/add songs to our Album's!
+            </div>}
             <div className="entire-albums-container">
                 {albums && (albums.map(album => {
                     return (
@@ -58,7 +62,7 @@ const Albums = () => {
                                     if (album.id === song.albumId) {
                                         return (
                                             <li
-                                            key={song.id}>
+                                                key={song.id}>
                                                 {song.title}
                                             </li>
                                         )

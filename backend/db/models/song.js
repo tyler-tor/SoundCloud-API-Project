@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Song.belongsTo(
         models.Album, {
-          foreignKey: 'albumId'
+          foreignKey: 'albumId',
+          // onDelete: 'CASCADE'
         }
       ),
       Song.belongsTo(
@@ -54,7 +55,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     albumId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
     userId: {
       type: DataTypes.INTEGER,

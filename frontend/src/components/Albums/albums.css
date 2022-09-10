@@ -57,4 +57,12 @@
 
 .create-song-btn:hover {
     cursor: pointer;
+    font-weight: bolder;
+}
+
+.album-splash-text {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #FFE9E1;
 }

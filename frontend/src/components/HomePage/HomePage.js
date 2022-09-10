@@ -12,7 +12,7 @@ const HomePage = () => {
                 <h2 className="homepage-title">
                     Welcome {currentUser.username}!
                 </h2>
-                <p className="homepage-text">Start creating new songs and albums!</p>
+                <p className="homepage-text">Start by creating a new Album!</p>
             </div>
                 <CreateAlbumModal />
         </div >

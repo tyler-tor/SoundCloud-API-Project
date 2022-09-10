@@ -16,9 +16,9 @@ const Songs = () => {
         dispatch(getSongs());
     }, [dispatch]);
 
-    // if (!songs) {
-    //     return null;
-    // }
+    if (!songs) {
+        return null;
+    }
 
     const checkValidation = (song) => {
         if (user.id === song.userId) {
@@ -39,7 +39,7 @@ const Songs = () => {
     return (
         <div
             className="cs-div">
-            {user && <CreateSongModal />}
+            {/* {user && <CreateSongModal />} */}
             <div className='entire-songs-container'>
                 {songs && (songs.map(song => {
                     return (

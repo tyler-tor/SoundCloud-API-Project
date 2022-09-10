@@ -13,25 +13,33 @@ const CreateSong = ({ albumId, setShowModal }) => {
     const [url, setUrl] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [errors, setErrors] = useState([]);
-    const [albumIdState, setAlbumIdState] = useState(albumId)
+    // const [albumName, setAlbumName] = useState('')
+    // const [albumIdState, setAlbumIdState] = useState(albumId)
 
     const user = useSelector(state => state.session.user);
-    const albumState = useSelector(state => state.albums[albumIdState])
+    // const albumState = Object.values(useSelector(state => state.albums))
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
+        // let albumInput;
 
         if(!albumId){
-            errors.push('there is no albumId connected, make sure to input one')
+            errors.push('there is no albumId connected, make sure to input the specified album');
+            // albumInput = albumState.filter(album => {
+            //     return album.title === albumName;
+            // })
+            // setAlbumIdState(albumInput.id)
         }
+
 
         const data = {
             title,
             description,
             url,
             imageUrl,
-            albumId: user.id === albumState.userId ? parseInt(albumIdState) : window.alert('This album is not yours!')
+            albumId
+            // user.id === albumInput.userId ? albumIdState : window.alert('This album is not yours!')
         }
         await dispatch(createAddSong(data))
             .then(() => setShowModal(false), history.push('/songs'))
@@ -90,16 +98,16 @@ const CreateSong = ({ albumId, setShowModal }) => {
                     required
                 />
             </label>
-            {!albumId &&
+            {/* {!albumId &&
             (<label>
-                Album Id
+                Album Name
                 <input
                     type='text'
-                    value={albumIdState}
-                    onChange={(e) => setAlbumIdState(e.target.value)}
+                    value={albumName}
+                    onChange={(e) => setAlbumName(e.target.value)}
                     required
                 />
-            </label>)}
+            </label>)} */}
             <button
                 type="submit"
                 className="create-song-btn">

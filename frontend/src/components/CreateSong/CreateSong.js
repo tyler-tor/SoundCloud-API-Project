@@ -1,7 +1,8 @@
-import React, { useState} from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createAddSong } from "../../store/songs";
+import { getAlbums } from "../../store/albums";
 import './createsong.css';
 
 const CreateSong = ({ albumId, setShowModal }) => {
@@ -14,17 +15,23 @@ const CreateSong = ({ albumId, setShowModal }) => {
     const [errors, setErrors] = useState([]);
     const [albumIdState, setAlbumIdState] = useState(albumId)
 
+    const user = useSelector(state => state.session.user);
+    const albumState = useSelector(state => state.albums[albumIdState])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
+
+        if(!albumId){
+            errors.push('there is no albumId connected, make sure to input one')
+        }
 
         const data = {
             title,
             description,
             url,
             imageUrl,
-            albumId: parseInt(albumIdState)
+            albumId: user.id === albumState.userId ? parseInt(albumIdState) : window.alert('This album is not yours!')
         }
         await dispatch(createAddSong(data))
             .then(() => setShowModal(false), history.push('/songs'))
@@ -34,9 +41,9 @@ const CreateSong = ({ albumId, setShowModal }) => {
                 });
     };
 
-    if(!albumId){
-        errors.push('there is no albumId connected, make sure to input one')
-    }
+    useEffect(() => {
+        dispatch(getAlbums());
+    }, [dispatch])
 
     return (
         <form
@@ -84,7 +91,7 @@ const CreateSong = ({ albumId, setShowModal }) => {
                 />
             </label>
             {!albumId &&
-            <label>
+            (<label>
                 Album Id
                 <input
                     type='text'
@@ -92,7 +99,7 @@ const CreateSong = ({ albumId, setShowModal }) => {
                     onChange={(e) => setAlbumIdState(e.target.value)}
                     required
                 />
-            </label>}
+            </label>)}
             <button
                 type="submit"
                 className="create-song-btn">

@@ -19,7 +19,12 @@ const DisplaySongInfo = () => {
                 (<div
                     className='song-detail-list'>
                     <div
-                    className='song-detail-container'>
+                    className='song-detail-container'
+                    style={{
+                        backgroundImage: `url(${song.previewImage})`,
+                        backgroundSize: 'cover',
+                        opacity: '.9'
+                    }}>
                         <h2
                         className='sd-header'>Song Information:</h2>
                         <ul>
@@ -28,6 +33,15 @@ const DisplaySongInfo = () => {
                             </li>
                             <li>
                                 {song.description}
+                            </li>
+                            <li>
+                                belongs to album: {song.albumId}
+                            </li>
+                            <li>
+                                {song.url}
+                            </li>
+                            <li>
+                                belongs to user: {song.userId}
                             </li>
                         </ul>
                     </div>

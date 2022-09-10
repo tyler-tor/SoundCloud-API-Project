@@ -8,6 +8,7 @@ const DeleteAlbum = ({album, userId}) => {
         e.preventDefault();
         if(album.userId === userId){
             dispatch(removeAlbum(album.id));
+            window.alert('Successfully deleted! Now create another!');
         }else {
             window.alert('You do not have access to delete/modify this album')
         }

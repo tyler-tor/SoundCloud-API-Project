@@ -57,7 +57,8 @@ const Albums = () => {
                                 {songs.map(song => {
                                     if (album.id === song.albumId) {
                                         return (
-                                            <li>
+                                            <li
+                                            key={song.id}>
                                                 {song.title}
                                             </li>
                                         )

@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { removeAlbum } from "../../store/albums";
+import { removeAlbum, getAlbums } from "../../store/albums";
 import { useHistory } from "react-router-dom";
 import { getSongs } from "../../store/songs";
 
 const DeleteAlbum = ({album, userId}) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    console.log('songs', useSelector(state => state.songs))
+    // console.log('songs', useSelector(state => state.songs))
 
     const handleClick = (e) => {
         // e.preventDefault();
         if(album.userId === userId){
-            dispatch(removeAlbum(album.id));
-            dispatch(getSongs())
+            dispatch(removeAlbum(album.id))
+            // .then(dispatch(getSongs()))
             history.push('/albums');
             window.alert('Successfully deleted! Now create another!');
         }else {
@@ -22,7 +22,8 @@ const DeleteAlbum = ({album, userId}) => {
     };
 
     useEffect(() => {
-        dispatch(getSongs())
+        dispatch(getAlbums())
+        .then(dispatch(getSongs()))
     }, [dispatch])
 
     return (

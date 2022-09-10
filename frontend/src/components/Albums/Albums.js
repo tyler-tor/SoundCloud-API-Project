@@ -16,8 +16,9 @@ const Albums = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAlbums());
-        dispatch(getSongs());
+        dispatch(getAlbums())
+        .then(dispatch(getSongs()))
+        
     }, [dispatch]);
 
     if (!albums) {

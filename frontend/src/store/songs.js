@@ -99,7 +99,7 @@ const songsReducer = (state = initSongData, action) => {
         case (GET_SONGS):
             newState = { }
             action.payload.forEach((song) => {
-                console.log(song)
+                // console.log(song)
                 newState[song.id] = song;
             })
             return newState

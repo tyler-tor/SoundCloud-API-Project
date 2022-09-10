@@ -115,7 +115,7 @@ const albumsReducer = (state = initAlbumData, action) => {
         case (SHOW_ALBUM):
             newState = {...state};
             newState[action.song.id] = action.song;
-            break;
+            return newState;
         default:
             return state;
     }

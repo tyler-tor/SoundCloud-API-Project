@@ -1,9 +1,18 @@
+// EVERY seeder file
 'use strict';
+
+// NEW: add this code to each migration file
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+// END of new code
 const  bcrypt  = require('bcryptjs')
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-     await queryInterface.bulkInsert('Users', [
+    options.tableName = 'Users';
+     await queryInterface.bulkInsert(options, [
       {
        firstName: 'John',
        lastName: 'Smith',
@@ -24,6 +33,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-     await queryInterface.bulkDelete('Users', null, {});
+    options.tableName = 'Users';
+     await queryInterface.bulkDelete(options, null, {});
   }
 };

@@ -2,8 +2,18 @@
 SoundCloud API Project AppAcademy
 
 A website to view songs and albums made by other users for every user.
-You can add albums and songs by signing up or logging in if a account is already made. 
+You can add albums and songs by signing up or logging in if a account is already made.
 Also if you don't want to make a account feel free to use the Demo User to test the sight out before you make a account.
+
+
+## Technologies:
+- React
+- Redux
+- Express
+- Node Js
+- Sqlite3
+- Postgres
+- Heroku
 
 # Steps on getting started
 1. pull the project to clone the project
@@ -32,7 +42,7 @@ Here you have access to view the Splash page, Songs, Albums for view only. You c
 Here you can start by creating a Album and from there create songs for the Album to perform your Crud actions on either one.
 
 
-## Albums page view: 
+## Albums page view:
 
 ![image](https://user-images.githubusercontent.com/93111660/189492708-3350475b-e1f4-4dfd-bb88-91e6517413fd.png)
 
@@ -67,22 +77,8 @@ Also will not have access to add songs to a album you do not own. You can view s
 ![image](https://user-images.githubusercontent.com/93111660/189495634-6d6ee29a-3a21-4bb1-825b-28b03f1294e7.png)
 
 
-
-## Technologies:
-- React
-- Redux
-- Express
-- Node Js
-- Sqlite3
-- Postgres
-- Heroku
-
-## Future implentations: 
+## Future implentations:
 - Playlists
 - Comments
 - CRUD operations for Playlists/comments
 - Profile page for the current user displaying specific information with ways to adjust settings/information
-
-
-
-

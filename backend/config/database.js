@@ -18,6 +18,9 @@ module.exports = {
         require: true,
         rejectUnauthorized: false
       }
+    },
+    define: {         // define schema here
+      schema: process.env.SCHEMA
     }
   }
 };

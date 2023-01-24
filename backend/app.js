@@ -14,6 +14,7 @@ const { handleValidationErrors, forbiddenErr } = require('./utils/validation');
 
 const app = express();
 
+app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());

@@ -12,9 +12,27 @@
 
 .navbar-links {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
 }
+
+.social-links {
+    padding: 0 35px;
+    display: flex;
+    width: 200px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar-item {
+    padding: 0 15px;
+    border-left: solid 1px;
+    border-right: solid 1px;
+}
+
+.fab{
+    padding: 0 10px;
+  }
 
 .login-btn,
 .demo-user-btn {
@@ -39,6 +57,28 @@
 
 .profile-btn-div {
     position: relative;
+}
+
+.profile-image {
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.profile-image-btn {
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 100%;
 }
 
 .profile-email{

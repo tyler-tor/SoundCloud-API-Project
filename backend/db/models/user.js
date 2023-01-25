@@ -57,7 +57,6 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(
         models.Playlist, {
           foreignKey: 'userId',
-
         }
       ),
       User.hasMany(

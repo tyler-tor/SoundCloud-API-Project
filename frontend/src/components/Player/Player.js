@@ -1,13 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import AudioPlayer from 'react-h5-audio-player';
-import 'Player.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import './Player.css';
 
 function Player() {
-  return (
-    <div>
-        <AudioPlayer src="https://s3.amazonaws.com/freecodecamp/sim" onPlay={e => console.log(e)} onPause={e => console.log(e)} />
+  const song = useSelector((state) => state.player.song);
 
+  return (
+    <div className='media-player'>
+      <AudioPlayer
+        src={song?.url}
+        header={song?.title}
+        onPlay={e => console.log(e)} onPause={e => console.log(e)}
+        volume={0.5}
+      />
     </div>
   )
 }

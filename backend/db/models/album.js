@@ -19,8 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       Album.hasMany(
         models.Song, {
           foreignKey: 'albumId',
-          onDelete: 'CASCADE',
-          hooks: true
+          // hooks: true
         }
       )
     }
@@ -40,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: false
     }
   }, {
     sequelize,

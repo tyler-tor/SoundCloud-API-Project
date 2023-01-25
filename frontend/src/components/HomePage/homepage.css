@@ -16,7 +16,6 @@
     padding: 10px;
     background-color: transparent;
     border: 0;
-    color: #FFE9E1;
     font-size: large;
 }
 
@@ -26,14 +25,12 @@
 
 .homepage-title {
     display: flex;
-    color: #FFE9E1;
     font-size: 3em;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .homepage-text {
-    color: #FFE9E1;
     font-size: x-large;
     display: flex;
     justify-content: center;
@@ -45,7 +42,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #FFE9E1;
     font-size: xx-large;
 }
 

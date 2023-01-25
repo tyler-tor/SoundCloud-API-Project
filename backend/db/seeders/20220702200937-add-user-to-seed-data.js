@@ -10,7 +10,7 @@ module.exports = {
        email: 'john.smith@gmail.com',
        username: 'JohnSmith',
        hashedPassword: bcrypt.hashSync('JohnsPassword'),
-       profileImage: 'imageurl'
+       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/propic-4.jpg'
      },
       {
        firstName: 'Jane',
@@ -18,7 +18,7 @@ module.exports = {
        email: 'jane.doe@gmail.com',
        username: 'JaneDoe',
        hashedPassword: bcrypt.hashSync('JanesPassword'),
-       profileImage: 'imageurl'
+       previewImage: 'imahttps://soundcloud-bucket.s3.us-west-2.amazonaws.com/propic-5.jpggeurl'
      },
     ], {});
   },

@@ -2,6 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 import SignupFormPage from './components/SignupFormPage/SignupFormPage';
+import Player from './components/Player';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -48,7 +49,8 @@ function App() {
             <PageNotFound />
           </Route>
         </Switch>)}
-        <Footer />
+        <Player />
+        {/* <Footer /> */}
     </>
   );
 }

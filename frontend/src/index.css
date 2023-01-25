@@ -2,6 +2,10 @@ a, li, ul {
     text-decoration: none;
 }
 
+* {
+    font: 12px/1.4 Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
 body {
    font-family: Interstate,Lucida Grande,Arial,sans-serif;
    margin: 0;

@@ -1,6 +1,6 @@
 const AWS = require("aws-sdk");
 // name of your bucket here
-const NAME_OF_BUCKET = "soundcloud-clone-bucket";
+const NAME_OF_BUCKET = "soundcloud-bucket";
 
 const multer = require("multer");
 
@@ -49,6 +49,7 @@ const singlePrivateFileUpload = async (file) => {
     Bucket: NAME_OF_BUCKET,
     Key,
     Body: buffer,
+    ACL: "public-read",
   };
   const result = await s3.upload(uploadParams).promise();
 

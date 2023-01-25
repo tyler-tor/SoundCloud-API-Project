@@ -49,9 +49,29 @@ export const getCurrUser = () => async (dispatch) => {
 };
 
 export const signUpUser = (user) => async (dispatch) => {
+    const { image, images, username, email, password, firstName, lastName } = user;
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("firstName", firstName);
+    formData.append("lastName", lastName);
+
+    // for multiple files
+    if (images && images.length !== 0) {
+        for (var i = 0; i < images.length; i++) {
+            formData.append("images", images[i]);
+        }
+    }
+
+    // for single file
+    if (image) formData.append("image", image);
     const res = await csrfFetch('/api/users/signup', {
         method: 'POST',
-        body: JSON.stringify(user)
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData
     });
 
     if (res.ok) {
@@ -61,10 +81,11 @@ export const signUpUser = (user) => async (dispatch) => {
     };
 };
 
+
 export const myPlaylists = () => async (dispatch) => {
     const res = await csrfFetch('/api/my/playlists');
 
-    if(res.ok){
+    if (res.ok) {
         const data = await res.json();
         dispatch(getMyPlaylists(data.Playlists));
         return data;
@@ -86,7 +107,7 @@ export const logoutUser = () => async (dispatch) => {
 const initUserData = {
     user: null,
     playlists: []
- };
+};
 
 const sessionReducer = (state = initUserData, action) => {
     let newState;
@@ -103,7 +124,7 @@ const sessionReducer = (state = initUserData, action) => {
             newState = Object.assign({}, state);
             newState.user = null;
             return newState;
-        case (GET_MY_PLAYLISTS) :
+        case (GET_MY_PLAYLISTS):
             newState = Object.assign({}, state);
             newState.playlists = action.payload;
             return newState;

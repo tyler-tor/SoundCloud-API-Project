@@ -11,6 +11,7 @@ import HomePage from './components/HomePage';
 import DisplaySongInfo from './components/Songs/DisplaySongInfo';
 import DisplayAlbumInfo from './components/Albums/DisplayAlbumInfo';
 import PageNotFound from './components/PageNotFound';
+import './index.css'
 
 function App() {
   const dispatch = useDispatch();

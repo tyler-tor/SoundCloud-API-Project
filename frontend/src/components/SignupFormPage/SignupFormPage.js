@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signUpUser } from '../../store/session';
+// import ImageComponent from '../ImageComponent';
 import './SignupForm.css'
 
 const SignupFormPage = () => {
@@ -11,6 +12,7 @@ const SignupFormPage = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [image, setImage] = useState('');
     const [validationErrors, setValidationErrors] = useState([]);
     const [errors, setErrors] = useState([]);
     const currentUser = useSelector(state => state.session.user);
@@ -39,9 +41,12 @@ const SignupFormPage = () => {
             const newUserInfo = {
                 username,
                 email,
-                password
+                password,
+                firstName,
+                lastName,
+                image
             };
-
+            // console.log(newUserInfo);
             await dispatch(signUpUser(newUserInfo))
                 .catch(async res => {
                     const data = await res.json();
@@ -55,6 +60,11 @@ const SignupFormPage = () => {
             setFirstName('');
             setLastName('');
         }
+    };
+
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setImage(file)
     }
 
     if (currentUser) return (
@@ -113,10 +123,15 @@ const SignupFormPage = () => {
                 value={lastName}
                 onChange={e => setLastName(e.target.value)}
                 />
+                <input
+                type='file'
+                onChange={updateFile}
+                />
                 <button type='submit'
                     disabled={validationErrors.length > 0}
                 >Signup</button>
             </form>
+                {/* <ImageComponent setUrl={setUrl} /> */}
         </section>
     )
 }

@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 const {Model, Validator} = require('sequelize');
 const bcrypt = require('bcryptjs');
 
@@ -34,14 +34,15 @@ module.exports = (sequelize, DataTypes) => {
       };
     }
 
-    static async signup({ username, email, password, firstName, lastName }) {
+    static async signup({ username, email, password, firstName, lastName, profileImageUrl }) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
         username,
         email,
         hashedPassword,
         firstName,
-        lastName
+        lastName,
+        previewImage: profileImageUrl
       });
       return await User.scope('currentUser').findByPk(user.id);
     };
@@ -120,7 +121,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     scopes: {
       currentUser: {
-        attributes: { exclude: ['hashedPassword', 'createdAt', 'updatedAt', 'previewImage'] }
+        attributes: { exclude: ['hashedPassword', 'createdAt', 'updatedAt'] }
       },
       loginUser: {
         attributes: {}
@@ -133,7 +134,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       includedInComment: {
         attributes: {
-          exclude: ['updatedAt', 'createdAt', 'hashedPassword', 'email', 'firstName', 'lastName', 'previewImage']
+          exclude: ['updatedAt', 'createdAt', 'hashedPassword', 'email', 'firstName', 'lastName']
         }
       }
     }

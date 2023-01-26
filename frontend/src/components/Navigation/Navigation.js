@@ -38,7 +38,7 @@ const Navigation = ({ isLoaded }) => {
                     <NavLink to='/songs'
                         className='link'>Songs</NavLink>
                 </div>
-                <div className="navbar-item">Z
+                <div className="navbar-item">
                     <NavLink to='/albums'
                         className='link'>Albums</NavLink>
                 </div>

@@ -51,7 +51,7 @@
     padding: 10px;
     background-color: transparent;
     border: 0;
-    color: #FFE9E1;
+    /* color: #FFE9E1; */
     font-size: large;
 }
 
@@ -64,5 +64,5 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    color: #FFE9E1;
+    /* color: #FFE9E1; */
 }

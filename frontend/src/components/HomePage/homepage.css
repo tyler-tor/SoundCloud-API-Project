@@ -69,21 +69,43 @@
     margin-right: 10px;
 }
 
+.user-info-wrapper {
+    color: #242424;
+    width: 40%;
+    border-left: 1px solid #333;
+}
+
+.user-info-item {
+    list-style: none;
+}
+
+.create-buttons-wrapper {
+    display: flex;
+}
+
 .user-profile-infobox-actions {
     padding: 20px;
+    width: 100%;
+    display: flex;
 }
 
 .user-tiles-wrapper {
     height: 200px;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
 }
 
 .user-songs-tiles-wrapper {
     height: 200px;
     padding-bottom: 150px;
+    border-top: 1px solid #333;
+    width: 100%;
 }
 
-.user-tile-titles {
-    font-size: 100px;
+.user-tile-title h1 {
+    font-size: 35px;
+    padding: 0 10px;
 }

@@ -1,0 +1,12 @@
+.create-playlist-btn {
+    display: flex;
+    padding: 5px;
+    margin-top: 10px;
+    font-size: x-large;
+    justify-content: center;
+}
+
+.create-playlist-btn:hover {
+    cursor: pointer;
+    font-weight: bolder;
+}

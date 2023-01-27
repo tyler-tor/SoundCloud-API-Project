@@ -127,8 +127,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       includedArtist: {
         attributes: {
-          exclude: ['updatedAt', 'createdAt', 'hashedPassword',
-        'email', 'firstName', 'lastName']
+          exclude: ['updatedAt', 'createdAt', 'hashedPassword']
         }
       },
       includedInComment: {

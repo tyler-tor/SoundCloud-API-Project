@@ -80,6 +80,18 @@ router.get('/:artistId', async(req, res, next) => {
     }else{
         artistCouldNotBeFound(next);
     }
+});
+
+router.get('/', async(req, res, next) => {
+    const artists = await User.scope('includedArtist').findAll();
+
+    if(artists){
+        return res.json(artists);
+    }else{
+        res.status(404);
+        res.message('No artists found');
+        return next(res);
+    }
 })
 
 

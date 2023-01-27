@@ -1,12 +1,15 @@
 .create-playlist-btn {
+    padding: 10px;
+    background-color: transparent;
+    border: 0;
+    font-size: large;
     display: flex;
-    padding: 5px;
-    margin-top: 10px;
-    font-size: x-large;
     justify-content: center;
+    flex-direction: column;
 }
 
 .create-playlist-btn:hover {
     cursor: pointer;
     font-weight: bolder;
 }
+

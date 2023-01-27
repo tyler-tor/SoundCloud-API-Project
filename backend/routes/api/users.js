@@ -5,6 +5,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3');
 const app = require('../../app');
+const { route } = require('./my');
 
 const router = express.Router();
 

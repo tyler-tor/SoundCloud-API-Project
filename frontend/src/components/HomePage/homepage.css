@@ -19,17 +19,6 @@
 }
 
 
-.create-album-btn {
-    padding: 10px;
-    background-color: transparent;
-    border: 0;
-    font-size: large;
-}
-
-.create-album-btn:hover {
-    cursor: pointer;
-}
-
 .homepage-title {
     display: flex;
     font-size: 3em;
@@ -45,15 +34,38 @@
     flex-wrap: wrap;
 }
 
-.welcome-page {
+.welcome-page-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: xx-large;
+}
+
+.welcome-page {
+    background-image: url('../../../public/images/studio.jpg');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 65em;
+    width: 75%;
 }
 
 .welcome-title {
     margin: 1em;
+    color: #F6EEDF;
+    font-size: 100px;
+}
+
+.welcome-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome-page p {
+    color: #F6EEDF;
+    font-size: 25px;
+    padding: 0;
+    margin: 0;
 }
 
 .user-propic-wrapper {
@@ -90,7 +102,7 @@
 }
 
 .user-tiles-wrapper {
-    height: 200px;
+    height: 225px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -100,7 +112,7 @@
 
 .user-songs-tiles-wrapper {
     height: 200px;
-    padding-bottom: 150px;
+    padding-bottom: 115px;
     border-top: 1px solid #333;
     width: 100%;
 }
@@ -108,4 +120,24 @@
 .user-tile-title h1 {
     font-size: 35px;
     padding: 0 10px;
+}
+
+.tile-wrapper {
+    display: flex;
+    height: 8em;
+    width: 8em;
+    margin: 0 2em 1em;
+    border: 2px solid #333;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.section-tiles {
+    overflow-x: scroll;
+    bottom: 0;
+}
+
+.section-tiles::-webkit-scrollbar-track{
+    background-color: #333;
 }

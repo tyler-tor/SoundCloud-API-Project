@@ -20,7 +20,7 @@ const DemoUser = () => {
         <button
         className='demo-user-btn'
         onClick={handleClick}>
-            Demo-User Login
+            Demo
         </button>
     )
 }

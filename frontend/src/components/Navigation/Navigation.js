@@ -13,37 +13,58 @@ const Navigation = ({ isLoaded }) => {
     if (!currUser) {
         sessionLinks = (
             <>
-                <LoginFormModal />
-                <NavLink to='/signup'
-                    className='link'>Signup</NavLink>
-                <DemoUser />
+                <div className="navbar-item">
+                    <LoginFormModal />
+                </div>
+                <div className="navbar-item">
+                    <NavLink to='/signup'
+                        className='link'>Signup</NavLink>
+                </div>
+                <div className="navbar-item">
+                    <DemoUser />
+                </div>
             </>
         )
     } else {
         sessionLinks = (
-            <div
-                className="profile-btn-div">
-                <ProfileButton user={currUser} />
-            </div>
+            <>
+                <div className="navbar-item">
+                    <NavLink to='/'
+                        className='link'>
+                        Home
+                    </NavLink>
+                </div>
+                <div className="navbar-item">
+                    <NavLink to='/songs'
+                        className='link'>
+                        Songs
+                    </NavLink>
+                </div>
+                <div className="navbar-item">
+                    <NavLink to='/albums'
+                        className='link'>
+                        Albums
+                    </NavLink>
+                </div>
+                <div className="navbar-item">
+                    <NavLink to='/playlists'
+                        className='link'>Playlists
+                    </NavLink>
+                </div>
+            </>
         );
     }
     return (
         <div className="navbar-div">
             <div className="navbar-links">
-                <div className="navbar-item">
-                    <NavLink to='/'
-                        className='link'>Home</NavLink>
-                </div>
-                <div className="navbar-item">
-                    <NavLink to='/songs'
-                        className='link'>Songs</NavLink>
-                </div>
-                <div className="navbar-item">
-                    <NavLink to='/albums'
-                        className='link'>Albums</NavLink>
-                </div>
+                {isLoaded && sessionLinks}
                 <div className='social-links'>
-                    {isLoaded && sessionLinks}
+                    {currUser && (
+                        <div
+                            className="profile-btn-div">
+                            <ProfileButton user={currUser} />
+                        </div>
+                    )}
                     <a href='https://github.com/tyler-tor'
                         target='_blank'
                         rel="noreferrer"

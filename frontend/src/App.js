@@ -20,7 +20,6 @@ function App() {
 
   useEffect(() => {
     dispatch(sessionActions.getCurrUser())
-      .then(() => dispatch(sessionActions.myPlaylists()))
       .then(() => setIsLoaded(true));
   }, [dispatch])
   return (
@@ -51,7 +50,6 @@ function App() {
           </Route>
         </Switch>)}
         <Player />
-        {/* <Footer /> */}
     </>
   );
 }

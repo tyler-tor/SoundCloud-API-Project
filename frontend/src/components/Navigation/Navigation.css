@@ -43,7 +43,6 @@
     color: #FFE9E1;
     background-color: #333;
     border: 0;
-    font-size: medium;
 }
 
 .login-btn:hover {
@@ -56,7 +55,12 @@
 
 .profile-dropdown {
     position: absolute;
-    right: 5px;
+    top: 50px;
+    border: 1px solid #333;
+    background-color: #F6EEDF;
+    height: 75px;
+    width: 125px;
+    list-style: none;
 }
 
 .profile-btn-div {
@@ -83,6 +87,11 @@
     width: 40px;
     object-fit: cover;
     border-radius: 100%;
+}
+
+.profile-image-btn:hover,
+.logout-btn:hover {
+    cursor: pointer;
 }
 
 .profile-email{

@@ -1,8 +1,9 @@
-import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
-import {HiPlay} from "react-icons/hi";
-import { useEffect } from 'react';
+import { useSelector, useDispatch} from "react-redux";
+import { HiPlay } from "react-icons/hi";
+import { useEffect,useCallback } from 'react';
 import { getSongs } from "../../store/songs";
+import { getAlbums } from "../../store/albums";
+import { playSong } from "../../store/player";
 import DeleteSong from "./DeleteSong";
 import UpdateSongModal from "../UpdateSong/UpdateSongModal";
 import CreateSongModal from "../CreateSong/CreateSongModal";
@@ -10,17 +11,25 @@ import './songs.css'
 
 const Songs = () => {
     const songs = Object.values(useSelector(state => state.songs));
+    const albums = useSelector(state => state.albums);
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getSongs());
+        dispatch(getAlbums());
     }, [dispatch]);
+
+    const playSongBtn = useCallback(
+        (song) => {
+            dispatch(playSong(song));
+        },
+        [dispatch]
+    );
 
     if (!songs) {
         return null;
     }
-
     const checkValidation = (song) => {
         if (user.id === song.userId) {
             return (
@@ -37,7 +46,7 @@ const Songs = () => {
         }
     }
 
-    return (
+    return songs && albums && (
         <div
             className="cs-div">
             <div className='entire-songs-container'>
@@ -47,6 +56,8 @@ const Songs = () => {
                         <div
                             className="song-container"
                             key={song.id}>
+                            <img src={albums[song?.albumId]?.previewImage}>
+                            </img>
                             <strong className='song-titles'>
 
                                 {song.title}
@@ -56,9 +67,12 @@ const Songs = () => {
                                 {song.description}
                             </p>
                             {user && checkValidation(song)}
-                                <HiPlay className="play-btn"
-                                
-                                />
+                            <HiPlay className="play-btn"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    playSongBtn(song);
+                                }}
+                            />
                         </div>
                     )
                 }))}

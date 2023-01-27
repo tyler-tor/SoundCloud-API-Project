@@ -3,7 +3,7 @@ import CreateAlbumModal from "../CreateAlbum/CreateAlbumModal";
 import CreatePlaylistModal from "../CreatePlaylist/CreatePlaylistModal";
 // import { getArtists } from "../../store/artists";
 import { useEffect } from "react";
-import { mySongs, myAlbums } from "../../store/session";
+import { mySongs } from "../../store/session";
 import './homepage.css'
 
 
@@ -18,7 +18,7 @@ const HomePage = () => {
     useEffect(() => {
         if (currentUser) {
             dispatch(mySongs());
-            dispatch(myAlbums());
+            // dispatch(myAlbums());
             // dispatch(myPlaylists());
         }
     }, [currentUser]);

@@ -9,6 +9,7 @@ const CreateSong = ({ albumId, setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [title, setTitle] = useState('');
+    const [previewImage, setPreviewImage] = useState('');
     const [description, setDescription] = useState('');
     const [url, setUrl] = useState('');
     const [imageUrl, setImageUrl] = useState('');
@@ -17,6 +18,7 @@ const CreateSong = ({ albumId, setShowModal }) => {
 
     const user = useSelector(state => state.session.user);
     const albumState = useSelector(state => state.albums[albumIdState])
+    const albums = useSelector(state => state.albums);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,6 +41,12 @@ const CreateSong = ({ albumId, setShowModal }) => {
                 async (response) => {
                     if (response && response.errors) setErrors(response.errors);
                 });
+
+                setTitle("");
+                setPreviewImage("");
+                setUrl(null);
+                setDescription("");
+                setErrors([]);
     };
 
     useEffect(() => {
@@ -92,13 +100,17 @@ const CreateSong = ({ albumId, setShowModal }) => {
             </label>
             {!albumId &&
             (<label>
-                Album Id
-                <input
-                    type='text'
-                    value={albumIdState}
-                    onChange={(e) => setAlbumIdState(e.target.value)}
-                    required
-                />
+                Album
+                <select
+                    // type='text'
+                    // value={albumIdState}
+                    // onChange={(e) => setAlbumIdState(e.target.value)}
+                    // required
+                >
+                    {albums.map((album, idx) => (
+                        <option key={idx} value={album.id}>{album.title}</option>
+                    ))}
+                    </select>
             </label>)}
             <button
                 type="submit"

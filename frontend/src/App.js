@@ -10,7 +10,7 @@ import Songs from './components/Songs/Songs';
 import Albums from './components/Albums/Albums';
 import HomePage from './components/HomePage';
 import DisplaySongInfo from './components/Songs/DisplaySongInfo';
-import { myPlaylists } from './store/session';
+import { myPlaylists, myAlbums } from './store/session';
 import DisplayAlbumInfo from './components/Albums/DisplayAlbumInfo';
 import PageNotFound from './components/PageNotFound';
 import './index.css'
@@ -28,6 +28,7 @@ function App() {
   useEffect(() => {
     if (user) {
       dispatch(myPlaylists())
+      dispatch(myAlbums())
     }
   }, [user]);
   return (

@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import {HiPlay} from "react-icons/hi";
 import { useEffect } from 'react';
 import { getSongs } from "../../store/songs";
 import DeleteSong from "./DeleteSong";
@@ -39,27 +40,25 @@ const Songs = () => {
     return (
         <div
             className="cs-div">
-            {user && <CreateSongModal />}
             <div className='entire-songs-container'>
+                {user && <CreateSongModal />}
                 {songs && (songs.map(song => {
                     return (
                         <div
                             className="song-container"
-                            key={song.id}
-                            style={{
-                                backgroundImage: `url(${song.previewImage})`,
-                                backgroundSize: 'cover',
-                                opacity: '.9'
-                            }}>
-                            <NavLink to={`/songs/${song.id}`}
-                                className='song-titles'>
+                            key={song.id}>
+                            <strong className='song-titles'>
+
                                 {song.title}
-                            </NavLink>
+                            </strong>
                             <p
-                            className="song-description">
+                                className="song-description">
                                 {song.description}
                             </p>
                             {user && checkValidation(song)}
+                                <HiPlay className="play-btn"
+                                
+                                />
                         </div>
                     )
                 }))}

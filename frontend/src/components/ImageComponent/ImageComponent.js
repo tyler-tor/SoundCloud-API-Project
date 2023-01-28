@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { csrfFetch } from '../../store/csrf';
 import './ImageComponent.css';
 
 function ImageComponent({ setUrl }) {
@@ -9,10 +10,10 @@ function ImageComponent({ setUrl }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setImageLoading(true);
         const formData = new FormData();
+        setImageLoading(true);
         formData.append('image', image);
-        const response = await fetch('/api/images/upload', {
+        const response = await csrfFetch('/api/images/upload', {
             method: 'POST',
             headers: {
                 "Content-Type": "multipart/form-data",
@@ -23,9 +24,9 @@ function ImageComponent({ setUrl }) {
         if (response.ok) {
             const data = await response.json();
             setImageLoading(false);
-            setImage(data.url);
+            setUrl(data.profileImageUrl);
             setUploadedImage(true);
-            setPrevImageUrl(data.url);
+            setPrevImageUrl(data.profileImageUrl);
         }else {
             setImageLoading(false);
         }
@@ -37,13 +38,13 @@ function ImageComponent({ setUrl }) {
     }
 
     return (
-        <div>
+        <div className='upload-image-wrapper'>
             <form onSubmit={handleSubmit}>
                 <input type="file" onChange={updateImage} />
                 <button type="submit">Upload</button>
-            </form>
             {imageLoading && <p>Uploading...</p>}
-            {uploadedImage && <img src={prevImageUrl} />}
+            </form>
+            {uploadedImage && <img src={prevImageUrl} className='prev-image' />}
         </div>
     )
 }

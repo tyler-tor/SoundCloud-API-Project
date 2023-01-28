@@ -1,20 +1,12 @@
 const express = require('express');
-const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3');
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
+const { requireAuth } = require('../../utils/auth');
 const router = express.Router();
 
-router.post('/upload', singleMulterUpload('image'), async (req, res, next) => {
-    try {
-        const profileImageUrl = await singlePublicFileUpload(req.file);
+router.post('/upload', requireAuth, singleMulterUpload('image'), async (req, res, next) => {
+    const profileImageUrl = await singlePublicFileUpload(req.file);
 
-        profileImageUrl.dataValues.token = await setTokenCookie(res, profileImageUrl);
-
-        return res.json({profileImageUrl});
-
-    }catch(e) {
-        e.status = 400;
-        e.message = 'Try another image';
-        next(e);
-    }
+    return res.json({ profileImageUrl });
 });
 
 module.exports = router;

@@ -10,7 +10,7 @@ import CreateSongModal from "../CreateSong/CreateSongModal";
 import './songs.css'
 
 const Songs = () => {
-    const songs = Object.values(useSelector(state => state.songs));
+    const songs = Object.values(useSelector(state => state.songs)).reverse();
     const albums = useSelector(state => state.albums);
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();

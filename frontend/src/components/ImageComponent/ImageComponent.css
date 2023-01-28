@@ -1,0 +1,11 @@
+.prev-image {
+    height: 100px;
+    width: 100px;
+}
+
+.upload-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

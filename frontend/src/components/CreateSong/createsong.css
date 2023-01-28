@@ -2,7 +2,13 @@
     display: flex;
     flex-direction: column;
     padding: 5em;
+    width: 20em;
     background-color: #A49DA1;
+}
+
+.create-song-wrapper {
+    width: 20em;
+    padding: 5em;
 }
 
 .create-song-btn {
@@ -10,3 +16,23 @@
     margin-top: 10px;
     font-size: large;
 }
+
+.error-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    word-wrap: break-word;
+}
+
+.el-item {
+    color: #333;
+    width: 100%;
+}
+
+.song-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20px;
+}
+

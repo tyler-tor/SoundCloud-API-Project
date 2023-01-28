@@ -41,7 +41,7 @@ const albumCouldNotBeFound = (next) => {
 router.post('/:albumId/songs', [requireAuth, validateSong], async(req, res, next) => {
     const { albumId } = req.params;
     const { user } = req;
-    const { title, description, url, imageUrl } = req.body;
+    const { title, description, url } = req.body;
 
     const album = await Album.findOne({
         include: {
@@ -58,7 +58,7 @@ router.post('/:albumId/songs', [requireAuth, validateSong], async(req, res, next
             title,
             description,
             url,
-            previewImage: imageUrl,
+            previewImage: album.previewImage,
             albumId: album.id,
             userId: user.id
         })

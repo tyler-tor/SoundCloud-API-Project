@@ -20,17 +20,27 @@
     background-color: #F6EEDF;
 }
 
+.song-img {
+    height: 50px;
+    width: 50px;
+    margin: 1em;
+}
+
 .song-container {
     padding: 1em 0;
     display: flex;
     width: 100%;
     margin: 1em 0;
     border-top: 1px solid #333;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .song-titles {
     padding: 20px;
     color: #333;
+    display: flex;
+    align-items: center;
 }
 
 .song-description {
@@ -52,4 +62,16 @@
 
 .play-btn:hover {
     cursor: pointer;
+}
+
+.ind-song-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ind-song-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

@@ -111,15 +111,22 @@
 }
 
 .user-songs-tiles-wrapper {
-    height: 200px;
+    height: 225px;
     padding-bottom: 115px;
     border-top: 1px solid #333;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .user-tile-title h1 {
     font-size: 35px;
     padding: 0 10px;
+}
+
+.tile-image {
+    height: 6em;
+    width: 7em;
 }
 
 .tile-wrapper {
@@ -136,6 +143,7 @@
 .section-tiles {
     overflow-x: scroll;
     bottom: 0;
+    display: flex;
 }
 
 .section-tiles::-webkit-scrollbar-track{

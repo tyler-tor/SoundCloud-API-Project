@@ -11,15 +11,12 @@ const HomePage = () => {
     const currentUser = useSelector(state => state.session.user);
     const albums = useSelector(state => state.session.albums);
     const songs = useSelector(state => state.session.songs);
-    // const artists = useSelector(state => state.artists);
     const playlists = useSelector(state => state.session.playlists);
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (currentUser) {
             dispatch(mySongs());
-            // dispatch(myAlbums());
-            // dispatch(myPlaylists());
         }
     }, [currentUser]);
 
@@ -64,6 +61,7 @@ const HomePage = () => {
                     <div className="section-tiles">
                         {playlists.map((playlist, ind) => (
                             <div className="tile-wrapper" key={ind}>
+                                <img className="tile-image" src={playlist.previewImage} alt="playlist cover" />
                                 <strong className="tile-title">
                                     {playlist.name}
                                 </strong>
@@ -81,6 +79,7 @@ const HomePage = () => {
                     <div className="section-tiles">
                         {albums.map((album, ind) => (
                             <div className="tile-wrapper" key={ind}>
+                                <img className="tile-image" src={album.previewImage} alt="album cover" />
                                 <strong className="tile-title">
                                     {album.title}
                                 </strong>
@@ -98,6 +97,7 @@ const HomePage = () => {
                         {songs.map((song, ind) => (
                             <div className="tile-wrapper"
                                 key={ind}>
+                                    <img className="tile-image" src={song.previewImage} alt="song cover" />
                                 <strong className="tile-title">
                                     {song.title}
                                 </strong>

@@ -5,6 +5,7 @@ import songsReducer from './songs';
 import albumsReducer from './albums';
 import playerReducer from './player';
 import artistsReducer from './artists';
+import playlistsReducer from './playlists';
 
 let enhancer;
 
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   songs: songsReducer,
   albums: albumsReducer,
   player: playerReducer,
-  artists: artistsReducer
+  artists: artistsReducer,
+  playlists: playlistsReducer
 });
 
 

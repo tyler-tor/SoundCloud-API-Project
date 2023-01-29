@@ -145,6 +145,12 @@ router.post('/', requireAuth, validatePlaylist, async (req, res, next) => {
     } else {
         playlistCouldNotBeFound(next)
     }
+});
+
+router.get('/', requireAuth, async (req, res, next) => {
+    const playlists = await Playlist.findAll();
+
+    return res.json(playlists);
 })
 
 

@@ -9,7 +9,7 @@ const UpdateAlbum = ({ album, setShowModal }) => {
     const history = useHistory();
     const [title, setTitle] = useState(album.title);
     const [description, setDescription] = useState(album.description);
-    const [imageUrl, setImageUrl] = useState(album.previewImage);
+    const [url, setUrl] = useState(album.previewImage);
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
@@ -21,7 +21,7 @@ const UpdateAlbum = ({ album, setShowModal }) => {
             albumId: album.id,
             title,
             description,
-            imageUrl
+            imageUrl: url
         }
         await dispatch(updateAlbum(data))
             .then(() => setShowModal(false), history.push('/albums'))
@@ -58,15 +58,15 @@ const UpdateAlbum = ({ album, setShowModal }) => {
                     required
                 />
             </label>
-            <label>
+            {/* <label>
                 Image Url
                 <input
                     type="text"
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
                     required
                 />
-            </label>
+            </label> */}
             <button
                 type="submit"
                 className="update-album-btn">

@@ -1,19 +1,28 @@
-.create-album-form {
+.create-album-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 5em;
     background-color: #A49DA1;
 }
 
 .create-album-btn {
+    padding: 10px;
+    background-color: transparent;
+    border: 0;
+    font-size: large;
     display: flex;
-    padding: 5px;
-    margin-top: 10px;
-    font-size: x-large;
     justify-content: center;
+    flex-direction: column;
 }
 
 .create-album-btn:hover {
     cursor: pointer;
     font-weight: bolder;
+}
+
+.naf-item {
+    display: flex;
+    flex-direction: column;
 }

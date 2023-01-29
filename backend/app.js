@@ -16,7 +16,8 @@ const app = express();
 
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(express.json());
+app.use(express.urlencoded({ extended: false, limit: '50mb' }));
+app.use(express.json({ limit: '50mb' }));
 
 //Security Middleware
 if (!isProduction) {

@@ -1,10 +1,17 @@
 .homepage {
     display: flex;
-    align-content: center;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
+    align-items: flex-start;
+    width: 70%;
+    height: 100%;
+    background-color: #F6EEDF;
+}
+
+.homepage-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .homepage-container {
@@ -12,28 +19,14 @@
 }
 
 
-.create-album-btn {
-    padding: 10px;
-    background-color: transparent;
-    border: 0;
-    color: #FFE9E1;
-    font-size: large;
-}
-
-.create-album-btn:hover {
-    cursor: pointer;
-}
-
 .homepage-title {
     display: flex;
-    color: #FFE9E1;
     font-size: 3em;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .homepage-text {
-    color: #FFE9E1;
     font-size: x-large;
     display: flex;
     justify-content: center;
@@ -41,14 +34,118 @@
     flex-wrap: wrap;
 }
 
-.welcome-page {
+.welcome-page-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #FFE9E1;
-    font-size: xx-large;
+}
+
+.welcome-page {
+    background-image: url('../../../public/images/studio.jpg');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 65em;
+    width: 75%;
 }
 
 .welcome-title {
     margin: 1em;
+    color: #F6EEDF;
+    font-size: 100px;
+}
+
+.welcome-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome-page p {
+    color: #F6EEDF;
+    font-size: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+.user-propic-wrapper {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.user-profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-info-wrapper {
+    color: #242424;
+    width: 40%;
+    border-left: 1px solid #333;
+}
+
+.user-info-item {
+    list-style: none;
+}
+
+.create-buttons-wrapper {
+    display: flex;
+}
+
+.user-profile-infobox-actions {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+}
+
+.user-tiles-wrapper {
+    height: 225px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.user-songs-tiles-wrapper {
+    height: 225px;
+    padding-bottom: 115px;
+    border-top: 1px solid #333;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-tile-title h1 {
+    font-size: 35px;
+    padding: 0 10px;
+}
+
+.tile-image {
+    height: 6em;
+    width: 7em;
+}
+
+.tile-wrapper {
+    display: flex;
+    height: 8em;
+    width: 8em;
+    margin: 0 2em 1em;
+    border: 2px solid #333;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.section-tiles {
+    overflow-x: scroll;
+    bottom: 0;
+    display: flex;
+}
+
+.section-tiles::-webkit-scrollbar-track{
+    background-color: #333;
 }

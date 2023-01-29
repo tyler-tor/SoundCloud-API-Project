@@ -13,20 +13,19 @@ module.exports = (sequelize, DataTypes) => {
       Song.belongsTo(
         models.Album, {
           foreignKey: 'albumId',
-          // onDelete: 'CASCADE'
+          onDelete: 'CASCADE'
         }
       ),
       Song.belongsTo(
         models.User, {
           foreignKey: 'userId',
-
         }
       ),
       Song.belongsToMany(
         models.Playlist, {
           through: models.PlaylistSong,
           foreignKey: 'songId',
-          onDelete: 'cascade'
+          onDelete: 'CASCADE'
         }
       ),
       Song.hasMany(
@@ -55,6 +54,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     albumId: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Album',
+        key: 'id'
+      }
     },
     userId: {
       type: DataTypes.INTEGER,

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Playlists.css'
 
-function AddSongModal() {
+function AddSong() {
   return (
     <div>
 
@@ -9,4 +9,4 @@ function AddSongModal() {
   )
 }
 
-export default AddSongModal
+export default AddSong

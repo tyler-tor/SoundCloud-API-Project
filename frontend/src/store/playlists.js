@@ -54,11 +54,11 @@ export const createPlaylist = (playlist) => async (dispatch) => {
     }
 };
 
-export const updatePlaylist = (playlist) => async (dispatch) => {
-    const { playlistId } = playlist;
+export const updatePlaylist = (data) => async (dispatch) => {
+    const { playlistId } = data;
     const res = await csrfFetch(`/api/playlists/${playlistId}`, {
         method: 'PUT',
-        body: JSON.stringify(playlist)
+        body: JSON.stringify(data)
     });
 
     if (res.ok) {

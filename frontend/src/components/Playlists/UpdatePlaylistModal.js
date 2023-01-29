@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import UpdatePlaylist from './UpdatePlaylist';
+import './Playlists.css'
 
 function UpdatePlaylistModal({ playlist, userId }) {
     const [showModal, setShowModal] = useState(false);

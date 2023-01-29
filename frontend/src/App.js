@@ -8,6 +8,7 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Songs from './components/Songs/Songs';
 import Albums from './components/Albums/Albums';
+import Playlists from './components/Playlists/Playlists';
 import HomePage from './components/HomePage';
 import DisplaySongInfo from './components/Songs/DisplaySongInfo';
 import { myPlaylists, myAlbums } from './store/session';
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route path='/albums'>
             <Albums />
+          </Route>
+          <Route path='/playlists'>
+            <Playlists />
           </Route>
           <Route path='/songs'>
             <Songs />

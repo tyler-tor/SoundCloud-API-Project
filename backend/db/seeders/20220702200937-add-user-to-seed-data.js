@@ -1,3 +1,4 @@
+const  bcrypt  = require('bcryptjs')
 // EVERY seeder file
 'use strict';
 
@@ -7,7 +8,6 @@ if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
 }
 // END of new code
-const  bcrypt  = require('bcryptjs')
 
 module.exports = {
   async up (queryInterface, Sequelize) {

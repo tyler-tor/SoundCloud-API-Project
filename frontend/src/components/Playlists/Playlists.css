@@ -23,7 +23,7 @@
     padding: 1em 0;
     display: flex;
     width: 100%;
-    margin: 1em 0;
+    /* margin: 1em 0; */
     border-top: 1px solid #333;
     align-items: center;
     justify-content: space-between;
@@ -51,8 +51,8 @@
 }
 
 .playlist-img {
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
     margin: 1em;
 }
 

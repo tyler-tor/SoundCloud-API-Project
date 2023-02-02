@@ -9,7 +9,7 @@ import AddSongModal from './AddSongModal'
 import './Playlists.css';
 
 function Playlists() {
-    const playlists = Object.values(useSelector(state => state.playlists)).reverse();
+    const playlists = Object.values(useSelector(state => state.playlists.playlists)).reverse();
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ function Playlists() {
         }
     }
 
-    return (
+    return playlists && (
         <div className='cp-div' >
             <div className='entire-playlists-container'>
                 {user && <CreatePlaylistModal />}

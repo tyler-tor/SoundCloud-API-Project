@@ -59,6 +59,35 @@ router.post('/:playlistId/songs', requireAuth, async (req, res, next) => {
     }
 });
 
+// router.get('/:playlistId/songs', requireAuth, async (req, res, next) => {
+//     const { user } = req;
+//     const { playlistId } = req.params;
+
+//     const playlist = await Playlist.findOne({
+//         where: {
+//             userId: user.id,
+//             id: playlistId
+//         }
+//     });
+
+//     if (playlist) {
+//         const newPlaylistSong = await PlaylistSong.create({
+//             playlistId: playlist.id,
+//             songId: song.id
+//         });
+
+//         const playlistSong = await PlaylistSong.scope('addSongs').findOne({
+//             where: {
+//                 id: newPlaylistSong.id
+//             }
+//         })
+
+//         return res.json(playlistSong)
+//     } else {
+//         if (!playlist) playlistCouldNotBeFound(next)
+//     }
+// })
+
 router.put('/:playlistId', requireAuth, validatePlaylist, async(req, res, next) => {
     const { playlistId } = req.params;
     const { user } = req;
@@ -98,7 +127,7 @@ router.get('/:playlistId', async (req, res, next) => {
                 through: {attributes: []}
             }
         });
-
+        console.log(playlistSongs)
         return res.json(playlistSongs)
     } else {
         playlistCouldNotBeFound(next)

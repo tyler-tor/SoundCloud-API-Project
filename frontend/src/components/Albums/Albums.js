@@ -9,7 +9,7 @@ import CreateAlbumModal from "../CreateAlbum/CreateAlbumModal";
 import './albums.css';
 
 const Albums = () => {
-    const albums = Object.values(useSelector(state => state.albums)).reverse();
+    const albums = Object.values(useSelector(state => state.albums.albums)).reverse();
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
 

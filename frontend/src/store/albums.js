@@ -89,32 +89,39 @@ export const showAlbum = (albumId) => async(dispatch) => {
     }
 }
 
-const initAlbumData = {};
+const initAlbumData = {
+    currentAlbum: {},
+    albums: {}
+};
 
 const albumsReducer = (state = initAlbumData, action) => {
     let newState;
     switch (action.type) {
         case (GET_ALBUMS):
-            newState = {};
+            newState = {
+                currentAlbum: {},
+                albums: {}
+            };
             action.payload.forEach((album) => {
-                newState[album.id] = album;
+                newState.albums[album.id] = album;
             });
             return newState;
         case (CREATE_ALBUM):
             newState = {...state};
-            newState[action.album.id] = action.album;
+            newState.albums[action.album.id] = action.album;
             return newState;
         case (UPDATE_ALBUM):
             newState = {...state};
-            newState[action.album.id] = action.album;
+            newState.currentAlbum = {...action.album}
+            newState.albums[action.album.id] = action.album;
             return newState;
         case (REMOVE_ALBUM):
             newState = {...state};
-            delete newState[action.albumId];
+            delete newState.albums[action.albumId];
             return newState;
         case (SHOW_ALBUM):
             newState = {...state};
-            newState[action.song.id] = action.song;
+            newState.currentAlbum[action.album.id] = action.album;
             return newState;
         default:
             return state;

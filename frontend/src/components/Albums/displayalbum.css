@@ -1,21 +1,79 @@
-.album-detail-list {
+.ind-album-wrapper {
     display: flex;
-    justify-content: center;
-    padding: 10em
+    flex-direction: column;
+    align-items: flex-start;
+    width: 60%;
+    height: 100%;
+    background-color: #F6EEDF;
 }
 
-.album-detail-container {
-    padding: 3em;
-    background-color:  #A49DA1;
-    border-radius: 20px;
-    opacity: .9;
+.wrapper-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
 
-.ad-header {
-    padding: 10px;
-    margin-bottom: 5px;
+.ind-ai-wrapper {
+    height: 25em;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
-li{
-    padding: 5px;
+.ai-pic-wrapper {
+    height: 100%;
+    width: 25%;
+    display: flex;
+    border-left: 1px solid #333;
+}
+
+.ai-detail-btns {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 75%;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.ind-album-title {
+    font-size: 50px;
+    padding-left: 20px;
+}
+
+.ind-ai-pro-pic {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.ind-ai-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.ind-album-songs-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+.ia-song-container {
+    padding: 1em 0;
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #333;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ia-song-info{
+    display: flex;
+    width: 100%;
+    align-items: center;
 }

@@ -90,32 +90,39 @@ export const showPlaylist = (playlistId) => async (dispatch) => {
     }
 };
 
-const initPlaylistData = {};
+const initPlaylistData = {
+    currentPlaylist: {},
+    playlists: {}
+};
 
 const playlistReducer = (state = initPlaylistData, action) => {
     let newState;
     switch (action.type) {
         case GET_PLAYLISTS:
-            newState = {...state}
+            newState = {
+                currentPlaylist: null,
+                playlists: {}
+            }
             action.payload.forEach(playlist => {
-                newState[playlist.id] = playlist
+                newState.playlists[playlist.id] = playlist
             })
             return newState;
         case CREATE_PLAYLIST:
             newState = {...state};
-            newState[action.playlist.id] = action.playlist;
+            newState.playlists[action.playlist.id] = action.playlist;
             return newState;
         case UPDATE_PLAYLIST:
             newState = {...state};
-            newState[action.playlist.id] = action.playlist;
+            newState.currentPlaylist = {...action.playlist};
+            newState.playlists[action.playlist.id] = action.playlist;
             return newState;
         case DELETE_PLAYLIST:
             newState = {...state};
-            delete newState[action.playlistId];
+            delete newState.playlists[action.playlistId];
             return newState;
         case SHOW_PLAYLIST:
             newState = {...state};
-            newState[action.playlist.id] = action.playlist;
+            newState.currentPlaylist[action.playlist.id] = action.playlist;
             return newState;
         default:
             return state;

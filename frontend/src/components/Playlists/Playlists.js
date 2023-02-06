@@ -5,7 +5,7 @@ import { getPlaylists } from '../../store/playlists';
 import CreatePlaylistModal from '../CreatePlaylist/CreatePlaylistModal';
 import DeletePlaylist from './DeletePlaylist';
 import UpdatePlaylistModal from './UpdatePlaylistModal';
-import AddSongModal from './AddSongModal'
+// import AddSongModal from './AddSongModal'
 import './Playlists.css';
 
 function Playlists() {
@@ -25,7 +25,7 @@ function Playlists() {
         if (user.id === playlist.userId) {
             return (
                 <div className='ind-playlist-actions'>
-                    <AddSongModal playlist={playlist} userId={user.id} />
+                    {/* <AddSongModal playlist={playlist} userId={user.id} /> */}
                     <UpdatePlaylistModal playlist={playlist} userId={user.id} />
                     <DeletePlaylist playlist={playlist} userId={user.id} />
                 </div>

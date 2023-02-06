@@ -71,6 +71,7 @@ const Songs = () => {
                                 </strong>
                             </div>
                             <div className="ind-song-actions">
+                                
                                 {user && checkValidation(song)}
                                 <HiPlay className="play-btn"
                                     onClick={(e) => {

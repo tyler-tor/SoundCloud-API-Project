@@ -22,6 +22,6 @@ export const addSongToPlaylist = (data) => async (dispatch) => {
     });
 
     if(res.ok) {
-
+        await dispatch(addPlaylistSongAction(data));
     }
 };

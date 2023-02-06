@@ -8,20 +8,19 @@ const CreateSong = ({ albumId, setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [title, setTitle] = useState('');
-    // const [url, setUrl] = useState('');
     const [description, setDescription] = useState('');
     const [audioUrl, setAudioUrl] = useState('');
     const [errors, setErrors] = useState([]);
     const [albumIdState, setAlbumIdState] = useState(albumId ? albumId : '');
 
-    const user = useSelector(state => state.session.user);
-    const albumState = useSelector(state => state.albums[albumIdState])
+    // const user = useSelector(state => state.session.user);
+    // const albumState = useSelector(state => state.albums[albumIdState])
     const albums = useSelector(state => state.session.albums);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-        if (!albums || !albumState) {
+        if (!albums || !albumIdState) {
             setErrors(["You need to select an album. If you don't have a album, create one"])
         } else {
             const data = {
@@ -45,10 +44,10 @@ const CreateSong = ({ albumId, setShowModal }) => {
     };
 
     const updateSongFile = (e) => {
-        const SongFile = e.target.files[0];
-        setAudioUrl(SongFile);
+        const songFile = e.target.files[0];
+        setAudioUrl(songFile);
     };
-
+    // console.log(albumIdState)
     return (
         <form
             onSubmit={handleSubmit}
@@ -83,8 +82,8 @@ const CreateSong = ({ albumId, setShowModal }) => {
                     type="file"
                     name="song"
                     className="song-input"
-                    value={audioUrl}
-                    onChange={(e) => updateSongFile(e)}
+                    // value={audioUrl}
+                    onChange={updateSongFile}
                     required
                 />
             </label>

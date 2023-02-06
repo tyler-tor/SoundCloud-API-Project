@@ -40,11 +40,20 @@ export const getSongs = () => async (dispatch) => {
 };
 
 export const createAddSong = (data) => async (dispatch) => {
-    const { albumId } = data;
+    const { albumId, title, description, url } = data;
+    console.log('data', data)
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('url', url);
+    formData.append('albumId', albumId);
 
     const res = await csrfFetch(`/api/albums/${albumId}/songs`, {
         method: 'POST',
-        body: JSON.stringify(data)
+        headers: {
+            "Content-Type": "multipart/form-data"
+        },
+        body: formData
     });
 
     if (res.ok) {
@@ -84,7 +93,7 @@ export const removeSong = (songId) => async (dispatch) => {
 export const showSong = (songId) => async (dispatch) => {
     const res = await csrfFetch(`/api/songs/${songId}`);
 
-    if(res.ok) {
+    if (res.ok) {
         const song = await res.json();
         dispatch(showSongAction(song));
         return song;
@@ -97,12 +106,12 @@ const songsReducer = (state = initSongData, action) => {
     let newState;
     switch (action.type) {
         case (GET_SONGS):
-            newState = { }
+            newState = {}
             action.payload.forEach((song) => {
                 newState[song.id] = song;
             })
             return newState
-        case (CREATE_SONG):{
+        case (CREATE_SONG): {
             return {
                 ...state,
                 [action.song.id]: action.song
@@ -117,7 +126,7 @@ const songsReducer = (state = initSongData, action) => {
             delete newState[action.id];
             return newState;
         case (SHOW_SONG):
-            newState = {...state};
+            newState = { ...state };
             newState[action.song.id] = action.song;
             return newState
         default:

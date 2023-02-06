@@ -127,7 +127,7 @@ router.get('/:playlistId', async (req, res, next) => {
                 through: {attributes: []}
             }
         });
-        console.log(playlistSongs)
+        // console.log(playlistSongs)
         return res.json(playlistSongs)
     } else {
         playlistCouldNotBeFound(next)

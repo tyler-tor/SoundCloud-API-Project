@@ -5,6 +5,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const app = require('../../app');
 const user = require('../../db/models/user');
+const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3')
 
 const router = express.Router();
 
@@ -12,9 +13,9 @@ const validateSong = [
     check('title')
         .exists({ checkFalsey: true })
         .withMessage('Song title is required.'),
-    check('url')
-        .exists({ checkFalsy: true })
-        .withMessage('Audio is required'),
+    // check('url')
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Audio is required'),
     handleValidationErrors
 ];
 
@@ -38,11 +39,12 @@ const albumCouldNotBeFound = (next) => {
     next(e)
 }
 
-router.post('/:albumId/songs', [requireAuth, validateSong], async(req, res, next) => {
+router.post('/:albumId/songs', requireAuth, singleMulterUpload('url'), validateSong, async(req, res, next) => {
+    console.log('body', req.file);
     const { albumId } = req.params;
     const { user } = req;
-    const { title, description, url } = req.body;
-
+    const { title, description } = req.body;
+    const url = await singlePublicFileUpload(req.file);
     const album = await Album.findOne({
         include: {
             model: User
@@ -59,7 +61,7 @@ router.post('/:albumId/songs', [requireAuth, validateSong], async(req, res, next
             description,
             url,
             previewImage: album.previewImage,
-            albumId: album.id,
+            albumId,
             userId: user.id
         })
         return res.json(song)

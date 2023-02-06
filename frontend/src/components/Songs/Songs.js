@@ -57,7 +57,7 @@ const Songs = () => {
                             className="song-container"
                             key={song.id}>
                             <div className="ind-song-info">
-                                <img src={albums[song?.albumId]?.previewImage}
+                                <img src={song.previewImage}
                                 className='song-img'>
                                 </img>
                                 <strong className='song-titles'>
@@ -71,7 +71,7 @@ const Songs = () => {
                                 </strong>
                             </div>
                             <div className="ind-song-actions">
-                                
+
                                 {user && checkValidation(song)}
                                 <HiPlay className="play-btn"
                                     onClick={(e) => {

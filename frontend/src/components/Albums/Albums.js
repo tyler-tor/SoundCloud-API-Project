@@ -9,6 +9,7 @@ import CreateAlbumModal from "../CreateAlbum/CreateAlbumModal";
 import './albums.css';
 
 const Albums = () => {
+
     const albums = Object.values(useSelector(state => state.albums.albums)).reverse();
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
@@ -16,10 +17,6 @@ const Albums = () => {
     useEffect(() => {
         dispatch(getAlbums())
     }, [dispatch]);
-
-    if (!albums) {
-        return null;
-    };
 
     const checkValidation = (album) => {
         if (user.id === album.userId) {
@@ -36,7 +33,7 @@ const Albums = () => {
         }
     }
 
-    return (
+    return albums &&  (
         <div
             className="ca-div">
             <div className="entire-albums-container">

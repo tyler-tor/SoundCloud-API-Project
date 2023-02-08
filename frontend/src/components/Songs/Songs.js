@@ -27,9 +27,6 @@ const Songs = () => {
         [dispatch]
     );
 
-    if (!songs) {
-        return null;
-    }
     const checkValidation = (song) => {
         if (user.id === song.userId) {
             return (

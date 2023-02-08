@@ -108,20 +108,32 @@ const playlistReducer = (state = initPlaylistData, action) => {
             })
             return newState;
         case CREATE_PLAYLIST:
-            newState = {...state};
+            newState = {
+                currentPlaylist: null,
+                playlists: {...state.playlists}
+            };
             newState.playlists[action.playlist.id] = action.playlist;
             return newState;
         case UPDATE_PLAYLIST:
-            newState = {...state};
+            newState = {
+                currentPlaylist: {...state.currentPlaylist},
+                playlists: {...state.playlists}
+            };
             newState.currentPlaylist = {...action.playlist};
             newState.playlists[action.playlist.id] = action.playlist;
             return newState;
         case DELETE_PLAYLIST:
-            newState = {...state};
+            newState = {
+                currentPlaylist: {...state.currentPlaylist},
+                playlists: {...state.playlists}
+            };
             delete newState.playlists[action.playlistId];
             return newState;
         case SHOW_PLAYLIST:
-            newState = {...state};
+            newState = {
+                currentPlaylist: {...state.currentPlaylist},
+                playlists: {...state.playlists}
+            };
             newState.currentPlaylist[action.playlist.id] = action.playlist;
             return newState;
         default:

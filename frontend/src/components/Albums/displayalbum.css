@@ -4,6 +4,7 @@
     align-items: flex-start;
     width: 60%;
     height: 100%;
+    padding-bottom: 7em;
     background-color: #F6EEDF;
 }
 
@@ -23,9 +24,13 @@
 
 .ai-pic-wrapper {
     height: 100%;
-    width: 25%;
+    width: 30%;
     display: flex;
     border-left: 1px solid #333;
+}
+
+.ai-pic {
+    width: 100%;
 }
 
 .ai-detail-btns {

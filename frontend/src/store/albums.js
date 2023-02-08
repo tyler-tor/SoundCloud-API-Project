@@ -107,11 +107,17 @@ const albumsReducer = (state = initAlbumData, action) => {
             });
             return newState;
         case (CREATE_ALBUM):
-            newState = {...state};
+            newState = {
+                currentAlbum: null,
+                albums: {...state.albums}
+            };
             newState.albums[action.album.id] = action.album;
             return newState;
         case (UPDATE_ALBUM):
-            newState = {...state};
+            newState = {
+                currentAlbum: {...state.currentAlbum },
+                albums: {...state.albums}
+            };
             newState.currentAlbum = {...action.album}
             newState.albums[action.album.id] = action.album;
             return newState;

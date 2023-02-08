@@ -41,7 +41,6 @@ export const getSongs = () => async (dispatch) => {
 
 export const createAddSong = (data) => async (dispatch) => {
     const { albumId, title, description, url } = data;
-    console.log('data', data)
     const formData = new FormData();
     formData.append('title', title);
     formData.append('description', description);

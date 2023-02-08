@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createAddSong } from "../../store/songs";
@@ -12,9 +12,6 @@ const CreateSong = ({ albumId, setShowModal }) => {
     const [audioUrl, setAudioUrl] = useState('');
     const [errors, setErrors] = useState([]);
     const [albumIdState, setAlbumIdState] = useState(albumId ? albumId : '');
-
-    // const user = useSelector(state => state.session.user);
-    // const albumState = useSelector(state => state.albums[albumIdState])
     const albums = useSelector(state => state.session.albums);
 
     const handleSubmit = async (e) => {
@@ -47,7 +44,7 @@ const CreateSong = ({ albumId, setShowModal }) => {
         const songFile = e.target.files[0];
         setAudioUrl(songFile);
     };
-    // console.log(albumIdState)
+
     return (
         <form
             onSubmit={handleSubmit}
@@ -77,7 +74,7 @@ const CreateSong = ({ albumId, setShowModal }) => {
                 />
             </label>
             <label>
-                Song
+                    Upload Audio
                 <input
                     type="file"
                     name="song"

@@ -14,7 +14,7 @@ const CreateAlbum = ({ setShowModal }) => {
     const [url, setUrl] = useState('');
     const [errors, setErrors] = useState([]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
 
@@ -24,7 +24,8 @@ const CreateAlbum = ({ setShowModal }) => {
             imageUrl: url
         }
         return dispatch(createAlbum(data))
-            .then(() => setShowModal(false), history.push('/albums'))
+            .then(() => setShowModal(false),
+            history.push('/albums'))
             .catch(
                 async (response) => {
                     if (response && response.errors) setErrors(response.errors);

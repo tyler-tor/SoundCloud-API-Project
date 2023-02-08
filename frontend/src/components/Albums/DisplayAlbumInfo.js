@@ -39,7 +39,7 @@ const DisplayAlbumInfo = () => {
                 className="ind-album-wrapper">
                 <div className="ind-ai-wrapper">
                     <div className="ai-pic-wrapper">
-                        <img src={album.previewImage} alt={album.title} />
+                        <img src={album.previewImage} alt={album.title} className='ai-pic' />
                     </div>
                     <div className="ai-detail-btns">
                         <h1 className="ind-album-title">{album.title}</h1>

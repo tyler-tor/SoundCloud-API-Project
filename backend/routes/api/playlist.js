@@ -110,23 +110,23 @@ router.put('/:playlistId', requireAuth, validatePlaylist, async(req, res, next) 
 router.get('/:playlistId', async (req, res, next) => {
     const { playlistId } = req.params;
 
-    const playlist = await PlaylistSong.findOne({
+    // const playlist = await PlaylistSong.findOne({
+    //     where: {
+    //         playlistId
+    //     }
+    // })
+
+    const playlistSongs = await Playlist.findOne({
         where: {
-            playlistId
-        }
-    })
-
-    if (playlist) {
-
-        const playlistSongs = await Playlist.findOne({
-            where: {
-                id: playlist.playlistId
-            },
-            include: {
-                model: Song,
-                through: {attributes: []}
-            }
-        });
+            id: playlistId
+        },
+        include: [
+            {model: Song},
+            {model: User.scope('includedArtist')}
+        ]
+    });
+    // console.log('-------------------', playlistSongs)
+    if (playlistSongs) {
         // console.log(playlistSongs)
         return res.json(playlistSongs)
     } else {

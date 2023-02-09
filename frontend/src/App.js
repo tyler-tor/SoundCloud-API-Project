@@ -13,6 +13,7 @@ import HomePage from './components/HomePage';
 import DisplaySongInfo from './components/Songs/DisplaySongInfo';
 import { myPlaylists, myAlbums } from './store/session';
 import DisplayAlbumInfo from './components/Albums/DisplayAlbumInfo';
+import DisplayPlaylistInfo from './components/Playlists/DisplayPlaylistInfo';
 import PageNotFound from './components/PageNotFound';
 import './index.css'
 
@@ -43,11 +44,11 @@ function App() {
           <Route path='/albums/:albumId'>
             <DisplayAlbumInfo />
           </Route>
+          <Route path='/playlists/:playlistId'>
+            <DisplayPlaylistInfo />
+          </Route>
           <Route path='/albums'>
             <Albums />
-          </Route>
-          <Route path='/playlists/:playlistId'>
-            {/* <Playlists /> */}
           </Route>
           <Route path='/playlists'>
             <Playlists />

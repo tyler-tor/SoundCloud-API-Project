@@ -100,7 +100,7 @@ const playlistReducer = (state = initPlaylistData, action) => {
     switch (action.type) {
         case GET_PLAYLISTS:
             newState = {
-                currentPlaylist: null,
+                currentPlaylist: {},
                 playlists: {}
             }
             action.payload.forEach(playlist => {

@@ -24,9 +24,9 @@ const DisplayAlbumInfo = () => {
                 <div className="ind-song-actions">
                     <CreateSongModal album={album}
                         userId={user.id} />
-                    <DeleteAlbum album={album}
-                        userId={user.id} />
                     <UpdateAlbumModal album={album}
+                        userId={user.id} />
+                    <DeleteAlbum album={album}
                         userId={user.id} />
                 </div>
             )
@@ -45,7 +45,7 @@ const DisplayAlbumInfo = () => {
                         <h1 className="ind-album-title">{album.title}</h1>
                         <div className="ind-ai-list">
                             <div className="ind-ai-item">
-                                <img className='ind-ai-pro-pic' src={album.Artist.previewImage} alt={album.Artist.previewImage} />
+                                <img className='ind-ai-pro-pic' src={album.Artist.previewImage} alt={album.Artist.username} />
                             </div>
                             <strong className="ind-ai-item">
                                 {album.Artist.username}

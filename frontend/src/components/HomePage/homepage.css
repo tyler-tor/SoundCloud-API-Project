@@ -141,6 +141,10 @@
     justify-content: flex-end;
 }
 
+.tile-title {
+    color: #333;
+}
+
 .section-tiles {
     overflow-x: scroll;
     bottom: 0;

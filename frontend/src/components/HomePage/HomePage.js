@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import CreateAlbumModal from "../CreateAlbum/CreateAlbumModal";
 import CreatePlaylistModal from "../CreatePlaylist/CreatePlaylistModal";
-// import { getArtists } from "../../store/artists";
+import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { mySongs } from "../../store/session";
 import './homepage.css'
@@ -62,9 +62,9 @@ const HomePage = () => {
                         {playlists.map((playlist, ind) => (
                             <div className="tile-wrapper" key={ind}>
                                 <img className="tile-image" src={playlist.previewImage} alt="playlist cover" />
-                                <strong className="tile-title">
+                                <NavLink to={`/playlists/${playlist.id}`} className="tile-title">
                                     {playlist.name.length < 10 ? playlist.name : `${playlist.name.slice(0, 7)}...`}
-                                </strong>
+                                </NavLink>
                             </div>
                         ))
                         }
@@ -80,9 +80,9 @@ const HomePage = () => {
                         {albums.map((album, ind) => (
                             <div className="tile-wrapper" key={ind}>
                                 <img className="tile-image" src={album.previewImage} alt="album cover" />
-                                <strong className="tile-title">
+                                <NavLink to={`/albums/${album.id}`} className="tile-title">
                                     {album.title.length < 10 ? album.title : `${album.title.slice(0, 7)}...`}
-                                </strong>
+                                </NavLink>
                             </div>
                         ))}
                     </div>
@@ -98,9 +98,9 @@ const HomePage = () => {
                             <div className="tile-wrapper"
                                 key={ind}>
                                     <img className="tile-image" src={song.previewImage} alt="song cover" />
-                                <strong className="tile-title">
+                                <NavLink to={`/albums/${song.albumId}`} className="tile-title">
                                     {song.title.length < 10 ? song.title : `${song.title.slice(0, 7)}...`}
-                                </strong>
+                                </NavLink>
                             </div>
                         ))}
                     </div>

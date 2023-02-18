@@ -7,7 +7,7 @@ import { getSongs } from '../../store/songs';
 function DeletePlaylist({ playlist, userId }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const playlistState = useSelector((state) => state.playlists[playlist.id]);
+    const playlistState = useSelector((state) => state.playlists.currentPlaylist[playlist.id]);
 
     const handleClick = async (e) => {
         // e.preventDefault();

@@ -6,7 +6,7 @@ import { getSongs } from "../../store/songs";
 const DeleteAlbum = ({album, userId}) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const albumState = useSelector(state => state.albums[album.id])
+    const albumState = useSelector(state => state.albums.currentAlbum[album.id])
 
     const handleClick = (e) => {
         if(album.userId === userId){

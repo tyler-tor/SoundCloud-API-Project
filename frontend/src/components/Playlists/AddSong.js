@@ -7,6 +7,7 @@ import './Playlists.css'
 function AddSong({songId, setShowModal}) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [playlist, setPlaylist] = useState('');
 
   const myPlaylists = useSelector((state) => state.session.playlists);
 
@@ -15,10 +16,31 @@ function AddSong({songId, setShowModal}) {
     await dispatch()
   }
 
-  return (
-    <div>
-
-    </div>
+  return myPlaylists && (
+    <form
+    onSubmit={handleSubmit}
+    className='add-song-playlist-form'>
+      <label>
+        Playlists
+        <select
+        name='playlist'
+        value={playlist.id}
+        onChange={(e) => setPlaylist(e.target.value)}
+        className='select-input'>
+          <option value=''>Select Playlist</option>
+          {Object.values(myPlaylists).map((playlist, ind) => (
+            <option key={ind}
+            value={playlist}
+            >{playlist.name}</option>
+          ))}
+        </select>
+      </label>
+      <button
+      type='submit'
+      className='add-song-playlist-btn'>
+        Add to Playlist
+      </button>
+    </form>
   )
 }
 

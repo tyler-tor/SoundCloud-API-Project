@@ -30,7 +30,8 @@
     justify-content: space-between;
 }
 
-.playlist-btns {
+.playlist-btns,
+.add-song-playlist-btn {
     padding: 5px;
     margin: 5px;
     border: 0;
@@ -39,7 +40,8 @@
     font-size: medium;
 }
 
-.playlist-btns:hover {
+.playlist-btns:hover,
+.add-song-playlist-btn:hover {
     cursor: pointer;
     font-weight: bolder;
 }
@@ -89,3 +91,12 @@ label {
     margin-top: 10px;
     font-size: large;
 }
+
+.add-song-playlist-form {
+    display: flex;
+    flex-direction: column;
+    padding: 5em;
+    width: 15em;
+    background-color: #A49DA1;
+}
+

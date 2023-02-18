@@ -12,7 +12,7 @@ function AddSongModal({songId}) {
   })
   return (
     <div>
-      <button onClick={handleClick} className='add-song-playlist-btn'>+ Playlist</button>
+      <button onClick={handleClick} className='add-song-playlist-btn'>+ to Playlist</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <AddSong songId={songId} setShowModal={setShowModal} />

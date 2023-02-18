@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { HiPlay } from "react-icons/hi";
 import { useEffect, useCallback } from 'react';
 import { getSongs } from "../../store/songs";
@@ -7,6 +8,7 @@ import { playSong } from "../../store/player";
 import DeleteSong from "./DeleteSong";
 import CreateSongModal from "../CreateSong/CreateSongModal";
 import UpdateSongModal from "../UpdateSong/UpdateSongModal";
+import AddSongModal from '../Playlists/AddSongModal';
 import './songs.css'
 
 const Songs = () => {
@@ -30,7 +32,11 @@ const Songs = () => {
     const checkValidation = (song) => {
         if (user.id === song.userId) {
             return (
-                <div>
+                <div className='ind-song-btns'>
+                    <AddSongModal
+                        song={song}
+                        userId={user.id}
+                        />
                     <DeleteSong
                         song={song}
                         userId={user.id}
@@ -57,7 +63,7 @@ const Songs = () => {
                                 <img src={song.previewImage}
                                 className='song-img'>
                                 </img>
-                                <strong className='song-titles'>
+                                <NavLink to={`/albums/${song.albumId}`} className='song-titles'>
 
                                     {song.title}
                                 <p
@@ -65,10 +71,9 @@ const Songs = () => {
                                     -
                                     {song.description}
                                 </p>
-                                </strong>
+                                </NavLink>
                             </div>
                             <div className="ind-song-actions">
-
                                 {user && checkValidation(song)}
                                 <HiPlay className="play-btn"
                                     onClick={(e) => {

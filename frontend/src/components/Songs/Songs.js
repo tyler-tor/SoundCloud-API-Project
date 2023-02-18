@@ -30,23 +30,26 @@ const Songs = () => {
     );
 
     const checkValidation = (song) => {
-        if (user.id === song.userId) {
+        // if (user.id === song.userId) {
             return (
                 <div className='ind-song-btns'>
                     <AddSongModal
-                        song={song}
-                        userId={user.id}
-                        />
-                    <DeleteSong
-                        song={song}
-                        userId={user.id}
+                        songId={song.id}
                     />
-                    <UpdateSongModal
-                        song={song}
-                        userId={user.id} />
+                    {(user.id === song.userId) && (
+                        <>
+                            <DeleteSong
+                                song={song}
+                                userId={user.id}
+                            />
+                            <UpdateSongModal
+                                song={song}
+                                userId={user.id} />
+                        </>
+                    )}
                 </div>
             )
-        }
+        // }
     }
 
     return songs && albums && (
@@ -61,16 +64,16 @@ const Songs = () => {
                             key={song.id}>
                             <div className="ind-song-info">
                                 <img src={song.previewImage}
-                                className='song-img'>
+                                    className='song-img'>
                                 </img>
                                 <NavLink to={`/albums/${song.albumId}`} className='song-titles'>
 
                                     {song.title}
-                                <p
-                                    className="song-description">
-                                    -
-                                    {song.description}
-                                </p>
+                                    <p
+                                        className="song-description">
+                                        -
+                                        {song.description}
+                                    </p>
                                 </NavLink>
                             </div>
                             <div className="ind-song-actions">

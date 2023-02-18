@@ -46,23 +46,24 @@ const DisplayAlbumInfo = () => {
     }
 
     const checkSongValidation = (song) => {
-        if (user.id === song.userId) {
-            return (
-                <div className='ind-song-btns'>
-                    <AddSongModal
-                        song={song}
-                        userId={user.id}
+        return (
+            <div className='ind-song-btns'>
+                <AddSongModal
+                    songId={song.id}
+                />
+                {(user.id === song.userId) && (
+                    <>
+                        <DeleteSong
+                            song={song}
+                            userId={user.id}
                         />
-                    <DeleteSong
-                        song={song}
-                        userId={user.id}
-                    />
-                    <UpdateSongModal
-                        song={song}
-                        userId={user.id} />
-                </div>
-            )
-        }
+                        <UpdateSongModal
+                            song={song}
+                            userId={user.id} />
+                    </>
+                )}
+            </div>
+        )
     }
 
     return album && (

@@ -1,19 +1,25 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
+import { addSongToPlaylist } from '../../store/playlistSongs';
 import './Playlists.css'
 
 
 function AddSong({songId, setShowModal}) {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const [playlist, setPlaylist] = useState('');
+  // const history = useHistory();
+  const [playlistId, setPlaylistId] = useState('');
 
   const myPlaylists = useSelector((state) => state.session.playlists);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch()
+
+    const data = {
+      songId,
+      playlistId: parseInt(playlistId)
+    }
+    await dispatch(addSongToPlaylist(data)).then(() => setShowModal(false))
   }
 
   return myPlaylists && (
@@ -24,13 +30,13 @@ function AddSong({songId, setShowModal}) {
         Playlists
         <select
         name='playlist'
-        value={playlist.id}
-        onChange={(e) => setPlaylist(e.target.value)}
+        value={playlistId}
+        onChange={(e) => setPlaylistId(e.target.value)}
         className='select-input'>
           <option value=''>Select Playlist</option>
           {Object.values(myPlaylists).map((playlist, ind) => (
             <option key={ind}
-            value={playlist}
+            value={playlist.id}
             >{playlist.name}</option>
           ))}
         </select>

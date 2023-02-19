@@ -19,10 +19,22 @@ export const addSongToPlaylist = (data) => async (dispatch) => {
         method: 'POST',
         body: JSON.stringify(data)
     });
-    console.log(res)
     if(res.ok) {
         const addedSongs = await res.json();
         await dispatch(addPlaylistSongAction(addedSongs));
         return addedSongs;
     }
 };
+
+export const removeSongFromPlaylist = (data) => async (dispatch) => {
+    const {playlistId, songId} = data;
+    const res = await csrfFetch(`/api/playlists/${playlistId}/songs/${songId}`, {
+        method: 'DELETE',
+    });
+
+    if(res.ok) {
+        const deletedSongFromPlaylist = await res.json();
+        dispatch(deletePlaylistSongAction(data));
+        return deletedSongFromPlaylist;
+    }
+}

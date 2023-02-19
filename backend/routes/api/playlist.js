@@ -26,6 +26,29 @@ const validatePlaylist = [
     handleValidationErrors
 ];
 
+router.delete('/:playlistId/songs/:songId', requireAuth, async (req, res, next) => {
+    const {playlistId, songId} = req.params;
+
+    const playlistSong = await PlaylistSong.findOne({
+        where: {
+            playlistId: playlistId,
+            songId: songId
+        }
+    });
+
+    if(playlistSong) {
+        await playlistSong.destroy();
+
+        res.status(200);
+        return res.json({
+            message: "Successfully deleted.",
+            statusCode: 200
+        })
+    }else {
+        playlistCouldNotBeFound(next)
+    }
+})
+
 router.post('/:playlistId/songs', requireAuth, async (req, res, next) => {
     const { user } = req;
     const { playlistId } = req.params;

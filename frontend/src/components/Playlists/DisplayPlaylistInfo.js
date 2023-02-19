@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showPlaylist } from "../../store/playlists";
 import UpdatePlaylistModal from "./UpdatePlaylistModal";
-// import CreatePlaylistModal from "../CreatePlaylist/CreatePlaylistModal";
 import DeletePlaylist from "./DeletePlaylist";
-// import AddSongModal from "./AddSongModal";
+import { removeSongFromPlaylist } from "../../store/playlistSongs";
+import DeletePlaylistSongModal from "./DeletePlaylistSongModal";
 import './DisplayPlaylistInfo.css';
 
 function DisplayPlaylistInfo() {
@@ -22,8 +22,6 @@ function DisplayPlaylistInfo() {
         if (user.id === playlist.userId) {
             return (
                 <div className="ind-song-actions">
-                    {/* <AddSongModal playlist={playlist} userId={user.id} /> */}
-                    {/* <CreatePlaylistModal playlist={playlist} userId={user.id} /> */}
                     <UpdatePlaylistModal playlist={playlist} userId={user.id} />
                     <DeletePlaylist playlist={playlist} userId={user.id} />
                 </div>
@@ -71,6 +69,11 @@ function DisplayPlaylistInfo() {
                                             - {song.description}
                                         </p>
                                     </strong>
+                                </div>
+                                <div className="ip-song-actions">
+                                    {(playlist.userId === user.id) && (
+                                        <DeletePlaylistSongModal songId={song.id} playlistId={playlist.id} />
+                                    )}
                                 </div>
                             </div>
                         )

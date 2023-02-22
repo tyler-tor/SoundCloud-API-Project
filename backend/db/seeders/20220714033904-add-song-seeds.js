@@ -320,7 +320,7 @@ module.exports = {
      {
       title: 'Coming Home',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/01+Coming+Home.m4p',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/Leon+Bridges/Coming+Home.mp3',
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -328,7 +328,7 @@ module.exports = {
      {
       title: 'Better Man',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/02+Better+Man.m4p',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/Leon+Bridges/Better+Man.mp3',
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -336,7 +336,7 @@ module.exports = {
      {
       title: 'Brown Skin Girl',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/03+Brown+Skin+Girl.m4p',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/Leon+Bridges/Brown+Skin+Girl.mp3',
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -344,7 +344,7 @@ module.exports = {
      {
       title: 'Smooth Sailin',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: "https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/04+Smooth+Sailin'.m4p",
+      url: "https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/Leon+Bridges/Smooth+Sailin'.mp3",
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -352,7 +352,7 @@ module.exports = {
      {
       title: 'Shine',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/05+Shine.m4p',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/Leon+Bridges/Shine.mp3',
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -360,7 +360,7 @@ module.exports = {
      {
       title: 'Lisa Sawyer',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/06+Lisa+Sawyer.m4p',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/Leon+Bridges/Lisa+Sawyer.mp3',
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -368,7 +368,7 @@ module.exports = {
      {
       title: 'Flowers',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/07+Flowers.m4p',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/Leon+Bridges/Flowers.mp3',
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -376,7 +376,7 @@ module.exports = {
      {
       title: 'Pull Away',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/08+Pull+Away.m4p',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/Leon+Bridges/Pull+Away.mp3',
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -384,7 +384,7 @@ module.exports = {
      {
       title: 'Twistin & Groovin',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: "https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/09+Twistin'+%26+Groovin'.m4p",
+      url: "https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/Leon+Bridges/Twistin'+%26+Groovin'.mp3",
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -392,7 +392,7 @@ module.exports = {
      {
       title: 'River',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/10+River.m4p',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/Leon+Bridges/River.mp3',
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -408,7 +408,7 @@ module.exports = {
      {
       title: 'Daisy Mae',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/12+Daisy+Mae.m4p',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/send/Daisy+Mae.mp3',
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -416,7 +416,7 @@ module.exports = {
      {
       title: 'Mississippi Kisses',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/13+Mississippi+Kisses.m4p',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/send/Mississippi+Kisses.mp3',
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -424,7 +424,7 @@ module.exports = {
      {
       title: 'Here In My Arms',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/14+Here+In+My+Arms.m4p',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/send/Here+In+My+Arms.mp3',
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
@@ -432,10 +432,162 @@ module.exports = {
      {
       title: 'Outta Line',
       description: 'Coming Home is the debut studio album by American singer Leon Bridges.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/send/Outta+Line.mp3',
       previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Coming_Home_Leon_Bridges.jpg',
       albumId: 4,
       userId: 4
+     },
+     {
+      title: 'K.I.D.S',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/send/Kickin+Incredibly+Dope+Shit+(Intro)+(Prod.+DT+Spacely).mp3',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Outside',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/send/Outside+(Prod.+Sayez).mp3',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Get Em Up',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: "https://soundcloud-bucket.s3.us-west-2.amazonaws.com/send/Get+Em+Up+(Prod.+93'+P.).mp3",
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Nikes on My Feet',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Senior Skip Day',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'The Spins',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Dont Mind If I Do',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Paper Route',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/send/Paper+Route+ft.+Chevy+Woods+(Prod.+Sayez).mp3',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Good Evening',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Ride Around',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Knock Knock',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Mad Flava, Heavy Flow',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Kool Aid & Frozen Pizza',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'All I Want is You',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Poppy',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Face in the Crowd',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Ayye',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'Back in the Day',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
+     },
+     {
+      title: 'K.I.D.S',
+      description: 'K.I.D.S. is the fourth mixtape by American rapper Mac Miller.',
+      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Mac_Miller_K.I.D.S._cover_art.jpg',
+      albumId: 5,
+      userId: 3
      },
     ], {});
 

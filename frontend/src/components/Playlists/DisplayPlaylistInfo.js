@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showPlaylist } from "../../store/playlists";
 import UpdatePlaylistModal from "./UpdatePlaylistModal";
 import DeletePlaylist from "./DeletePlaylist";
-import { removeSongFromPlaylist } from "../../store/playlistSongs";
+import { playSong } from "../../store/player";
+import { HiPlay } from "react-icons/hi";
+// import { removeSongFromPlaylist } from "../../store/playlistSongs";
 import DeletePlaylistSongModal from "./DeletePlaylistSongModal";
 import './DisplayPlaylistInfo.css';
 
@@ -17,6 +19,13 @@ function DisplayPlaylistInfo() {
     useEffect(() => {
         dispatch(showPlaylist(playlistId));
     }, []);
+
+    const playSongBtn = useCallback(
+        (song) => {
+            dispatch(playSong(song));
+        },
+        [dispatch]
+    );
 
     const checkValidation = (playlist) => {
         if (user.id === playlist.userId) {
@@ -74,6 +83,12 @@ function DisplayPlaylistInfo() {
                                     {(playlist.userId === user.id) && (
                                         <DeletePlaylistSongModal songId={song.id} playlistId={playlist.id} />
                                     )}
+                                    <HiPlay className="play-btn"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        playSongBtn(song);
+                                    }}
+                                />
                                 </div>
                             </div>
                         )

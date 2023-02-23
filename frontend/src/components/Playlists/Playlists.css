@@ -31,7 +31,8 @@
 }
 
 .playlist-btns,
-.add-song-playlist-btn {
+.add-song-playlist-btn,
+.remove-song-playlist-btn {
     padding: 5px;
     margin: 5px;
     border: 0;
@@ -41,7 +42,8 @@
 }
 
 .playlist-btns:hover,
-.add-song-playlist-btn:hover {
+.add-song-playlist-btn:hover,
+.remove-song-playlist-btn:hover {
     cursor: pointer;
     font-weight: bolder;
 }

@@ -765,54 +765,54 @@ module.exports = {
       albumId: 7,
       userId: 5
      },
-     {
-      title: 'Maybe So',
-      description: 'Entergalactic is the eighth studio album by American musician Kid Cudi.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
-      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Kid_Cudi_-_Entergalactic.jpg',
-      albumId: 7,
-      userId: 5
-     },
-     {
-      title: 'Cant Shake Her',
-      description: 'Entergalactic is the eighth studio album by American musician Kid Cudi.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
-      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Kid_Cudi_-_Entergalactic.jpg',
-      albumId: 7,
-      userId: 5
-     },
-     {
-      title: 'Shes Lookin for Me',
-      description: 'Entergalactic is the eighth studio album by American musician Kid Cudi.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
-      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Kid_Cudi_-_Entergalactic.jpg',
-      albumId: 7,
-      userId: 5
-     },
-     {
-      title: 'My Drug',
-      description: 'Entergalactic is the eighth studio album by American musician Kid Cudi.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
-      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Kid_Cudi_-_Entergalactic.jpg',
-      albumId: 7,
-      userId: 5
-     },
-     {
-      title: 'Somewhere To Fly',
-      description: 'Entergalactic is the eighth studio album by American musician Kid Cudi.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
-      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Kid_Cudi_-_Entergalactic.jpg',
-      albumId: 7,
-      userId: 5
-     },
-     {
-      title: 'Burrow',
-      description: 'Entergalactic is the eighth studio album by American musician Kid Cudi.',
-      url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
-      previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Kid_Cudi_-_Entergalactic.jpg',
-      albumId: 7,
-      userId: 5
-     },
+    //  {
+    //   title: 'Maybe So',
+    //   description: 'Entergalactic is the eighth studio album by American musician Kid Cudi.',
+    //   url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+    //   previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Kid_Cudi_-_Entergalactic.jpg',
+    //   albumId: 7,
+    //   userId: 5
+    //  },
+    //  {
+    //   title: 'Cant Shake Her',
+    //   description: 'Entergalactic is the eighth studio album by American musician Kid Cudi.',
+    //   url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+    //   previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Kid_Cudi_-_Entergalactic.jpg',
+    //   albumId: 7,
+    //   userId: 5
+    //  },
+    //  {
+    //   title: 'Shes Lookin for Me',
+    //   description: 'Entergalactic is the eighth studio album by American musician Kid Cudi.',
+    //   url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+    //   previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Kid_Cudi_-_Entergalactic.jpg',
+    //   albumId: 7,
+    //   userId: 5
+    //  },
+    //  {
+    //   title: 'My Drug',
+    //   description: 'Entergalactic is the eighth studio album by American musician Kid Cudi.',
+    //   url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+    //   previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Kid_Cudi_-_Entergalactic.jpg',
+    //   albumId: 7,
+    //   userId: 5
+    //  },
+    //  {
+    //   title: 'Somewhere To Fly',
+    //   description: 'Entergalactic is the eighth studio album by American musician Kid Cudi.',
+    //   url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+    //   previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Kid_Cudi_-_Entergalactic.jpg',
+    //   albumId: 7,
+    //   userId: 5
+    //  },
+    //  {
+    //   title: 'Burrow',
+    //   description: 'Entergalactic is the eighth studio album by American musician Kid Cudi.',
+    //   url: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Leon+Bridges/Coming+Home+(Deluxe)/15+Outta+Line.m4p',
+    //   previewImage: 'https://soundcloud-bucket.s3.us-west-2.amazonaws.com/Kid_Cudi_-_Entergalactic.jpg',
+    //   albumId: 7,
+    //   userId: 5
+    //  },
     ], {});
 
   },

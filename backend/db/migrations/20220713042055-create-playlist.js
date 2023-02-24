@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false
       },
       previewImage: {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
       userId: {

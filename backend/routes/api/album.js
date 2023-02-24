@@ -40,7 +40,7 @@ const albumCouldNotBeFound = (next) => {
 }
 
 router.post('/:albumId/songs', requireAuth, singleMulterUpload('url'), validateSong, async(req, res, next) => {
-    console.log('body', req.file);
+    // console.log('body', req.file);
     const { albumId } = req.params;
     const { user } = req;
     const { title, description } = req.body;
